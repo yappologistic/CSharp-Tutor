@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Nullability"
+  short_description: "C# nullable reference type help"
+  default_prompt: "Use $csharp-nullability to explain or review nullable reference types, null-safety, and nullable warnings in C#."

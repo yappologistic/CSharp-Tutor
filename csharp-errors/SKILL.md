@@ -15,6 +15,7 @@ Load these csharp-tutor references when useful:
 
 - `references/skill-routing.md`
 - `references/errors-guidance.md`
+- `references/nullability-guidance.md`
 - `references/compiler-error-library.md`
 - `references/common-csharp-pitfalls.md`
 - `references/review-checklist.md`

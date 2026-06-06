@@ -27,6 +27,7 @@ Use these prompts as lightweight behavior examples when maintaining the skill pa
 - `csharp-generics`: `$csharp-generics explain generic constraints and variance using practical examples.`
 - `csharp-collections`: `$csharp-collections compare List, Dictionary, and HashSet for lookup-heavy code.`
 - `csharp-linq`: `$csharp-linq explain why this query executes twice and how to avoid accidental repeated enumeration.`
+- `csharp-nullability`: `$csharp-nullability review these nullable warnings and show which fixes are real design fixes versus warning suppressions.`
 - `csharp-async`: `$csharp-async review this async method for cancellation, sync-over-async, and deadlock risks.`
 - `csharp-concurrency`: `$csharp-concurrency review this shared counter code for race conditions and thread-safety options.`
 

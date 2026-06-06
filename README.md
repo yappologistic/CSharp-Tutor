@@ -10,7 +10,7 @@ The project is built around one main skill, `csharp-tutor`, plus focused compani
 
 - Explains C# and .NET concepts with examples matched to the learner's level.
 - Reviews snippets, files, projects, and repositories for correctness, maintainability, scalability, security, performance, tests, and modernization opportunities.
-- Helps with OOP, SOLID, clean code, design patterns, architecture, API design, dependency injection, async, concurrency, LINQ, generics, collections, exceptions, JSON, ASP.NET Core, EF Core, and testing.
+- Helps with OOP, SOLID, clean code, design patterns, architecture, API design, dependency injection, async, concurrency, LINQ, generics, collections, exceptions, nullable reference types, JSON, ASP.NET Core, EF Core, and testing.
 - Prefers official Microsoft documentation for language rules, .NET APIs, framework behavior, compatibility, security, and performance-sensitive claims.
 - Provides learner support through practice exercises, debugging labs, cheat sheets, interview prep, mini projects, and learning plans.
 - Includes shared catalogs for code smells/refactor choices and common compiler/runtime error triage.
@@ -64,7 +64,7 @@ Install a pinned release:
 
 For installation problems, see `INSTALL-TROUBLESHOOTING.md`.
 
-For the generated skill catalog, see `SKILLS.md`. For topic routing, see `TOPICS.md`. For representative maintenance prompts, see `EXAMPLE-PROMPTS.md`. For project boundaries, see `KNOWN-LIMITATIONS.md`.
+For the generated skill catalog, see `SKILLS.md`. For topic routing, see `TOPICS.md`. For the quality checklist, see `QUALITY-RUBRIC.md`. For representative maintenance prompts, see `EXAMPLE-PROMPTS.md`. For project boundaries, see `KNOWN-LIMITATIONS.md`.
 
 On Windows, the usual Codex skills directory is:
 
@@ -187,6 +187,7 @@ Focused companion skills:
 - `csharp-json`: JSON serialization and persistence.
 - `csharp-linq`: LINQ and deferred execution.
 - `csharp-modernize`: Version-aware modernization.
+- `csharp-nullability`: Nullable reference types and null-safety.
 - `csharp-oop`: Object-oriented design.
 - `csharp-performance`: Performance and scalability review.
 - `csharp-plan`: Learning plans and roadmaps.

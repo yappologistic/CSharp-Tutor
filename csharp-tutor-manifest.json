@@ -26,6 +26,7 @@
     "csharp-json",
     "csharp-linq",
     "csharp-modernize",
+    "csharp-nullability",
     "csharp-oop",
     "csharp-performance",
     "csharp-plan",

@@ -27,7 +27,9 @@ Use this map when deciding which skill owns a user request. Prefer the most focu
 | Collections and lookup choices | `csharp-collections` | `csharp-linq`, `csharp-performance` |
 | Generics, constraints, variance | `csharp-generics` | `csharp-api-design`, `csharp-collections` |
 | Exceptions and validation | `csharp-errors` | `csharp-debug`, `csharp-api-design` |
-| Nullable reference types | `csharp-style` | `csharp-errors`, `csharp-modernize`, `csharp-versioning` |
+| Nullable reference types | `csharp-nullability` | `csharp-style`, `csharp-errors`, `csharp-modernize`, `csharp-versioning` |
+| Nullable reference type migration | `csharp-nullability` | `csharp-modernize`, `csharp-versioning`, `csharp-style` |
+| Public API null contracts | `csharp-nullability` | `csharp-api-design`, `csharp-versioning`, `csharp-docs` |
 | JSON serialization | `csharp-json` | `csharp-aspnet`, `csharp-errors` |
 | C# language version features | `csharp-versioning` | `csharp-modernize`, `csharp-docs` |
 

@@ -66,6 +66,7 @@ Use the focused reference files as needed:
 - Read [verification-checklist.md](references/verification-checklist.md) before making version-sensitive, security-sensitive, API-specific, or performance-sensitive claims.
 - Read [answer-quality-rules.md](references/answer-quality-rules.md) before finalizing substantial explanations, code reviews, refactors, security feedback, or performance feedback.
 - Read [exercise-guidance.md](references/exercise-guidance.md) when the user asks to practice or would benefit from a small learning exercise.
+- Read [nullability-guidance.md](references/nullability-guidance.md) for nullable reference types, nullable warnings, null contracts, null-forgiving operator use, and null-safety reviews.
 
 ## Workflow
 
@@ -78,6 +79,7 @@ Use the focused reference files as needed:
    - Performance or scalability guidance
    - Modernization using newer C# or .NET features
    - Exercise, example, or learning path
+   - Nullable reference type or null-safety help
    - Interview preparation or mock interview
    - Version compatibility, docs-grounded explanation, design-pattern selection, API design, tooling/analyzer review, debug lab, or mini-project assignment
    - Cheat sheet, quiz, quick answer, or "what should I learn next" request

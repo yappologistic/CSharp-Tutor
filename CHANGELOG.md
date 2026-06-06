@@ -20,6 +20,8 @@ This project uses semantic versioning while it remains pre-1.0:
 - Topic coverage map for choosing the right focused skill.
 - Known limitations document clarifying runtime, docs, security, review, and installer boundaries.
 - Maintenance dashboard script for summarizing package health and required maintenance artifacts.
+- Quality rubric for maintaining consistent skill behavior.
+- `csharp-nullability` skill and shared nullable reference type guidance.
 
 ## 0.5.0 - 2026-06-05
 

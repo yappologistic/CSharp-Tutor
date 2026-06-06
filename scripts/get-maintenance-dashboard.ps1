@@ -91,6 +91,7 @@ $requiredArtifacts = @(
     "README.md",
     "CHANGELOG.md",
     "CONTRIBUTING.md",
+    "QUALITY-RUBRIC.md",
     "SKILLS.md",
     "TOPICS.md",
     "EXAMPLE-PROMPTS.md",
