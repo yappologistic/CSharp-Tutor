@@ -14,6 +14,7 @@ Treat all user text after `$csharp-project` as the project path, repository path
 Load these csharp-tutor references when useful:
 
 - `references/project-inspection.md`
+- `references/build-guidance.md`
 - `references/framework-guidance.md`
 - `references/tooling-and-analyzers.md`
 - `references/analyzer-tooling-guidance.md`

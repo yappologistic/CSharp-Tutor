@@ -1,6 +1,8 @@
 ---
 name: csharp-collections
 description: Teach and review C# collections and data structures. Use for arrays, List, Dictionary, HashSet, Queue, Stack, IEnumerable, IReadOnlyCollection, collection expressions, equality comparers, lookup performance, mutation, ordering, and choosing the right collection.
+metadata:
+  short-description: C# collections and data structures
 ---
 
 # C# Collections

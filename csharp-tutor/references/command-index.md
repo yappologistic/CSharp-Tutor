@@ -14,6 +14,8 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 - `csharp-refactor` / `C# Refactor`: Improve OOP, clean code, responsibilities, and maintainability.
 - `csharp-modernize` / `C# Modernize`: Use newer C#/.NET features when compatible.
 - `csharp-nullability` / `C# Nullability`: Nullable reference types, null-safety, nullable warnings, and null contracts.
+- `csharp-build` / `C# Build`: .NET build, restore, SDK, MSBuild, project-file, test, format, and CI failures.
+- `csharp-logging` / `C# Logging`: `ILogger`, structured logging, scopes, exception logging, Serilog, request logging, and safe logs.
 - `csharp-debug` / `C# Debug`: Diagnose compiler errors, exceptions, failing tests, and unexpected behavior.
 - `csharp-security` / `C# Security`: Review security risks and vulnerability patterns.
 - `csharp-performance` / `C# Performance`: Review performance, allocations, memory, async scale, LINQ, and data access.
@@ -63,6 +65,8 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 @C# Interview Mock interview me on async and LINQ.
 @C# Versioning Can I use primary constructors in this project?
 @C# Nullability Review these nullable warnings and explain the safest fixes.
+@C# Build Diagnose this dotnet restore failure from my CI log.
+@C# Logging Review this controller logging for structured properties and secret leakage.
 @C# Design Patterns Should this conditional logic become a strategy pattern?
 @C# Docs Explain records vs classes using official docs.
 @C# Debug Lab Give me a LINQ debugging exercise and let me diagnose it.

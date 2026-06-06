@@ -1,6 +1,8 @@
 ---
 name: csharp-efcore
 description: Teach and review Entity Framework Core usage in C#. Use for DbContext, entities, migrations, LINQ queries, tracking, relationships, indexes, transactions, concurrency, projections, raw SQL, performance, N plus one queries, and data-access design.
+metadata:
+  short-description: Entity Framework Core C# help
 ---
 
 # C# EF Core

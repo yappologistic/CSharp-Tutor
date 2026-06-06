@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Build"
+  short_description: "C# build, SDK, and CI help"
+  default_prompt: "Use $csharp-build to diagnose .NET build, restore, SDK, project-file, test, format, and CI failures."

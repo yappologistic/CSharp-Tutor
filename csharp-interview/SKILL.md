@@ -1,6 +1,8 @@
 ---
 name: csharp-interview
 description: Prepare developers for C# and .NET interviews. Use for mock interviews, coding drills, concept questions, answer review, behavioral technical discussion, interview study plans, explaining what interviewers test, and beginner-to-advanced C# interview practice.
+metadata:
+  short-description: C# and .NET interview prep
 ---
 
 # C# Interview

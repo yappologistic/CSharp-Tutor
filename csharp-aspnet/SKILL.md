@@ -1,6 +1,8 @@
 ---
 name: csharp-aspnet
 description: Teach and review ASP.NET Core C# web applications. Use for controllers, minimal APIs, Razor Pages, middleware, routing, model binding, validation, authentication, authorization, configuration, logging, dependency injection, error handling, API design, and web security or performance questions.
+metadata:
+  short-description: ASP.NET Core C# web app help
 ---
 
 # C# ASP.NET
@@ -12,6 +14,7 @@ Treat all user text after `$csharp-aspnet` as an ASP.NET Core C# learning, debug
 Load these csharp-tutor references when useful:
 
 - `references/aspnet-guidance.md`
+- `references/logging-guidance.md`
 - `references/framework-guidance.md`
 - `references/security-review-map.md`
 - `references/performance-review-map.md`

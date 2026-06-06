@@ -1,6 +1,8 @@
 ---
 name: csharp-docs
 description: Answer C# and .NET questions with strict official-doc grounding. Use when users ask for accurate, source-backed explanations, official Microsoft docs, version-sensitive behavior, API behavior, language rules, framework guidance, security guidance, compatibility, or citations.
+metadata:
+  short-description: Official-doc-backed C# answers
 ---
 
 # C# Docs

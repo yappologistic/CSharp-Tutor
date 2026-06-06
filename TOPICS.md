@@ -12,6 +12,8 @@ Use this map when deciding which skill owns a user request. Prefer the most focu
 | Debug an error or failing test | `csharp-debug` | `csharp-errors`, `csharp-debug-lab` |
 | Improve object-oriented design | `csharp-oop` | `csharp-refactor`, `csharp-design-patterns`, `csharp-architecture` |
 | Modernize an old codebase | `csharp-modernize` | `csharp-versioning`, `csharp-style`, `csharp-tests` |
+| Diagnose build or CI failures | `csharp-build` | `csharp-project`, `csharp-debug`, `csharp-versioning` |
+| Improve application logging | `csharp-logging` | `csharp-aspnet`, `csharp-security`, `csharp-errors` |
 | Prepare for interviews | `csharp-interview` | `csharp-cheatsheets`, `csharp-practice`, `csharp-plan` |
 | Inspect a C# repository | `csharp-project` | `csharp-architecture`, `csharp-versioning`, `csharp-review` |
 | Get official-doc-backed guidance | `csharp-docs` | `csharp-versioning`, `csharp-tutor` |
@@ -32,6 +34,7 @@ Use this map when deciding which skill owns a user request. Prefer the most focu
 | Public API null contracts | `csharp-nullability` | `csharp-api-design`, `csharp-versioning`, `csharp-docs` |
 | JSON serialization | `csharp-json` | `csharp-aspnet`, `csharp-errors` |
 | C# language version features | `csharp-versioning` | `csharp-modernize`, `csharp-docs` |
+| Compiler and analyzer build failures | `csharp-build` | `csharp-debug`, `csharp-style`, `csharp-versioning` |
 
 ## Framework And Project Topics
 
@@ -41,6 +44,7 @@ Use this map when deciding which skill owns a user request. Prefer the most focu
 | Entity Framework Core | `csharp-efcore` | `csharp-linq`, `csharp-performance`, `csharp-tests` |
 | Dependency injection | `csharp-di` | `csharp-architecture`, `csharp-tests`, `csharp-aspnet` |
 | Project files and target frameworks | `csharp-project` | `csharp-versioning`, `csharp-modernize` |
+| SDK resolution, restore, and MSBuild | `csharp-build` | `csharp-project`, `csharp-versioning`, `csharp-debug` |
 | Public API design | `csharp-api-design` | `csharp-versioning`, `csharp-docs`, `csharp-tests` |
 | Application architecture | `csharp-architecture` | `csharp-oop`, `csharp-di`, `csharp-review` |
 | Design patterns | `csharp-design-patterns` | `csharp-oop`, `csharp-refactor`, `csharp-architecture` |
@@ -50,6 +54,7 @@ Use this map when deciding which skill owns a user request. Prefer the most focu
 | Topic | Primary skill | Related skills |
 | --- | --- | --- |
 | Security review | `csharp-security` | `csharp-aspnet`, `csharp-review`, `csharp-docs` |
+| Logging and production diagnostics | `csharp-logging` | `csharp-aspnet`, `csharp-security`, `csharp-errors` |
 | Performance review | `csharp-performance` | `csharp-linq`, `csharp-efcore`, `csharp-async` |
 | Test design and testability | `csharp-tests` | `csharp-review`, `csharp-refactor`, `csharp-debug` |
 | Naming and formatting | `csharp-style` | `csharp-review`, `csharp-modernize` |

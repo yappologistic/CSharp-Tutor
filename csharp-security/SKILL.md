@@ -14,6 +14,7 @@ Treat all user text after `$csharp-security` as the code, endpoint, project, or 
 Load these csharp-tutor references when useful:
 
 - `references/security-review-map.md`
+- `references/logging-guidance.md`
 - `references/official-sources.md`
 - `references/verification-checklist.md`
 - `references/framework-guidance.md`

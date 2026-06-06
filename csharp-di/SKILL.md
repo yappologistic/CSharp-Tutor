@@ -1,6 +1,8 @@
 ---
 name: csharp-di
 description: Teach and review dependency injection in C# and .NET. Use for service registration, constructor injection, lifetimes, scopes, factories, options, testability, dependency boundaries, inversion of control, ASP.NET Core DI, and maintainable object-oriented design.
+metadata:
+  short-description: C# dependency injection help
 ---
 
 # C# DI

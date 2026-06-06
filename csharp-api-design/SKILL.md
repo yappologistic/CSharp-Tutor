@@ -1,6 +1,8 @@
 ---
 name: csharp-api-design
 description: Teach and review C# public API design. Use for method signatures, naming, nullability, exceptions, result types, cancellation, async APIs, records, DTOs, versioning, binary compatibility, XML docs, NuGet packaging, library boundaries, and maintainable API surfaces.
+metadata:
+  short-description: C# public API design help
 ---
 
 # C# API Design

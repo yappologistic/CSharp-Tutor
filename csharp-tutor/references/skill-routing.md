@@ -19,6 +19,8 @@ Default to beginner-friendly explanations unless the user asks for advanced dept
 - Use `csharp-refactor` for structure, responsibilities, and clean code.
 - Use `csharp-modernize` for newer C#/.NET features.
 - Use `csharp-nullability` for nullable reference types, nullable warnings, null contracts, `!`, and null-safety migrations.
+- Use `csharp-build` for `dotnet` build, restore, test, format, SDK, MSBuild, project-file, package restore, and CI build issues.
+- Use `csharp-logging` for `ILogger`, structured logging, scopes, exception logging, Serilog basics, request logging, and safe production diagnostics.
 - Use `csharp-debug` for errors, exceptions, failing tests, and unexpected behavior.
 - Use `csharp-security` for vulnerability and secure coding review.
 - Use `csharp-performance` for speed, memory, allocations, and scale.

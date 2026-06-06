@@ -36,10 +36,12 @@ Use these prompts as lightweight behavior examples when maintaining the skill pa
 - `csharp-architecture`: `$csharp-architecture review this project structure for dependency direction and maintainability.`
 - `csharp-api-design`: `$csharp-api-design review this public library API for binary compatibility, nullability, and async design.`
 - `csharp-aspnet`: `$csharp-aspnet review this minimal API endpoint for validation, auth, errors, and testability.`
+- `csharp-build`: `$csharp-build diagnose this dotnet build failure and tell me whether it is SDK, restore, project file, compiler, or CI environment related.`
 - `csharp-design-patterns`: `$csharp-design-patterns help me decide whether Strategy or a simple switch is better for this pricing logic.`
 - `csharp-efcore`: `$csharp-efcore review this query for N+1 problems, tracking behavior, and projection opportunities.`
 - `csharp-di`: `$csharp-di explain the correct lifetime for these services and how to test them.`
 - `csharp-json`: `$csharp-json help me configure System.Text.Json for this DTO without breaking compatibility.`
+- `csharp-logging`: `$csharp-logging review this ILogger usage for structured logging, exception handling, scopes, and secret leakage.`
 - `csharp-versioning`: `$csharp-versioning check whether this project can safely move from .NET 6 to .NET 8.`
 
 ## Quality, Safety, And Learning

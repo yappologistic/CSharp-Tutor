@@ -22,6 +22,10 @@ This project uses semantic versioning while it remains pre-1.0:
 - Maintenance dashboard script for summarizing package health and required maintenance artifacts.
 - Quality rubric for maintaining consistent skill behavior.
 - `csharp-nullability` skill and shared nullable reference type guidance.
+- Short descriptions for all existing skills that were missing catalog metadata.
+- `csharp-build` skill and shared build guidance for SDK, restore, MSBuild, project-file, and CI failures.
+- `csharp-logging` skill and shared logging guidance for `ILogger`, structured logging, scopes, Serilog, and safe logs.
+- Release helper `-UseCurrentVersion` option for tagging the currently checked-in version after health checks.
 
 ## 0.5.0 - 2026-06-05
 

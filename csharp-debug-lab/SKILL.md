@@ -1,6 +1,8 @@
 ---
 name: csharp-debug-lab
 description: Create C# debugging practice labs for learners. Use for broken snippets, compiler errors, runtime exceptions, LINQ bugs, async bugs, nullability issues, EF Core mistakes, hints, diagnosis-first exercises, step-by-step debugging practice, and reveal-after-attempt solutions.
+metadata:
+  short-description: C# debugging practice labs
 ---
 
 # C# Debug Lab

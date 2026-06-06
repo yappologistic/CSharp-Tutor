@@ -1,6 +1,8 @@
 ---
 name: csharp-tutor
-description: Teach and review C# for developers learning the language. Use when users ask C# questions, request explanations of C# or .NET concepts, share C# code or codebases for feedback, need examples, cheat sheets, exercises, debugging labs, mini projects, interview prep, tips, bug-prevention guidance, vulnerability checks, code quality improvements, or want help applying object-oriented design, clean code, SOLID, design patterns, API design, async, concurrency, LINQ, generics, collections, architecture, version compatibility, analyzers, tooling, performance, maintainability, scalability, newer C#/.NET features, or official Microsoft C# and .NET documentation.
+description: Teach and review C# for developers learning the language. Use when users ask C# questions, request explanations of C# or .NET concepts, share C# code or codebases for feedback, need examples, cheat sheets, exercises, debugging labs, mini projects, interview prep, tips, bug-prevention guidance, vulnerability checks, code quality improvements, or want help applying object-oriented design, clean code, SOLID, design patterns, API design, async, concurrency, LINQ, generics, collections, architecture, build tooling, logging, version compatibility, analyzers, tooling, performance, maintainability, scalability, newer C#/.NET features, or official Microsoft C# and .NET documentation.
+metadata:
+  short-description: General C# tutor and review help
 ---
 
 # C# Tutor
@@ -67,6 +69,8 @@ Use the focused reference files as needed:
 - Read [answer-quality-rules.md](references/answer-quality-rules.md) before finalizing substantial explanations, code reviews, refactors, security feedback, or performance feedback.
 - Read [exercise-guidance.md](references/exercise-guidance.md) when the user asks to practice or would benefit from a small learning exercise.
 - Read [nullability-guidance.md](references/nullability-guidance.md) for nullable reference types, nullable warnings, null contracts, null-forgiving operator use, and null-safety reviews.
+- Read [build-guidance.md](references/build-guidance.md) for .NET build, restore, SDK, MSBuild, project-file, and CI build issues.
+- Read [logging-guidance.md](references/logging-guidance.md) for `ILogger`, structured logging, scopes, exception logging, Serilog basics, and safe ASP.NET Core logging.
 
 ## Workflow
 
@@ -80,6 +84,8 @@ Use the focused reference files as needed:
    - Modernization using newer C# or .NET features
    - Exercise, example, or learning path
    - Nullable reference type or null-safety help
+   - Build, restore, SDK, project-file, or CI failure
+   - Logging, `ILogger`, structured logging, or production diagnostics help
    - Interview preparation or mock interview
    - Version compatibility, docs-grounded explanation, design-pattern selection, API design, tooling/analyzer review, debug lab, or mini-project assignment
    - Cheat sheet, quiz, quick answer, or "what should I learn next" request

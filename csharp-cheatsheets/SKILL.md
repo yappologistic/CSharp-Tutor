@@ -1,6 +1,8 @@
 ---
 name: csharp-cheatsheets
 description: Create compact C# cheat sheets for learners. Use for quick references on LINQ, async, OOP, generics, collections, exceptions, testing, ASP.NET Core, EF Core, dependency injection, design patterns, concurrency, syntax, and interview review.
+metadata:
+  short-description: Compact C# topic cheat sheets
 ---
 
 # C# Cheatsheets

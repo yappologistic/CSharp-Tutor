@@ -1,6 +1,8 @@
 ---
 name: csharp-versioning
 description: Teach and review C# and .NET version compatibility. Use for C# language versions, .NET target frameworks, SDK defaults, LangVersion, nullable settings, implicit usings, package compatibility, trimming, AOT, modernization readiness, and questions like whether a C# or .NET feature can be used.
+metadata:
+  short-description: C# and .NET version compatibility
 ---
 
 # C# Versioning
@@ -12,6 +14,7 @@ Treat all user text after `$csharp-versioning` as a C#/.NET version compatibilit
 Load these csharp-tutor references when useful:
 
 - `references/versioning-guidance.md`
+- `references/build-guidance.md`
 - `references/project-inspection.md`
 - `references/modernization-map.md`
 - `references/source-citation-rules.md`

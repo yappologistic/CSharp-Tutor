@@ -15,6 +15,7 @@ Load these csharp-tutor references when useful:
 
 - `references/common-csharp-pitfalls.md`
 - `references/compiler-error-library.md`
+- `references/build-guidance.md`
 - `references/debug-lab-guidance.md`
 - `references/tooling-and-analyzers.md`
 - `references/analyzer-tooling-guidance.md`

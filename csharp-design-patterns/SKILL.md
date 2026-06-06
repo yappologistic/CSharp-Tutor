@@ -1,6 +1,8 @@
 ---
 name: csharp-design-patterns
 description: Teach and review C# design patterns without overengineering. Use for strategy, factory, decorator, adapter, mediator, repository, unit of work, observer, command, dependency inversion, pattern selection, refactoring toward patterns, and deciding when not to use a pattern.
+metadata:
+  short-description: C# design pattern guidance
 ---
 
 # C# Design Patterns

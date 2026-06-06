@@ -1,6 +1,8 @@
 ---
 name: csharp-generics
 description: Teach and review C# generics. Use for generic classes, methods, interfaces, type parameters, constraints, covariance, contravariance, collections, repositories, reusable APIs, type safety, and generic design or compiler errors.
+metadata:
+  short-description: C# generics and constraints help
 ---
 
 # C# Generics

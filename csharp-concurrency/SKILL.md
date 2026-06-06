@@ -1,6 +1,8 @@
 ---
 name: csharp-concurrency
 description: Teach and review C# concurrency and thread-safety. Use for threads, locks, Monitor, SemaphoreSlim, ReaderWriterLockSlim, concurrent collections, channels, Parallel, Task coordination, race conditions, shared state, deadlocks, cancellation, and CPU-bound parallel work.
+metadata:
+  short-description: C# concurrency and thread-safety
 ---
 
 # C# Concurrency

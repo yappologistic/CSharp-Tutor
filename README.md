@@ -10,7 +10,7 @@ The project is built around one main skill, `csharp-tutor`, plus focused compani
 
 - Explains C# and .NET concepts with examples matched to the learner's level.
 - Reviews snippets, files, projects, and repositories for correctness, maintainability, scalability, security, performance, tests, and modernization opportunities.
-- Helps with OOP, SOLID, clean code, design patterns, architecture, API design, dependency injection, async, concurrency, LINQ, generics, collections, exceptions, nullable reference types, JSON, ASP.NET Core, EF Core, and testing.
+- Helps with OOP, SOLID, clean code, design patterns, architecture, API design, dependency injection, async, concurrency, LINQ, generics, collections, exceptions, nullable reference types, build tooling, logging, JSON, ASP.NET Core, EF Core, and testing.
 - Prefers official Microsoft documentation for language rules, .NET APIs, framework behavior, compatibility, security, and performance-sensitive claims.
 - Provides learner support through practice exercises, debugging labs, cheat sheets, interview prep, mini projects, and learning plans.
 - Includes shared catalogs for code smells/refactor choices and common compiler/runtime error triage.
@@ -170,6 +170,7 @@ Focused companion skills:
 - `csharp-architecture`: Application architecture guidance.
 - `csharp-aspnet`: ASP.NET Core applications.
 - `csharp-async`: Async, cancellation, and async API design.
+- `csharp-build`: .NET build, restore, SDK, project-file, and CI failures.
 - `csharp-cheatsheets`: Compact topic cheat sheets.
 - `csharp-collections`: Collections and data structures.
 - `csharp-concurrency`: Thread safety and CPU-bound parallelism.
@@ -186,6 +187,7 @@ Focused companion skills:
 - `csharp-interview`: Mock interviews and answer review.
 - `csharp-json`: JSON serialization and persistence.
 - `csharp-linq`: LINQ and deferred execution.
+- `csharp-logging`: `ILogger`, structured logging, scopes, and safe logs.
 - `csharp-modernize`: Version-aware modernization.
 - `csharp-nullability`: Nullable reference types and null-safety.
 - `csharp-oop`: Object-oriented design.
@@ -299,6 +301,12 @@ To create and push a release tag after health checks pass:
 
 ```powershell
 .\scripts\release.ps1 -Version 0.5.1 -CreateTag -PushTag
+```
+
+To tag the currently checked-in `VERSION` after health checks pass:
+
+```powershell
+.\scripts\release.ps1 -UseCurrentVersion -CreateTag -PushTag
 ```
 
 ## Project Inspection Helper

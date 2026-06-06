@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Logging"
+  short_description: "C# logging and ILogger help"
+  default_prompt: "Use $csharp-logging to explain or review ILogger, structured logging, scopes, exception logging, Serilog, and safe ASP.NET Core logging."
