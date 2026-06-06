@@ -1,6 +1,6 @@
 # Debug Lab Guidance
 
-Use this reference for diagnosis-first C# debugging exercises.
+Use this reference for diagnosis-first C# debugging exercises. Use `compiler-error-library.md` when choosing realistic compiler diagnostics, runtime exceptions, and failure symptoms.
 
 ## Lab Flow
 

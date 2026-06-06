@@ -14,6 +14,7 @@ Treat all user text after `$csharp-debug` as the error, failing code, stack trac
 Load these csharp-tutor references when useful:
 
 - `references/common-csharp-pitfalls.md`
+- `references/compiler-error-library.md`
 - `references/debug-lab-guidance.md`
 - `references/tooling-and-analyzers.md`
 - `references/analyzer-tooling-guidance.md`

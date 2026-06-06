@@ -1,6 +1,6 @@
 # C# Error Handling Guidance
 
-Use this reference for exceptions, guard clauses, validation, result patterns, and debugging common failures.
+Use this reference for exceptions, guard clauses, validation, result patterns, and debugging common failures. Use `compiler-error-library.md` for specific compiler diagnostics, runtime exception triage, and stack-trace response patterns.
 
 ## Exceptions
 

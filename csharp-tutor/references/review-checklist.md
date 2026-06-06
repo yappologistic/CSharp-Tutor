@@ -25,6 +25,8 @@ Use this checklist when reviewing a C# snippet, file, or codebase. Prioritize ma
 
 ## Maintainability
 
+Use `code-smell-to-refactor.md` for a structured smell-to-refactor catalog when maintainability or OOP issues are material.
+
 - Does each type or method have a clear responsibility?
 - Are names specific enough to reveal domain intent?
 - Are methods short enough to follow without hiding important branching?

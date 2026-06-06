@@ -48,4 +48,4 @@ Default to beginner-friendly explanations unless the user asks for advanced dept
 
 ## Source and Verification
 
-Use the main `csharp-tutor` references for detailed behavior. Verify official C#/.NET behavior with Microsoft documentation when the answer depends on language rules, APIs, versions, security, performance, or production architecture. Use `docs-grounding.md` and `source-citation-rules.md` when citations or explicit uncertainty would improve trust. Use `qol-command-ux.md` to interpret aliases, depth, format, and reveal hints.
+Use the main `csharp-tutor` references for detailed behavior. Use `compiler-error-library.md` for compiler/runtime diagnostic triage and `code-smell-to-refactor.md` for maintainability/refactor guidance. Verify official C#/.NET behavior with Microsoft documentation when the answer depends on language rules, APIs, versions, security, performance, or production architecture. Use `docs-grounding.md` and `source-citation-rules.md` when citations or explicit uncertainty would improve trust. Use `qol-command-ux.md` to interpret aliases, depth, format, and reveal hints.

@@ -50,6 +50,7 @@ Use the focused reference files as needed:
 - Read [design-patterns-guidance.md](references/design-patterns-guidance.md) for C# design pattern selection, refactoring toward patterns, pattern tradeoffs, and deciding when not to use a pattern.
 - Read [api-design-guidance.md](references/api-design-guidance.md) for C# public API design, method signatures, naming, nullability, exceptions, result types, cancellation, async APIs, DTOs, versioning, binary compatibility, XML docs, and NuGet package surfaces.
 - Read [debug-lab-guidance.md](references/debug-lab-guidance.md) for diagnosis-first debugging exercises, broken snippets, progressive hints, and reveal-after-attempt solutions.
+- Read [compiler-error-library.md](references/compiler-error-library.md) when the user shares compiler diagnostics, runtime exceptions, stack traces, failing tests, or vague debugging symptoms.
 - Read [analyzer-tooling-guidance.md](references/analyzer-tooling-guidance.md) for Roslyn analyzers, `.editorconfig`, nullable warnings, StyleCop, code metrics, `dotnet format`, package audit, and CI checks.
 - Read [cheatsheet-guidance.md](references/cheatsheet-guidance.md) for compact C# cheat sheets, quick references, topic summaries, and refreshers.
 - Read [mini-projects.md](references/mini-projects.md) when the user asks for scenario-based learning, assignments, portfolio projects, or practical milestones.
@@ -119,7 +120,7 @@ Use the focused reference files as needed:
 When the user provides C# code, review it for correctness first, then maintainability and design quality.
 
 Use [review-checklist.md](references/review-checklist.md) for systematic review, especially for larger snippets, multiple files, or production code.
-Use [common-csharp-pitfalls.md](references/common-csharp-pitfalls.md), [security-review-map.md](references/security-review-map.md), [performance-review-map.md](references/performance-review-map.md), and [code-smell-to-refactor.md](references/code-smell-to-refactor.md) when the review involves those areas.
+Use [common-csharp-pitfalls.md](references/common-csharp-pitfalls.md), [compiler-error-library.md](references/compiler-error-library.md), [security-review-map.md](references/security-review-map.md), [performance-review-map.md](references/performance-review-map.md), and [code-smell-to-refactor.md](references/code-smell-to-refactor.md) when the review involves those areas.
 
 Check for:
 

@@ -11,6 +11,7 @@ The project is built around one main skill, `csharp-tutor`, plus focused compani
 - Helps with OOP, SOLID, clean code, design patterns, architecture, API design, dependency injection, async, concurrency, LINQ, generics, collections, exceptions, JSON, ASP.NET Core, EF Core, and testing.
 - Prefers official Microsoft documentation for language rules, .NET APIs, framework behavior, compatibility, security, and performance-sensitive claims.
 - Provides learner support through practice exercises, debugging labs, cheat sheets, interview prep, mini projects, and learning plans.
+- Includes shared catalogs for code smells/refactor choices and common compiler/runtime error triage.
 - Includes a project inspection helper for `.csproj`, `.sln`, target frameworks, package references, analyzer settings, nullable settings, language version, and related project metadata.
 
 ## Requirements
@@ -172,7 +173,7 @@ D:\CSharp-Tutor
     └── agents
 ```
 
-Most focused skills are thin adapters. Shared guidance lives in `csharp-tutor/references` so the skill family stays consistent.
+Most focused skills are thin adapters. Shared guidance lives in `csharp-tutor/references` so the skill family stays consistent. High-use references include the code smell catalog, compiler/runtime error library, review checklist, source citation rules, and project inspection guidance.
 
 ## Validation
 
@@ -229,4 +230,3 @@ When changing or adding a skill:
 3. Validate every changed skill before committing.
 4. Avoid committing local paths, private project names, secrets, tokens, credentials, or machine-specific configuration.
 5. Keep examples practical for developers who are learning C# and trying to write production-quality code.
-

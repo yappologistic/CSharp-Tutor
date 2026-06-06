@@ -12,6 +12,7 @@ Treat all user text after `$csharp-debug-lab` as a request for a C# debugging ex
 Load these csharp-tutor references when useful:
 
 - `references/debug-lab-guidance.md`
+- `references/compiler-error-library.md`
 - `references/common-csharp-pitfalls.md`
 - `references/errors-guidance.md`
 - `references/async-guidance.md`

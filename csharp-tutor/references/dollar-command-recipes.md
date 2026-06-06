@@ -69,10 +69,10 @@ Do not require strict syntax. Treat hints as optional routing context, not a for
 | `review` | User shares code, files, or a project for feedback | `review-checklist.md`, relevant review maps |
 | `refactor` | User wants cleaner OOP, maintainability, or design | `code-smell-to-refactor.md`, `testing-guidance.md` |
 | `modernize` | User wants newer C#/.NET syntax or APIs | `modernization-map.md`, `project-inspection.md`, `official-sources.md` |
-| `debug` | User has an error, exception, unexpected output, or failing test | `common-csharp-pitfalls.md`, `tooling-and-analyzers.md` |
+| `debug` | User has an error, exception, unexpected output, or failing test | `compiler-error-library.md`, `common-csharp-pitfalls.md`, `tooling-and-analyzers.md` |
 | `async` | User asks about `async`/`await`, `Task`, cancellation, or async bugs | `async-guidance.md`, `common-csharp-pitfalls.md`, `testing-guidance.md` |
 | `linq` | User asks about `IEnumerable<T>`, LINQ operators, deferred execution, joins, or grouping | `linq-guidance.md`, `common-csharp-pitfalls.md`, `performance-review-map.md` |
-| `errors` | User asks about exceptions, guard clauses, validation, result patterns, or failure handling | `errors-guidance.md`, `common-csharp-pitfalls.md`, `review-checklist.md` |
+| `errors` | User asks about exceptions, guard clauses, validation, result patterns, or failure handling | `errors-guidance.md`, `compiler-error-library.md`, `common-csharp-pitfalls.md`, `review-checklist.md` |
 | `aspnet` | User asks about ASP.NET Core, controllers, minimal APIs, middleware, routing, validation, auth, or web APIs | `aspnet-guidance.md`, `framework-guidance.md`, `security-review-map.md`, `testing-guidance.md` |
 | `efcore` | User asks about Entity Framework Core, DbContext, migrations, LINQ translation, tracking, or data access | `efcore-guidance.md`, `framework-guidance.md`, `linq-guidance.md`, `performance-review-map.md` |
 | `di` | User asks about dependency injection, service lifetimes, scopes, factories, options, or testability | `di-guidance.md`, `code-smell-to-refactor.md`, `oop-guidance.md`, `testing-guidance.md` |
@@ -85,7 +85,7 @@ Do not require strict syntax. Treat hints as optional routing context, not a for
 | `patterns` | User asks about design patterns, pattern selection, refactoring toward a pattern, or whether a pattern is overengineering | `design-patterns-guidance.md`, `architecture-guidance.md`, `oop-guidance.md`, `code-smell-to-refactor.md` |
 | `docs` | User asks for official-doc-backed C#/.NET explanation, citations, source-backed accuracy, API behavior, or language rules | `docs-grounding.md`, `source-citation-rules.md`, `official-sources.md`, topic-specific references |
 | `cheatsheet` | User wants a compact topic summary, refresher, syntax sheet, or quick reference | `cheatsheet-guidance.md`, topic-specific references, `source-citation-rules.md` when facts are version-sensitive |
-| `debug-lab` | User wants broken snippets, diagnosis-first exercises, progressive hints, or debugging practice | `debug-lab-guidance.md`, `common-csharp-pitfalls.md`, `errors-guidance.md`, topic-specific references |
+| `debug-lab` | User wants broken snippets, diagnosis-first exercises, progressive hints, or debugging practice | `debug-lab-guidance.md`, `compiler-error-library.md`, `common-csharp-pitfalls.md`, `errors-guidance.md`, topic-specific references |
 | `api-design` | User asks about public API design, method signatures, nullability, exceptions, result types, cancellation, async signatures, DTOs, versioning, XML docs, or packages | `api-design-guidance.md`, `versioning-guidance.md`, `docs-grounding.md`, `testing-guidance.md` |
 | `tooling` | User asks about analyzers, `.editorconfig`, nullable warnings, StyleCop, code metrics, dotnet format, package audit, or CI checks | `analyzer-tooling-guidance.md`, `tooling-and-analyzers.md`, `project-inspection.md` |
 | `learning-profile` | User wants personalized ongoing tutoring, a roadmap, or exercises tailored to current level and goals | `learning-profile.md`, `learner-levels.md`, `exercise-guidance.md`, `mini-projects.md` |
