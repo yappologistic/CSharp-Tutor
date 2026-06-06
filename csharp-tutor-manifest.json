@@ -1,6 +1,6 @@
 {
   "name": "CSharp-Tutor",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "repository": "https://github.com/yappologistic/CSharp-Tutor",
   "defaultBranch": "master",
   "description": "Codex skill collection for C# tutoring, code review, debugging, refactoring, project inspection, and docs-grounded .NET guidance.",
@@ -42,6 +42,9 @@
   "install": {
     "defaultDestination": "%USERPROFILE%\\.codex\\skills",
     "remoteInstaller": "scripts/install-latest.ps1",
-    "localInstaller": "scripts/install-csharp-tutor.ps1"
+    "localInstaller": "scripts/install-csharp-tutor.ps1",
+    "healthCheck": "scripts/test-csharp-tutor.ps1",
+    "releaseHelper": "scripts/release.ps1",
+    "backupRestore": "scripts/restore-backup.ps1"
   }
 }

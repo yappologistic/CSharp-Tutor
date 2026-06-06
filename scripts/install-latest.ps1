@@ -1,3 +1,50 @@
+<#
+.SYNOPSIS
+Downloads the latest C# Tutor repository archive and runs the local install/update helper.
+
+.DESCRIPTION
+Fetches a branch, tag, or commit archive from GitHub, extracts it to a temporary folder, then runs scripts/install-csharp-tutor.ps1 from the downloaded package.
+By default it backs up existing installed csharp-* skills and validates source skills when Codex's validator is available.
+
+.PARAMETER Ref
+Branch, tag, or commit archive reference to install. Defaults to the value of -Branch.
+
+.PARAMETER Branch
+Backward-compatible branch parameter. Defaults to master.
+
+.PARAMETER Repository
+GitHub repository in owner/name form. Defaults to yappologistic/CSharp-Tutor.
+
+.PARAMETER DestinationRoot
+Codex skills directory. Defaults to %USERPROFILE%\.codex\skills.
+
+.PARAMETER DryRun
+Shows install, update, backup, or uninstall actions without copying or deleting files.
+
+.PARAMETER NoBackup
+Skips the default backup behavior.
+
+.PARAMETER NoValidate
+Skips validation even when Codex's validator is available.
+
+.PARAMETER ListInstalled
+Lists installed csharp-* folders and exits after downloading the installer package.
+
+.PARAMETER Uninstall
+Uninstalls installed csharp-* folders. Existing folders are backed up unless -NoBackup is provided.
+
+.PARAMETER KeepDownload
+Keeps the downloaded temporary package for troubleshooting.
+
+.EXAMPLE
+irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1 | iex
+
+.EXAMPLE
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -DryRun
+
+.EXAMPLE
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -Ref v0.5.0
+#>
 [CmdletBinding()]
 param(
     [string]$Ref,
@@ -7,6 +54,8 @@ param(
     [switch]$DryRun,
     [switch]$NoBackup,
     [switch]$NoValidate,
+    [switch]$ListInstalled,
+    [switch]$Uninstall,
     [switch]$KeepDownload
 )
 
@@ -105,7 +154,15 @@ try {
         $installerArgs += "-Backup"
     }
 
-    if (-not $NoValidate) {
+    if ($ListInstalled) {
+        $installerArgs += "-ListInstalled"
+    }
+
+    if ($Uninstall) {
+        $installerArgs += "-Uninstall"
+    }
+
+    if (-not $NoValidate -and -not $ListInstalled -and -not $Uninstall) {
         $validator = Get-QuickValidatorPath -SkillsRoot $DestinationRoot
         if ($null -ne $validator) {
             $installerArgs += "-Validate"

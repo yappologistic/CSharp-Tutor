@@ -1,6 +1,6 @@
 # C# Tutor Skills
 
-Current version: `0.4.0`
+Current version: `0.5.0`
 
 C# Tutor is a Codex skill collection for developers learning C# and improving C#/.NET code. It gives Codex focused instructions for docs-grounded explanations, code review, debugging help, refactoring guidance, architecture feedback, practice exercises, and project inspection.
 
@@ -53,12 +53,16 @@ Useful options:
 - `-DestinationRoot`: install to a non-default skills directory.
 - For the one-command GitHub installer, use `-NoBackup` or `-NoValidate` to opt out of the default backup or validation behavior.
 - For the one-command GitHub installer, use `-Ref` to install a branch, tag, or commit archive.
+- Use `-ListInstalled` to print installed C# Tutor skill folders.
+- Use `-Uninstall -Backup` to remove installed C# Tutor skill folders after creating a backup.
 
 Install a pinned release:
 
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -Ref v0.4.0
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -Ref v0.5.0
 ```
+
+For installation problems, see `INSTALL-TROUBLESHOOTING.md`.
 
 On Windows, the usual Codex skills directory is:
 
@@ -199,6 +203,15 @@ Focused companion skills:
 D:\CSharp-Tutor
 ├── README.md
 ├── .gitignore
+├── CHANGELOG.md
+├── VERSION
+├── csharp-tutor-manifest.json
+├── scripts
+│   ├── install-csharp-tutor.ps1
+│   ├── install-latest.ps1
+│   ├── release.ps1
+│   ├── restore-backup.ps1
+│   └── test-csharp-tutor.ps1
 ├── csharp-tutor
 │   ├── SKILL.md
 │   ├── agents
@@ -230,6 +243,14 @@ Get-ChildItem . -Directory -Filter "csharp*" |
 
 Successful validation should report each skill as valid.
 
+Run the full repository health check:
+
+```powershell
+.\scripts\test-csharp-tutor.ps1
+```
+
+The health check validates skill structure, manifest consistency, README drift, markdown links, reference targets, skill validation, and installer dry-run behavior.
+
 ## Versioning
 
 C# Tutor uses semantic versioning while it remains pre-1.0:
@@ -247,11 +268,23 @@ Version metadata lives in:
 When cutting a release:
 
 ```powershell
-git tag v0.4.0
-git push origin v0.4.0
+git tag v0.5.0
+git push origin v0.5.0
 ```
 
 The install scripts print the source ref and package version so users can see what they installed.
+
+To update version metadata and prepare a changelog section:
+
+```powershell
+.\scripts\release.ps1 -Version 0.5.1
+```
+
+To create and push a release tag after health checks pass:
+
+```powershell
+.\scripts\release.ps1 -Version 0.5.1 -CreateTag -PushTag
+```
 
 ## Project Inspection Helper
 

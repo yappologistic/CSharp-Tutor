@@ -1,3 +1,44 @@
+<#
+.SYNOPSIS
+Installs, updates, lists, or uninstalls the C# Tutor Codex skills from a local repository checkout.
+
+.DESCRIPTION
+Copies all csharp-* skill folders from a source repository into a Codex skills directory.
+The script can validate source skills before copying, back up existing installed skills, list installed skills, or uninstall installed C# Tutor skills.
+
+.PARAMETER SourceRoot
+Repository root containing csharp-* skill folders. Defaults to the parent folder of this script.
+
+.PARAMETER DestinationRoot
+Codex skills directory. Defaults to %USERPROFILE%\.codex\skills.
+
+.PARAMETER SourceRef
+Human-readable source label printed in summaries, such as local or owner/repo@v0.5.0.
+
+.PARAMETER DryRun
+Shows actions without copying or deleting files.
+
+.PARAMETER Backup
+Backs up existing installed csharp-* folders before install or uninstall.
+
+.PARAMETER Validate
+Runs Codex skill validation on source skill folders before install.
+
+.PARAMETER ListInstalled
+Lists installed csharp-* folders in the destination and exits.
+
+.PARAMETER Uninstall
+Removes installed csharp-* folders from the destination. Use with -Backup to preserve a restorable copy.
+
+.EXAMPLE
+.\scripts\install-csharp-tutor.ps1 -Validate -Backup
+
+.EXAMPLE
+.\scripts\install-csharp-tutor.ps1 -ListInstalled
+
+.EXAMPLE
+.\scripts\install-csharp-tutor.ps1 -Uninstall -Backup -DryRun
+#>
 [CmdletBinding(SupportsShouldProcess = $true)]
 param(
     [string]$SourceRoot,
@@ -5,7 +46,9 @@ param(
     [string]$SourceRef = "local",
     [switch]$DryRun,
     [switch]$Backup,
-    [switch]$Validate
+    [switch]$Validate,
+    [switch]$ListInstalled,
+    [switch]$Uninstall
 )
 
 $ErrorActionPreference = "Stop"
@@ -13,18 +56,23 @@ $ErrorActionPreference = "Stop"
 function Resolve-RootPath {
     param(
         [string]$Path,
-        [string]$Fallback
+        [string]$Fallback,
+        [switch]$MustExist
     )
 
     if ([string]::IsNullOrWhiteSpace($Path)) {
         $Path = $Fallback
     }
 
-    if (-not (Test-Path -LiteralPath $Path)) {
+    if ($MustExist -and -not (Test-Path -LiteralPath $Path)) {
         throw "Path does not exist: $Path"
     }
 
-    return (Resolve-Path -LiteralPath $Path).Path
+    if (Test-Path -LiteralPath $Path) {
+        return (Resolve-Path -LiteralPath $Path).Path
+    }
+
+    return $Path
 }
 
 function Get-QuickValidatorPath {
@@ -74,6 +122,40 @@ function Get-PackageVersion {
     return "unknown"
 }
 
+function Get-InstalledSkillFolders {
+    param([string]$SkillsRoot)
+
+    if (-not (Test-Path -LiteralPath $SkillsRoot)) {
+        return @()
+    }
+
+    return @(Get-ChildItem -LiteralPath $SkillsRoot -Directory -Filter "csharp-*" | Sort-Object Name)
+}
+
+function New-BackupRoot {
+    param([string]$SkillsRoot)
+
+    $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
+    return Join-Path $SkillsRoot ".backup\csharp-tutor-$timestamp"
+}
+
+function Backup-SkillFolder {
+    param(
+        [System.IO.DirectoryInfo]$Skill,
+        [string]$BackupRoot,
+        [switch]$DryRun
+    )
+
+    $backupTarget = Join-Path $BackupRoot $Skill.Name
+    if ($DryRun) {
+        Write-Host "Would back up existing $($Skill.FullName) to $backupTarget"
+        return
+    }
+
+    New-Item -ItemType Directory -Path $BackupRoot -Force | Out-Null
+    Copy-Item -LiteralPath $Skill.FullName -Destination $backupTarget -Recurse -Force
+}
+
 function Invoke-SkillValidation {
     param(
         [System.IO.DirectoryInfo[]]$SkillFolders,
@@ -93,19 +175,32 @@ function Invoke-SkillValidation {
     }
 }
 
-$repoRoot = Resolve-RootPath -Path $SourceRoot -Fallback (Join-Path $PSScriptRoot "..")
-$packageVersion = Get-PackageVersion -Root $repoRoot
-
 if ([string]::IsNullOrWhiteSpace($DestinationRoot)) {
     if ([string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
         throw "USERPROFILE is not set. Pass -DestinationRoot explicitly."
     }
     $DestinationRoot = Join-Path $env:USERPROFILE ".codex\skills"
 }
+$DestinationRoot = Resolve-RootPath -Path $DestinationRoot -Fallback $DestinationRoot
 
-$skillFolders = @(Get-ChildItem -LiteralPath $repoRoot -Directory -Filter "csharp-*" | Sort-Object Name)
+if ($ListInstalled) {
+    Write-Host "Destination root: $DestinationRoot"
+    $installed = Get-InstalledSkillFolders -SkillsRoot $DestinationRoot
+    if ($installed.Count -eq 0) {
+        Write-Host "No installed csharp-* skill folders found."
+        exit 0
+    }
 
-if ($skillFolders.Count -eq 0) {
+    $installed | Select-Object Name, FullName, LastWriteTime | Format-Table -AutoSize
+    Write-Host "Installed C# Tutor skill folders: $($installed.Count)"
+    exit 0
+}
+
+$repoRoot = Resolve-RootPath -Path $SourceRoot -Fallback (Join-Path $PSScriptRoot "..") -MustExist
+$packageVersion = Get-PackageVersion -Root $repoRoot
+$sourceSkillFolders = @(Get-ChildItem -LiteralPath $repoRoot -Directory -Filter "csharp-*" | Sort-Object Name)
+
+if ($sourceSkillFolders.Count -eq 0) {
     throw "No csharp-* skill folders found under $repoRoot"
 }
 
@@ -113,16 +208,44 @@ Write-Host "Source root: $repoRoot"
 Write-Host "Source ref: $SourceRef"
 Write-Host "C# Tutor version: $packageVersion"
 Write-Host "Destination root: $DestinationRoot"
-Write-Host "Skill folders: $($skillFolders.Count)"
+Write-Host "Skill folders: $($sourceSkillFolders.Count)"
 
-if ($Validate) {
+if ($Validate -and -not $Uninstall) {
     $validator = Get-QuickValidatorPath -SkillsRoot $DestinationRoot
-    Invoke-SkillValidation -SkillFolders $skillFolders -ValidatorPath $validator
+    Invoke-SkillValidation -SkillFolders $sourceSkillFolders -ValidatorPath $validator
+}
+
+if ($Uninstall) {
+    $installed = Get-InstalledSkillFolders -SkillsRoot $DestinationRoot
+    if ($installed.Count -eq 0) {
+        Write-Host "No installed csharp-* skill folders found."
+        exit 0
+    }
+
+    $backupRoot = if ($Backup) { New-BackupRoot -SkillsRoot $DestinationRoot } else { $null }
+    foreach ($skill in $installed) {
+        if ($Backup) {
+            Backup-SkillFolder -Skill $skill -BackupRoot $backupRoot -DryRun:$DryRun
+        }
+
+        if ($DryRun) {
+            Write-Host "Would remove $($skill.FullName)"
+        }
+        elseif ($PSCmdlet.ShouldProcess($skill.FullName, "Remove installed C# Tutor skill")) {
+            Remove-Item -LiteralPath $skill.FullName -Recurse -Force
+        }
+    }
+
+    Write-Host "Uninstalled C# Tutor skill folders: $($installed.Count)"
+    if ($Backup) {
+        Write-Host "Backup location: $backupRoot"
+    }
+    exit 0
 }
 
 if ($DryRun) {
     Write-Host "Dry run only. No files will be copied."
-    foreach ($skill in $skillFolders) {
+    foreach ($skill in $sourceSkillFolders) {
         $target = Join-Path $DestinationRoot $skill.Name
         if (Test-Path -LiteralPath $target) {
             if ($Backup) {
@@ -143,23 +266,14 @@ if (-not (Test-Path -LiteralPath $DestinationRoot)) {
     }
 }
 
-$backupRoot = $null
-if ($Backup) {
-    $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
-    $backupRoot = Join-Path $DestinationRoot ".backup\csharp-tutor-$timestamp"
-    if ($PSCmdlet.ShouldProcess($backupRoot, "Create backup directory")) {
-        New-Item -ItemType Directory -Path $backupRoot -Force | Out-Null
-    }
-}
+$backupRoot = if ($Backup) { New-BackupRoot -SkillsRoot $DestinationRoot } else { $null }
 
-foreach ($skill in $skillFolders) {
+foreach ($skill in $sourceSkillFolders) {
     $target = Join-Path $DestinationRoot $skill.Name
 
     if ($Backup -and (Test-Path -LiteralPath $target)) {
-        $backupTarget = Join-Path $backupRoot $skill.Name
-        if ($PSCmdlet.ShouldProcess($backupTarget, "Back up existing $target")) {
-            Copy-Item -LiteralPath $target -Destination $backupTarget -Recurse -Force
-        }
+        $existing = Get-Item -LiteralPath $target
+        Backup-SkillFolder -Skill $existing -BackupRoot $backupRoot
     }
 
     if ($PSCmdlet.ShouldProcess($target, "Install or update from $($skill.FullName)")) {
@@ -167,7 +281,7 @@ foreach ($skill in $skillFolders) {
     }
 }
 
-Write-Host "Installed or updated $($skillFolders.Count) C# Tutor skill folders."
+Write-Host "Installed or updated $($sourceSkillFolders.Count) C# Tutor skill folders."
 Write-Host "C# Tutor version: $packageVersion"
 if ($Backup) {
     Write-Host "Backup location: $backupRoot"
