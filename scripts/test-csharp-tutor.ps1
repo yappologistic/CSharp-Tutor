@@ -151,6 +151,8 @@ $readmeFile = Join-Path $SourceRoot "README.md"
 $changelogFile = Join-Path $SourceRoot "CHANGELOG.md"
 $catalogFile = Join-Path $SourceRoot "SKILLS.md"
 $promptExamplesFile = Join-Path $SourceRoot "EXAMPLE-PROMPTS.md"
+$topicsFile = Join-Path $SourceRoot "TOPICS.md"
+$limitationsFile = Join-Path $SourceRoot "KNOWN-LIMITATIONS.md"
 
 if (-not (Test-Path -LiteralPath $versionFile)) {
     Add-Failure "VERSION file is missing."
@@ -166,6 +168,12 @@ if (-not (Test-Path -LiteralPath $catalogFile)) {
 }
 if (-not (Test-Path -LiteralPath $promptExamplesFile)) {
     Add-Failure "EXAMPLE-PROMPTS.md is missing."
+}
+if (-not (Test-Path -LiteralPath $topicsFile)) {
+    Add-Failure "TOPICS.md is missing."
+}
+if (-not (Test-Path -LiteralPath $limitationsFile)) {
+    Add-Failure "KNOWN-LIMITATIONS.md is missing."
 }
 
 if ((Test-Path -LiteralPath $versionFile) -and (Test-Path -LiteralPath $manifestFile)) {
@@ -241,6 +249,30 @@ if ((Test-Path -LiteralPath $versionFile) -and (Test-Path -LiteralPath $manifest
         }
         if ($script:Failures.Count -eq 0) {
             Add-Pass "EXAMPLE-PROMPTS.md covers every skill."
+        }
+    }
+
+    if (Test-Path -LiteralPath $topicsFile) {
+        $topics = Get-Content -LiteralPath $topicsFile -Raw
+        foreach ($skillName in $folderNames) {
+            $expectedSkill = "``$skillName``"
+            if ($topics -notmatch [regex]::Escape($expectedSkill)) {
+                Add-Failure "TOPICS.md is missing $skillName."
+            }
+        }
+    }
+
+    $dashboard = Join-Path $SourceRoot "scripts\get-maintenance-dashboard.ps1"
+    if (-not (Test-Path -LiteralPath $dashboard)) {
+        Add-Failure "Maintenance dashboard script is missing."
+    }
+    else {
+        & powershell -NoProfile -ExecutionPolicy Bypass -File $dashboard -SourceRoot $SourceRoot -Check | Out-Host
+        if ($LASTEXITCODE -ne 0) {
+            Add-Failure "Maintenance dashboard check failed."
+        }
+        else {
+            Add-Pass "Maintenance dashboard check completed."
         }
     }
 }

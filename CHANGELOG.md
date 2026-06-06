@@ -17,6 +17,9 @@ This project uses semantic versioning while it remains pre-1.0:
 - Catalog generator script with drift-check mode for local validation and CI.
 - Contributor guide covering skill quality, local checks, catalog generation, and release flow.
 - Representative example prompts for every skill.
+- Topic coverage map for choosing the right focused skill.
+- Known limitations document clarifying runtime, docs, security, review, and installer boundaries.
+- Maintenance dashboard script for summarizing package health and required maintenance artifacts.
 
 ## 0.5.0 - 2026-06-05
 

@@ -64,7 +64,7 @@ Install a pinned release:
 
 For installation problems, see `INSTALL-TROUBLESHOOTING.md`.
 
-For the generated skill catalog, see `SKILLS.md`. For representative maintenance prompts, see `EXAMPLE-PROMPTS.md`.
+For the generated skill catalog, see `SKILLS.md`. For topic routing, see `TOPICS.md`. For representative maintenance prompts, see `EXAMPLE-PROMPTS.md`. For project boundaries, see `KNOWN-LIMITATIONS.md`.
 
 On Windows, the usual Codex skills directory is:
 
@@ -257,6 +257,12 @@ Regenerate the checked-in skill catalog after changing skill frontmatter or the 
 
 ```powershell
 .\scripts\generate-skills-catalog.ps1
+```
+
+Print the maintenance dashboard:
+
+```powershell
+.\scripts\get-maintenance-dashboard.ps1
 ```
 
 ## Versioning
