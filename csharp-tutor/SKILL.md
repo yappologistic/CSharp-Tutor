@@ -1,6 +1,6 @@
 ---
 name: csharp-tutor
-description: Teach and review C# for developers learning the language. Use when users ask C# questions, request explanations of C# or .NET concepts, share C# code or codebases for feedback, need examples, cheat sheets, exercises, debugging labs, mini projects, interview prep, tips, bug-prevention guidance, vulnerability checks, code quality improvements, or want help applying object-oriented design, clean code, SOLID, design patterns, API design, async, concurrency, LINQ, generics, collections, architecture, build tooling, logging, version compatibility, analyzers, tooling, performance, maintainability, scalability, newer C#/.NET features, or official Microsoft C# and .NET documentation.
+description: Teach and review C# for developers learning the language. Use when users ask C# questions, request explanations of C# or .NET concepts, share C# code or codebases for feedback, need examples, cheat sheets, exercises, debugging labs, mini projects, interview prep, tips, bug-prevention guidance, vulnerability checks, code quality improvements, or want help applying object-oriented design, clean code, SOLID, design patterns, API design, async, concurrency, LINQ, generics, collections, architecture, build tooling, logging, NuGet packaging, NativeAOT, trimming, analyzer configuration, version compatibility, tooling, performance, maintainability, scalability, newer C#/.NET features, or official Microsoft C# and .NET documentation.
 metadata:
   short-description: General C# tutor and review help
 ---
@@ -71,6 +71,9 @@ Use the focused reference files as needed:
 - Read [nullability-guidance.md](references/nullability-guidance.md) for nullable reference types, nullable warnings, null contracts, null-forgiving operator use, and null-safety reviews.
 - Read [build-guidance.md](references/build-guidance.md) for .NET build, restore, SDK, MSBuild, project-file, and CI build issues.
 - Read [logging-guidance.md](references/logging-guidance.md) for `ILogger`, structured logging, scopes, exception logging, Serilog basics, and safe ASP.NET Core logging.
+- Read [nuget-guidance.md](references/nuget-guidance.md) for NuGet package metadata, `dotnet pack`, local package testing, Source Link, symbols, and publishing safety.
+- Read [aot-guidance.md](references/aot-guidance.md) for NativeAOT, trimming, single-file publishing, linker warnings, reflection risks, and deployment constraints.
+- Read [analyzers-guidance.md](references/analyzers-guidance.md) for Roslyn analyzers, `.editorconfig`, warning levels, warning-as-error policy, `dotnet format`, and CI quality gates.
 
 ## Workflow
 
@@ -86,6 +89,9 @@ Use the focused reference files as needed:
    - Nullable reference type or null-safety help
    - Build, restore, SDK, project-file, or CI failure
    - Logging, `ILogger`, structured logging, or production diagnostics help
+   - NuGet package creation, packing, publishing, or package compatibility
+   - NativeAOT, trimming, linker warning, or publish compatibility question
+   - Analyzer, `.editorconfig`, nullable warning, warning-as-error, or `dotnet format` question
    - Interview preparation or mock interview
    - Version compatibility, docs-grounded explanation, design-pattern selection, API design, tooling/analyzer review, debug lab, or mini-project assignment
    - Cheat sheet, quiz, quick answer, or "what should I learn next" request

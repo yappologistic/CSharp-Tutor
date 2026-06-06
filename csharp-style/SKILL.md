@@ -15,6 +15,7 @@ Load these csharp-tutor references when useful:
 
 - `references/style-guidance.md`
 - `references/nullability-guidance.md`
+- `references/analyzers-guidance.md`
 - `references/tooling-and-analyzers.md`
 - `references/analyzer-tooling-guidance.md`
 - `references/answer-quality-rules.md`

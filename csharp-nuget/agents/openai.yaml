@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# NuGet"
+  short_description: "C# NuGet package creation help"
+  default_prompt: "Use $csharp-nuget to explain or review NuGet package metadata, dotnet pack, versioning, local package testing, Source Link, and publishing safety."

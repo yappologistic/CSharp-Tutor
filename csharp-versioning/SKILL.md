@@ -15,6 +15,8 @@ Load these csharp-tutor references when useful:
 
 - `references/versioning-guidance.md`
 - `references/build-guidance.md`
+- `references/nuget-guidance.md`
+- `references/aot-guidance.md`
 - `references/project-inspection.md`
 - `references/modernization-map.md`
 - `references/source-citation-rules.md`

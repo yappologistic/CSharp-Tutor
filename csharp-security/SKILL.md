@@ -15,6 +15,7 @@ Load these csharp-tutor references when useful:
 
 - `references/security-review-map.md`
 - `references/logging-guidance.md`
+- `references/analyzers-guidance.md`
 - `references/official-sources.md`
 - `references/verification-checklist.md`
 - `references/framework-guidance.md`

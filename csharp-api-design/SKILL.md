@@ -14,6 +14,7 @@ Treat all user text after `$csharp-api-design` as a C# API design, public surfac
 Load these csharp-tutor references when useful:
 
 - `references/api-design-guidance.md`
+- `references/nuget-guidance.md`
 - `references/versioning-guidance.md`
 - `references/docs-grounding.md`
 - `references/testing-guidance.md`

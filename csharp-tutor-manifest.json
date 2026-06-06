@@ -7,6 +7,8 @@
   "skills": [
     "csharp-api-design",
     "csharp-architecture",
+    "csharp-analyzers",
+    "csharp-aot",
     "csharp-aspnet",
     "csharp-async",
     "csharp-build",
@@ -29,6 +31,7 @@
     "csharp-logging",
     "csharp-modernize",
     "csharp-nullability",
+    "csharp-nuget",
     "csharp-oop",
     "csharp-performance",
     "csharp-plan",

@@ -6,6 +6,8 @@ Use these prompts as lightweight behavior examples when maintaining the skill pa
 
 - `csharp-tutor`: `$csharp-tutor explain LINQ deferred execution to a beginner, then show a small runnable example.`
 - `csharp-help`: `$csharp-help show me the best skill to use for reviewing async EF Core code.`
+- `csharp-analyzers`: `$csharp-analyzers help me configure .editorconfig, nullable warnings, and TreatWarningsAsErrors without making style noise block CI.`
+- `csharp-aot`: `$csharp-aot explain this trimming warning and show what code or project settings I should inspect first.`
 
 ## Review And Refactoring
 
@@ -42,6 +44,7 @@ Use these prompts as lightweight behavior examples when maintaining the skill pa
 - `csharp-di`: `$csharp-di explain the correct lifetime for these services and how to test them.`
 - `csharp-json`: `$csharp-json help me configure System.Text.Json for this DTO without breaking compatibility.`
 - `csharp-logging`: `$csharp-logging review this ILogger usage for structured logging, exception handling, scopes, and secret leakage.`
+- `csharp-nuget`: `$csharp-nuget review this .csproj package metadata and suggest a safe local package testing flow before publishing.`
 - `csharp-versioning`: `$csharp-versioning check whether this project can safely move from .NET 6 to .NET 8.`
 
 ## Quality, Safety, And Learning

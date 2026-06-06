@@ -14,6 +14,7 @@ Treat all user text after `$csharp-nullability` as the nullable reference type c
 Load these csharp-tutor references when useful:
 
 - `references/nullability-guidance.md`
+- `references/analyzers-guidance.md`
 - `references/common-csharp-pitfalls.md`
 - `references/style-guidance.md`
 - `references/errors-guidance.md`

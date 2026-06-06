@@ -15,6 +15,8 @@ Load these csharp-tutor references when useful:
 
 - `references/project-inspection.md`
 - `references/build-guidance.md`
+- `references/nuget-guidance.md`
+- `references/analyzers-guidance.md`
 - `references/framework-guidance.md`
 - `references/tooling-and-analyzers.md`
 - `references/analyzer-tooling-guidance.md`

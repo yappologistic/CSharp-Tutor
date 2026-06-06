@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Analyzers"
+  short_description: "C# analyzers and .editorconfig help"
+  default_prompt: "Use $csharp-analyzers to explain or review Roslyn analyzers, .editorconfig, nullable warnings, warning-as-error settings, dotnet format, and CI quality gates."

@@ -14,6 +14,9 @@ Treat all user text after `$csharp-build` as the build command, error output, pr
 Load these csharp-tutor references when useful:
 
 - `references/build-guidance.md`
+- `references/nuget-guidance.md`
+- `references/aot-guidance.md`
+- `references/analyzers-guidance.md`
 - `references/project-inspection.md`
 - `references/tooling-and-analyzers.md`
 - `references/analyzer-tooling-guidance.md`

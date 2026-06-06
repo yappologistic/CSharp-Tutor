@@ -14,6 +14,7 @@ Treat all user text after `$csharp-performance` as the code, query, project, or 
 Load these csharp-tutor references when useful:
 
 - `references/performance-review-map.md`
+- `references/aot-guidance.md`
 - `references/tooling-and-analyzers.md`
 - `references/project-inspection.md`
 - `references/framework-guidance.md`

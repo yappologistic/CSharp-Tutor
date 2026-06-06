@@ -10,7 +10,7 @@ The project is built around one main skill, `csharp-tutor`, plus focused compani
 
 - Explains C# and .NET concepts with examples matched to the learner's level.
 - Reviews snippets, files, projects, and repositories for correctness, maintainability, scalability, security, performance, tests, and modernization opportunities.
-- Helps with OOP, SOLID, clean code, design patterns, architecture, API design, dependency injection, async, concurrency, LINQ, generics, collections, exceptions, nullable reference types, build tooling, logging, JSON, ASP.NET Core, EF Core, and testing.
+- Helps with OOP, SOLID, clean code, design patterns, architecture, API design, dependency injection, async, concurrency, LINQ, generics, collections, exceptions, nullable reference types, build tooling, logging, NuGet packaging, NativeAOT/trimming, analyzers, JSON, ASP.NET Core, EF Core, and testing.
 - Prefers official Microsoft documentation for language rules, .NET APIs, framework behavior, compatibility, security, and performance-sensitive claims.
 - Provides learner support through practice exercises, debugging labs, cheat sheets, interview prep, mini projects, and learning plans.
 - Includes shared catalogs for code smells/refactor choices and common compiler/runtime error triage.
@@ -167,6 +167,8 @@ Main skill:
 Focused companion skills:
 
 - `csharp-api-design`: Public API design and compatibility.
+- `csharp-analyzers`: Roslyn analyzers, `.editorconfig`, and CI quality gates.
+- `csharp-aot`: NativeAOT, trimming, linker warnings, and publish constraints.
 - `csharp-architecture`: Application architecture guidance.
 - `csharp-aspnet`: ASP.NET Core applications.
 - `csharp-async`: Async, cancellation, and async API design.
@@ -190,6 +192,7 @@ Focused companion skills:
 - `csharp-logging`: `ILogger`, structured logging, scopes, and safe logs.
 - `csharp-modernize`: Version-aware modernization.
 - `csharp-nullability`: Nullable reference types and null-safety.
+- `csharp-nuget`: NuGet packaging, versioning, and publishing safety.
 - `csharp-oop`: Object-oriented design.
 - `csharp-performance`: Performance and scalability review.
 - `csharp-plan`: Learning plans and roadmaps.

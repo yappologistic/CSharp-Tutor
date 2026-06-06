@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# AOT"
+  short_description: ".NET NativeAOT and trimming help"
+  default_prompt: "Use $csharp-aot to explain or review NativeAOT, trimming, linker warnings, reflection risks, serialization compatibility, and publish settings."

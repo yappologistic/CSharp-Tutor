@@ -16,6 +16,9 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 - `csharp-nullability` / `C# Nullability`: Nullable reference types, null-safety, nullable warnings, and null contracts.
 - `csharp-build` / `C# Build`: .NET build, restore, SDK, MSBuild, project-file, test, format, and CI failures.
 - `csharp-logging` / `C# Logging`: `ILogger`, structured logging, scopes, exception logging, Serilog, request logging, and safe logs.
+- `csharp-nuget` / `C# NuGet`: NuGet package metadata, packing, package versioning, Source Link, symbols, local testing, and publishing safety.
+- `csharp-aot` / `C# AOT`: NativeAOT, trimming, linker warnings, reflection risks, serialization compatibility, and publish settings.
+- `csharp-analyzers` / `C# Analyzers`: Roslyn analyzers, `.editorconfig`, nullable warnings, warning-as-error policy, `dotnet format`, and CI quality gates.
 - `csharp-debug` / `C# Debug`: Diagnose compiler errors, exceptions, failing tests, and unexpected behavior.
 - `csharp-security` / `C# Security`: Review security risks and vulnerability patterns.
 - `csharp-performance` / `C# Performance`: Review performance, allocations, memory, async scale, LINQ, and data access.
@@ -67,6 +70,9 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 @C# Nullability Review these nullable warnings and explain the safest fixes.
 @C# Build Diagnose this dotnet restore failure from my CI log.
 @C# Logging Review this controller logging for structured properties and secret leakage.
+@C# NuGet Review this package metadata before I run dotnet pack.
+@C# AOT Explain this trimming warning and whether the library is NativeAOT-safe.
+@C# Analyzers Help me configure .editorconfig and TreatWarningsAsErrors for CI.
 @C# Design Patterns Should this conditional logic become a strategy pattern?
 @C# Docs Explain records vs classes using official docs.
 @C# Debug Lab Give me a LINQ debugging exercise and let me diagnose it.
