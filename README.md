@@ -64,6 +64,8 @@ Install a pinned release:
 
 For installation problems, see `INSTALL-TROUBLESHOOTING.md`.
 
+For the generated skill catalog, see `SKILLS.md`. For representative maintenance prompts, see `EXAMPLE-PROMPTS.md`.
+
 On Windows, the usual Codex skills directory is:
 
 ```text
@@ -251,6 +253,12 @@ Run the full repository health check:
 
 The health check validates skill structure, manifest consistency, README drift, markdown links, reference targets, skill validation, and installer dry-run behavior.
 
+Regenerate the checked-in skill catalog after changing skill frontmatter or the manifest:
+
+```powershell
+.\scripts\generate-skills-catalog.ps1
+```
+
 ## Versioning
 
 C# Tutor uses semantic versioning while it remains pre-1.0:
@@ -322,3 +330,5 @@ When changing or adding a skill:
 3. Validate every changed skill before committing.
 4. Avoid committing local paths, private project names, secrets, tokens, credentials, or machine-specific configuration.
 5. Keep examples practical for developers who are learning C# and trying to write production-quality code.
+
+See `CONTRIBUTING.md` for the full maintenance checklist.

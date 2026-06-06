@@ -149,6 +149,8 @@ $versionFile = Join-Path $SourceRoot "VERSION"
 $manifestFile = Join-Path $SourceRoot "csharp-tutor-manifest.json"
 $readmeFile = Join-Path $SourceRoot "README.md"
 $changelogFile = Join-Path $SourceRoot "CHANGELOG.md"
+$catalogFile = Join-Path $SourceRoot "SKILLS.md"
+$promptExamplesFile = Join-Path $SourceRoot "EXAMPLE-PROMPTS.md"
 
 if (-not (Test-Path -LiteralPath $versionFile)) {
     Add-Failure "VERSION file is missing."
@@ -158,6 +160,12 @@ if (-not (Test-Path -LiteralPath $manifestFile)) {
 }
 if (-not (Test-Path -LiteralPath $changelogFile)) {
     Add-Failure "CHANGELOG.md is missing."
+}
+if (-not (Test-Path -LiteralPath $catalogFile)) {
+    Add-Failure "SKILLS.md is missing."
+}
+if (-not (Test-Path -LiteralPath $promptExamplesFile)) {
+    Add-Failure "EXAMPLE-PROMPTS.md is missing."
 }
 
 if ((Test-Path -LiteralPath $versionFile) -and (Test-Path -LiteralPath $manifestFile)) {
@@ -206,6 +214,33 @@ if ((Test-Path -LiteralPath $versionFile) -and (Test-Path -LiteralPath $manifest
         }
         else {
             Add-Pass "CHANGELOG.md contains a section for $version."
+        }
+    }
+
+    $catalogGenerator = Join-Path $SourceRoot "scripts\generate-skills-catalog.ps1"
+    if (-not (Test-Path -LiteralPath $catalogGenerator)) {
+        Add-Failure "Skill catalog generator is missing."
+    }
+    elseif (Test-Path -LiteralPath $catalogFile) {
+        & powershell -NoProfile -ExecutionPolicy Bypass -File $catalogGenerator -SourceRoot $SourceRoot -Check | Out-Host
+        if ($LASTEXITCODE -ne 0) {
+            Add-Failure "SKILLS.md is stale."
+        }
+        else {
+            Add-Pass "SKILLS.md matches manifest and skill frontmatter."
+        }
+    }
+
+    if (Test-Path -LiteralPath $promptExamplesFile) {
+        $promptExamples = Get-Content -LiteralPath $promptExamplesFile -Raw
+        foreach ($skillName in $folderNames) {
+            $expectedSkill = "``$skillName``"
+            if ($promptExamples -notmatch [regex]::Escape($expectedSkill)) {
+                Add-Failure "EXAMPLE-PROMPTS.md is missing $skillName."
+            }
+        }
+        if ($script:Failures.Count -eq 0) {
+            Add-Pass "EXAMPLE-PROMPTS.md covers every skill."
         }
     }
 }

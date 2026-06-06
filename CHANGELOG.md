@@ -8,6 +8,16 @@ This project uses semantic versioning while it remains pre-1.0:
 - `MINOR`: new references, new scripts, new command modes, new skills, and backward-compatible behavior improvements.
 - `MAJOR`: renamed or removed skills, incompatible install layout changes, or intentionally breaking command/behavior changes.
 
+## Unreleased
+
+### Added
+
+- GitHub Actions CI for PowerShell syntax checks, repository health checks, and whitespace validation.
+- Generated `SKILLS.md` catalog sourced from the manifest and skill frontmatter.
+- Catalog generator script with drift-check mode for local validation and CI.
+- Contributor guide covering skill quality, local checks, catalog generation, and release flow.
+- Representative example prompts for every skill.
+
 ## 0.5.0 - 2026-06-05
 
 ### Added

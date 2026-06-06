@@ -45,6 +45,7 @@
     "localInstaller": "scripts/install-csharp-tutor.ps1",
     "healthCheck": "scripts/test-csharp-tutor.ps1",
     "releaseHelper": "scripts/release.ps1",
-    "backupRestore": "scripts/restore-backup.ps1"
+    "backupRestore": "scripts/restore-backup.ps1",
+    "catalogGenerator": "scripts/generate-skills-catalog.ps1"
   }
 }
