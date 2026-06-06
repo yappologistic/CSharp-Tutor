@@ -17,12 +17,24 @@ The project is built around one main skill, `csharp-tutor`, plus focused compani
 ## Requirements
 
 - Codex with local skill support.
-- Python 3 if you want to run the validation script or the C# project inspection helper.
+- Python 3 if you want to run validation or the C# project inspection helper.
+- PowerShell if you want to use the install/update helper script.
 - Git if you want to clone, version, or contribute to this repository.
 
 ## Installation
 
-Install these skills by copying the skill folders into your Codex skills directory.
+Install these skills by copying the skill folders into your Codex skills directory. On Windows, the easiest path is the install/update helper:
+
+```powershell
+.\scripts\install-csharp-tutor.ps1 -Validate -Backup
+```
+
+Useful options:
+
+- `-DryRun`: show what would be installed or updated without copying files.
+- `-Backup`: back up existing installed `csharp-*` skill folders before overwriting them.
+- `-Validate`: run Codex skill validation on the source skill folders before copying.
+- `-DestinationRoot`: install to a non-default skills directory.
 
 On Windows, the usual Codex skills directory is:
 
@@ -42,7 +54,7 @@ If you cloned the repository somewhere else, run the command from the repository
 Copy-Item -Path ".\csharp-*" -Destination "$env:USERPROFILE\.codex\skills" -Recurse -Force
 ```
 
-After copying the folders, restart Codex or start a new thread if the skill picker does not refresh immediately.
+After installing or copying the folders, restart Codex or start a new thread if the skill picker does not refresh immediately.
 
 ## Verifying Installation
 
@@ -226,7 +238,7 @@ External resources can be used when helpful, but official documentation should b
 When changing or adding a skill:
 
 1. Keep focused skills small and route shared behavior through `csharp-tutor/references`.
-2. Prefer official Microsoft documentation for technical claims.
+2. Prefer official Microsoft documentation for technical claims. Use `csharp-tutor/references/official-docs-map.md` for common canonical links.
 3. Validate every changed skill before committing.
 4. Avoid committing local paths, private project names, secrets, tokens, credentials, or machine-specific configuration.
 5. Keep examples practical for developers who are learning C# and trying to write production-quality code.

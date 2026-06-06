@@ -12,6 +12,7 @@ Treat all user text after `$csharp-docs` as a docs-grounded C#/.NET question. Us
 Load these csharp-tutor references when useful:
 
 - `references/docs-grounding.md`
+- `references/official-docs-map.md`
 - `references/source-citation-rules.md`
 - `references/official-sources.md`
 - `references/verification-checklist.md`

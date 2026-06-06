@@ -1,6 +1,6 @@
 # Official Sources
 
-Use this reference to decide where to verify C# answers. Prefer current official sources before external material.
+Use this reference to decide where to verify C# answers. Prefer current official sources before external material. Use `official-docs-map.md` for canonical Microsoft Learn links to common C#/.NET, ASP.NET Core, EF Core, DI, testing, tooling, security, and modernization topics.
 
 ## Source Priority
 
@@ -9,6 +9,7 @@ Use this reference to decide where to verify C# answers. Prefer current official
    - C# programming guide
    - C# language specification
    - What's new in C#
+   - Common topic links from `official-docs-map.md`
 2. Microsoft Learn .NET documentation:
    - .NET API browser
    - .NET fundamentals

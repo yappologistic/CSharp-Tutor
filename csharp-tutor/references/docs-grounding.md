@@ -1,6 +1,6 @@
 # Docs Grounding
 
-Use this reference for source-backed C#/.NET answers.
+Use this reference for source-backed C#/.NET answers. Use `official-docs-map.md` to quickly find canonical Microsoft Learn pages for common topics, then verify the exact page still applies to the user's target version and project context.
 
 ## Official Source Order
 
