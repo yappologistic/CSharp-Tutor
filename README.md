@@ -23,7 +23,21 @@ The project is built around one main skill, `csharp-tutor`, plus focused compani
 
 ## Installation
 
-Install these skills by copying the skill folders into your Codex skills directory. On Windows, the easiest path is the install/update helper:
+Install or update directly from GitHub with one pasteable PowerShell command:
+
+```powershell
+irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1 | iex
+```
+
+That command downloads the latest repository archive, backs up existing installed `csharp-*` skill folders, validates the source skills when Codex's validator is available, and copies the skills into your Codex skills directory.
+
+To preview the install without copying files:
+
+```powershell
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -DryRun
+```
+
+If you already cloned the repository, use the local install/update helper:
 
 ```powershell
 .\scripts\install-csharp-tutor.ps1 -Validate -Backup
@@ -35,6 +49,7 @@ Useful options:
 - `-Backup`: back up existing installed `csharp-*` skill folders before overwriting them.
 - `-Validate`: run Codex skill validation on the source skill folders before copying.
 - `-DestinationRoot`: install to a non-default skills directory.
+- For the one-command GitHub installer, use `-NoBackup` or `-NoValidate` to opt out of the default backup or validation behavior.
 
 On Windows, the usual Codex skills directory is:
 
