@@ -2,6 +2,7 @@
 param(
     [string]$SourceRoot,
     [string]$DestinationRoot,
+    [string]$SourceRef = "local",
     [switch]$DryRun,
     [switch]$Backup,
     [switch]$Validate
@@ -46,6 +47,33 @@ function Get-QuickValidatorPath {
     return $null
 }
 
+function Get-PackageVersion {
+    param([string]$Root)
+
+    $versionFile = Join-Path $Root "VERSION"
+    if (Test-Path -LiteralPath $versionFile) {
+        $version = (Get-Content -LiteralPath $versionFile -Raw).Trim()
+        if (-not [string]::IsNullOrWhiteSpace($version)) {
+            return $version
+        }
+    }
+
+    $manifestFile = Join-Path $Root "csharp-tutor-manifest.json"
+    if (Test-Path -LiteralPath $manifestFile) {
+        try {
+            $manifest = Get-Content -LiteralPath $manifestFile -Raw | ConvertFrom-Json
+            if (-not [string]::IsNullOrWhiteSpace($manifest.version)) {
+                return $manifest.version
+            }
+        }
+        catch {
+            Write-Warning "Could not read version from manifest: $manifestFile"
+        }
+    }
+
+    return "unknown"
+}
+
 function Invoke-SkillValidation {
     param(
         [System.IO.DirectoryInfo[]]$SkillFolders,
@@ -66,6 +94,7 @@ function Invoke-SkillValidation {
 }
 
 $repoRoot = Resolve-RootPath -Path $SourceRoot -Fallback (Join-Path $PSScriptRoot "..")
+$packageVersion = Get-PackageVersion -Root $repoRoot
 
 if ([string]::IsNullOrWhiteSpace($DestinationRoot)) {
     if ([string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
@@ -81,6 +110,8 @@ if ($skillFolders.Count -eq 0) {
 }
 
 Write-Host "Source root: $repoRoot"
+Write-Host "Source ref: $SourceRef"
+Write-Host "C# Tutor version: $packageVersion"
 Write-Host "Destination root: $DestinationRoot"
 Write-Host "Skill folders: $($skillFolders.Count)"
 
@@ -137,6 +168,7 @@ foreach ($skill in $skillFolders) {
 }
 
 Write-Host "Installed or updated $($skillFolders.Count) C# Tutor skill folders."
+Write-Host "C# Tutor version: $packageVersion"
 if ($Backup) {
     Write-Host "Backup location: $backupRoot"
 }

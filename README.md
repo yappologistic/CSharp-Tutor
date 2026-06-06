@@ -1,5 +1,7 @@
 # C# Tutor Skills
 
+Current version: `0.4.0`
+
 C# Tutor is a Codex skill collection for developers learning C# and improving C#/.NET code. It gives Codex focused instructions for docs-grounded explanations, code review, debugging help, refactoring guidance, architecture feedback, practice exercises, and project inspection.
 
 The project is built around one main skill, `csharp-tutor`, plus focused companion skills such as `csharp-review`, `csharp-debug`, `csharp-async`, `csharp-oop`, `csharp-performance`, and `csharp-security`.
@@ -50,6 +52,13 @@ Useful options:
 - `-Validate`: run Codex skill validation on the source skill folders before copying.
 - `-DestinationRoot`: install to a non-default skills directory.
 - For the one-command GitHub installer, use `-NoBackup` or `-NoValidate` to opt out of the default backup or validation behavior.
+- For the one-command GitHub installer, use `-Ref` to install a branch, tag, or commit archive.
+
+Install a pinned release:
+
+```powershell
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -Ref v0.4.0
+```
 
 On Windows, the usual Codex skills directory is:
 
@@ -220,6 +229,29 @@ Get-ChildItem . -Directory -Filter "csharp*" |
 ```
 
 Successful validation should report each skill as valid.
+
+## Versioning
+
+C# Tutor uses semantic versioning while it remains pre-1.0:
+
+- `PATCH`: typo fixes, wording tweaks, docs link updates, and non-behavioral maintenance.
+- `MINOR`: new references, new scripts, new command modes, new skills, and backward-compatible behavior improvements.
+- `MAJOR`: renamed or removed skills, incompatible install layout changes, or intentionally breaking command/behavior changes.
+
+Version metadata lives in:
+
+- `VERSION`: the current package version.
+- `CHANGELOG.md`: notable changes by version.
+- `csharp-tutor-manifest.json`: package metadata, skill list, repository, and installer paths.
+
+When cutting a release:
+
+```powershell
+git tag v0.4.0
+git push origin v0.4.0
+```
+
+The install scripts print the source ref and package version so users can see what they installed.
 
 ## Project Inspection Helper
 

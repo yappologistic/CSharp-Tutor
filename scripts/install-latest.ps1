@@ -1,5 +1,6 @@
 [CmdletBinding()]
 param(
+    [string]$Ref,
     [string]$Branch = "master",
     [string]$Repository = "yappologistic/CSharp-Tutor",
     [string]$DestinationRoot,
@@ -39,6 +40,15 @@ function New-TempInstallRoot {
     return $path
 }
 
+function Get-ArchiveUrl {
+    param(
+        [string]$Repository,
+        [string]$Ref
+    )
+
+    return "https://github.com/$Repository/archive/$Ref.zip"
+}
+
 if ([string]::IsNullOrWhiteSpace($DestinationRoot)) {
     if ([string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
         throw "USERPROFILE is not set. Pass -DestinationRoot explicitly."
@@ -46,7 +56,11 @@ if ([string]::IsNullOrWhiteSpace($DestinationRoot)) {
     $DestinationRoot = Join-Path $env:USERPROFILE ".codex\skills"
 }
 
-$archiveUrl = "https://github.com/$Repository/archive/refs/heads/$Branch.zip"
+if ([string]::IsNullOrWhiteSpace($Ref)) {
+    $Ref = $Branch
+}
+
+$archiveUrl = Get-ArchiveUrl -Repository $Repository -Ref $Ref
 $tempRoot = New-TempInstallRoot
 $zipPath = Join-Path $tempRoot "source.zip"
 $extractRoot = Join-Path $tempRoot "source"
@@ -63,6 +77,12 @@ try {
         throw "Downloaded archive did not contain a repository folder."
     }
 
+    $versionFile = Join-Path $repoRoot.FullName "VERSION"
+    $packageVersion = "unknown"
+    if (Test-Path -LiteralPath $versionFile) {
+        $packageVersion = (Get-Content -LiteralPath $versionFile -Raw).Trim()
+    }
+
     $installer = Join-Path $repoRoot.FullName "scripts\install-csharp-tutor.ps1"
     if (-not (Test-Path -LiteralPath $installer)) {
         throw "Installer script was not found in downloaded package: $installer"
@@ -72,6 +92,10 @@ try {
         "-SourceRoot", $repoRoot.FullName,
         "-DestinationRoot", $DestinationRoot
     )
+
+    if (Select-String -LiteralPath $installer -Pattern "SourceRef" -Quiet) {
+        $installerArgs += @("-SourceRef", "$Repository@$Ref")
+    }
 
     if ($DryRun) {
         $installerArgs += "-DryRun"
@@ -92,6 +116,7 @@ try {
     }
 
     Write-Host "Running installer from downloaded package"
+    Write-Host "C# Tutor version: $packageVersion"
     & powershell -NoProfile -ExecutionPolicy Bypass -File $installer @installerArgs
     if ($LASTEXITCODE -ne 0) {
         throw "Installer failed with exit code $LASTEXITCODE."
