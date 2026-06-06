@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# API Design"
+  short_description: "C# public API design help"
+  default_prompt: "Help me design or review this C# API surface."

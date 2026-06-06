@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Practice"
+  short_description: "Create C# exercises and assignments"
+  default_prompt: "Use $csharp-practice to create C# practice exercises or a small assignment."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Async"
+  short_description: "C# async, Task, and cancellation help"
+  default_prompt: "Use $csharp-async to explain or review async/await, Task, and cancellation in C#."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Tutor"
+  short_description: "Modes: explain, review, refactor, modernize"
+  default_prompt: "Use $csharp-tutor mode=explain level=beginner to teach a C# concept, or mode=review to inspect code with docs-grounded feedback."

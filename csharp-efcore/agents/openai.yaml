@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# EF Core"
+  short_description: "Entity Framework Core help"
+  default_prompt: "Help me understand or improve this EF Core C# code."

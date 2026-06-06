@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# DI"
+  short_description: "Dependency injection help"
+  default_prompt: "Help me understand or improve this C# dependency injection design."

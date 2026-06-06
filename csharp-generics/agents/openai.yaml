@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Generics"
+  short_description: "C# generic types and constraints help"
+  default_prompt: "Help me understand or improve this C# generic code."

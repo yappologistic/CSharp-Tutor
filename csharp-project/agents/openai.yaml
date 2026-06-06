@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Project"
+  short_description: "Inspect C# projects and repositories"
+  default_prompt: "Use $csharp-project to inspect a C# project, solution, or repository."

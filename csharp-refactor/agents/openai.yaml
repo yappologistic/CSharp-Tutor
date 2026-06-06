@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Refactor"
+  short_description: "Refactor C# for OOP and clean code"
+  default_prompt: "Use $csharp-refactor to improve C# structure, OOP design, and maintainability."

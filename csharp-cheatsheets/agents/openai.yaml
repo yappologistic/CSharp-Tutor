@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Cheatsheets"
+  short_description: "Compact C# topic cheat sheets"
+  default_prompt: "Make me a compact C# cheat sheet for this topic."

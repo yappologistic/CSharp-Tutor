@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# LINQ"
+  short_description: "C# LINQ and IEnumerable help"
+  default_prompt: "Use $csharp-linq to explain or review LINQ, IEnumerable, and collection queries."

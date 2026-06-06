@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Modernize"
+  short_description: "Modernize C# with newer features"
+  default_prompt: "Use $csharp-modernize to update C# code with newer language and .NET features."

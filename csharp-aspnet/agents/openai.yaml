@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# ASP.NET"
+  short_description: "ASP.NET Core C# web app help"
+  default_prompt: "Help me understand or improve this ASP.NET Core C# code."

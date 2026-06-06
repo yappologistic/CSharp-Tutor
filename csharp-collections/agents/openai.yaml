@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Collections"
+  short_description: "C# collection types and data structures help"
+  default_prompt: "Help me choose or improve C# collections and data structures."

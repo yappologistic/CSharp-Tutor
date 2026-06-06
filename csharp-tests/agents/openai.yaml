@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Tests"
+  short_description: "Improve C# tests and testability"
+  default_prompt: "Use $csharp-tests to suggest or review tests for C# behavior."

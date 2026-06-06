@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Debug Lab"
+  short_description: "C# debugging practice labs"
+  default_prompt: "Give me a C# debugging exercise and let me diagnose it first."

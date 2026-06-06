@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Concurrency"
+  short_description: "C# threading and concurrency help"
+  default_prompt: "Help me understand or fix this C# concurrency code."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Interview"
+  short_description: "C# interview prep and mock interviews"
+  default_prompt: "Run a C# interview practice session or review my answer."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Debug"
+  short_description: "Debug C# errors and failing behavior"
+  default_prompt: "Use $csharp-debug to diagnose a C# error, exception, failing test, or unexpected behavior."

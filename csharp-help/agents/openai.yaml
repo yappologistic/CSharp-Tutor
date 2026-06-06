@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Help"
+  short_description: "Show C# Tutor commands and usage"
+  default_prompt: "Use $csharp-help to show the available C# Tutor skills and examples."

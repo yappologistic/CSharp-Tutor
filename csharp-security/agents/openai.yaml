@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Security"
+  short_description: "Security review for C# and .NET"
+  default_prompt: "Use $csharp-security to review C# or .NET code for security risks."

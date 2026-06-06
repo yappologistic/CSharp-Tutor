@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Explain"
+  short_description: "Explain C# concepts with examples"
+  default_prompt: "Use $csharp-explain to explain a C# concept with a clear example."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Design Patterns"
+  short_description: "C# design patterns without overengineering"
+  default_prompt: "Help me choose or refactor with a C# design pattern."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Architecture"
+  short_description: "C# application architecture help"
+  default_prompt: "Help me improve this C# application architecture."

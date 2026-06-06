@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Plan"
+  short_description: "Plan a C# learning path or project"
+  default_prompt: "Use $csharp-plan to create a C# learning path, study plan, or project roadmap."

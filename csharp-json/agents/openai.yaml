@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# JSON"
+  short_description: "C# JSON serialization help"
+  default_prompt: "Use $csharp-json to explain or review C# JSON serialization and deserialization."

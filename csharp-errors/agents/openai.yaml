@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Errors"
+  short_description: "C# exceptions and error handling"
+  default_prompt: "Use $csharp-errors to explain or review C# exceptions, validation, and error handling."

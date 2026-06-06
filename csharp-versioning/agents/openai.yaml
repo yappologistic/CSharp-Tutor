@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Versioning"
+  short_description: "C# and .NET version compatibility help"
+  default_prompt: "Help me check C# and .NET version compatibility."

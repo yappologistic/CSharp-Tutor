@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Performance"
+  short_description: "Performance review for C# code"
+  default_prompt: "Use $csharp-performance to review C# code for allocations, throughput, memory, and scalability."

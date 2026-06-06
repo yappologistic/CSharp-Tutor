@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# OOP"
+  short_description: "C# OOP, SOLID, and design help"
+  default_prompt: "Use $csharp-oop to explain or review C# object-oriented design."
