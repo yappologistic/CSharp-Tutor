@@ -3,7 +3,7 @@
 Runs repository health checks for the C# Tutor skill pack.
 
 .DESCRIPTION
-Validates skill structure, package version metadata, manifest consistency, README skill list drift, markdown links, reference targets, optional Codex skill validation, and optional installer dry runs.
+Validates skill structure, package version metadata, manifest consistency, README skill list drift, markdown links, reference targets, optional Codex skill validation, and installer dry/real runs.
 
 .PARAMETER SourceRoot
 Repository root. Defaults to the parent folder of this script.
@@ -17,6 +17,9 @@ Skips running Codex quick_validate.py for every skill folder.
 .PARAMETER SkipInstallerDryRun
 Skips local installer dry-run verification.
 
+.PARAMETER SkipInstallerRealRun
+Skips isolated temp install/uninstall verification.
+
 .EXAMPLE
 .\scripts\test-csharp-tutor.ps1
 
@@ -28,7 +31,8 @@ param(
     [string]$SourceRoot,
     [string]$DestinationRoot,
     [switch]$SkipSkillValidation,
-    [switch]$SkipInstallerDryRun
+    [switch]$SkipInstallerDryRun,
+    [switch]$SkipInstallerRealRun
 )
 
 $ErrorActionPreference = "Stop"
@@ -125,6 +129,92 @@ function Test-RelativeMarkdownLinks {
     }
 }
 
+function Get-MatchValue {
+    param(
+        [string]$Text,
+        [string]$Pattern
+    )
+
+    $match = [regex]::Match($Text, $Pattern, [System.Text.RegularExpressions.RegexOptions]::Multiline)
+    if (-not $match.Success) {
+        return ""
+    }
+
+    return $match.Groups[1].Value.Trim()
+}
+
+function Test-SkillMetadata {
+    param([System.IO.DirectoryInfo[]]$SkillFolders)
+
+    foreach ($skill in $SkillFolders) {
+        $skillFile = Join-Path $skill.FullName "SKILL.md"
+        $agentFile = Join-Path $skill.FullName "agents\openai.yaml"
+        if (-not (Test-Path -LiteralPath $skillFile)) {
+            continue
+        }
+
+        $skillText = Get-Content -LiteralPath $skillFile -Raw
+        $name = Get-MatchValue -Text $skillText -Pattern '^name:\s*(.+)$'
+        $description = Get-MatchValue -Text $skillText -Pattern '^description:\s*(.+)$'
+        $shortDescription = Get-MatchValue -Text $skillText -Pattern '^\s{2}short-description:\s*(.+)$'
+
+        if ([string]::IsNullOrWhiteSpace($name)) {
+            Add-Failure "$($skill.Name) SKILL.md is missing frontmatter name."
+        }
+        elseif ($name -ne $skill.Name) {
+            Add-Failure "$($skill.Name) frontmatter name does not match folder."
+        }
+        if ([string]::IsNullOrWhiteSpace($description)) {
+            Add-Failure "$($skill.Name) SKILL.md is missing frontmatter description."
+        }
+        if ([string]::IsNullOrWhiteSpace($shortDescription)) {
+            Add-Failure "$($skill.Name) SKILL.md is missing metadata.short-description."
+        }
+
+        if (-not (Test-Path -LiteralPath $agentFile)) {
+            Add-Failure "$($skill.Name) is missing agents/openai.yaml."
+            continue
+        }
+
+        $agentText = Get-Content -LiteralPath $agentFile -Raw
+        $displayName = Get-MatchValue -Text $agentText -Pattern '^\s{2}display_name:\s*(.+)$'
+        $agentShortDescription = Get-MatchValue -Text $agentText -Pattern '^\s{2}short_description:\s*(.+)$'
+        $defaultPrompt = Get-MatchValue -Text $agentText -Pattern '^\s{2}default_prompt:\s*(.+)$'
+        if ([string]::IsNullOrWhiteSpace($displayName)) {
+            Add-Failure "$($skill.Name) agents/openai.yaml is missing interface.display_name."
+        }
+        if ([string]::IsNullOrWhiteSpace($agentShortDescription)) {
+            Add-Failure "$($skill.Name) agents/openai.yaml is missing interface.short_description."
+        }
+        if ([string]::IsNullOrWhiteSpace($defaultPrompt)) {
+            Add-Failure "$($skill.Name) agents/openai.yaml is missing interface.default_prompt."
+        }
+    }
+}
+
+function Get-ChangelogSection {
+    param(
+        [string]$Text,
+        [string]$Version
+    )
+
+    $escapedVersion = [regex]::Escape($Version)
+    $match = [regex]::Match($Text, "(?ms)^##\s+$escapedVersion(?:\s+-[^\r\n]*)?\s*\r?\n(?<body>.*?)(?=^##\s+|\z)")
+    if (-not $match.Success) {
+        return $null
+    }
+
+    return $match.Groups["body"].Value
+}
+
+function New-TempDirectory {
+    $base = Join-Path ([System.IO.Path]::GetTempPath()) "csharp-tutor-health"
+    $name = [System.Guid]::NewGuid().ToString("N")
+    $path = Join-Path $base $name
+    New-Item -ItemType Directory -Path $path -Force | Out-Null
+    return $path
+}
+
 if ([string]::IsNullOrWhiteSpace($SourceRoot)) {
     $SourceRoot = Join-Path $PSScriptRoot ".."
 }
@@ -170,6 +260,11 @@ foreach ($skill in $skillFolders) {
 }
 if ($script:Failures.Count -eq 0) {
     Add-Pass "Skill folder structure is consistent."
+}
+
+Test-SkillMetadata -SkillFolders $skillFolders
+if ($script:Failures.Count -eq 0) {
+    Add-Pass "Skill frontmatter and agent metadata are complete."
 }
 
 $versionFile = Join-Path $SourceRoot "VERSION"
@@ -249,6 +344,10 @@ if ((Test-Path -LiteralPath $versionFile) -and (Test-Path -LiteralPath $manifest
         }
         else {
             Add-Pass "CHANGELOG.md contains a section for $version."
+            $releaseSection = Get-ChangelogSection -Text $changelog -Version $version
+            if ($null -ne $releaseSection -and $releaseSection -match '(?im)\bTODO\b') {
+                Add-Failure "CHANGELOG.md section for $version still contains TODO placeholder text."
+            }
         }
     }
 
@@ -356,6 +455,48 @@ if (-not $SkipInstallerDryRun) {
         }
         else {
             Add-Pass "Installer dry run completed."
+        }
+    }
+}
+
+if (-not $SkipInstallerRealRun) {
+    $installer = Join-Path $SourceRoot "scripts\install-csharp-tutor.ps1"
+    if (-not (Test-Path -LiteralPath $installer)) {
+        Add-Failure "Local installer script is missing."
+    }
+    else {
+        $tempDestination = New-TempDirectory
+        try {
+            & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $installer -SourceRoot $SourceRoot -DestinationRoot $tempDestination | Out-Host
+            if ($LASTEXITCODE -ne 0) {
+                Add-Failure "Installer temp install failed."
+            }
+            else {
+                $installed = @(Get-ChildItem -LiteralPath $tempDestination -Directory -Filter "csharp-*" -ErrorAction SilentlyContinue)
+                if ($installed.Count -ne $skillFolders.Count) {
+                    Add-Failure "Installer temp install copied $($installed.Count) skill folder(s), expected $($skillFolders.Count)."
+                }
+            }
+
+            & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $installer -SourceRoot $SourceRoot -DestinationRoot $tempDestination -Uninstall | Out-Host
+            if ($LASTEXITCODE -ne 0) {
+                Add-Failure "Installer temp uninstall failed."
+            }
+            else {
+                $remaining = @(Get-ChildItem -LiteralPath $tempDestination -Directory -Filter "csharp-*" -ErrorAction SilentlyContinue)
+                if ($remaining.Count -ne 0) {
+                    Add-Failure "Installer temp uninstall left $($remaining.Count) csharp-* folder(s)."
+                }
+            }
+
+            if ($script:Failures.Count -eq 0) {
+                Add-Pass "Installer temp install/uninstall completed."
+            }
+        }
+        finally {
+            if (Test-Path -LiteralPath $tempDestination) {
+                Remove-Item -LiteralPath $tempDestination -Recurse -Force -ErrorAction SilentlyContinue
+            }
         }
     }
 }
