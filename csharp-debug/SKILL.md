@@ -25,3 +25,9 @@ Load these csharp-tutor references when useful:
 - `references/response-templates.md`
 
 Give the likely cause, how to confirm it, the smallest fix, and why the fix works.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete debug decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the debug concern.
+- Minimal example: `Console.WriteLine(value is null ? "null" : value);`

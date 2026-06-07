@@ -20,3 +20,9 @@ Load these csharp-tutor references when useful:
 - `references/answer-quality-rules.md`
 
 Preserve behavior unless the user requests behavior changes. Prefer simple, idiomatic C# before adding abstractions or patterns.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete refactor decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the refactor concern.
+- Minimal example: `var total = CalculateSubtotal(items) + CalculateTax(items);`

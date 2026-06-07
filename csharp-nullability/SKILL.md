@@ -24,3 +24,9 @@ Load these csharp-tutor references when useful:
 - `references/source-citation-rules.md`
 
 Default to beginner-friendly explanations that distinguish annotations from runtime validation. Treat `!` as a last-resort warning suppression, not a normal fix. When reviewing code, separate correctness risks from cleanup and migration tips.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete nullability decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the nullability concern.
+- Minimal example: `public required string Email { get; init; }`

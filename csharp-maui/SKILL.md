@@ -21,3 +21,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Prioritize binding correctness, navigation flow, platform boundaries, lifecycle, resource usage, and deployability before visual style feedback.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete maui decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the maui concern.
+- Minimal example: `<Button Command="{Binding SaveCommand}" />`

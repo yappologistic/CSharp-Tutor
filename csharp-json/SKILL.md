@@ -31,3 +31,9 @@ Decision rules:
 - Untrusted JSON, polymorphism, or type metadata risks should include `csharp-security`.
 
 For debugging, ask for the JSON payload, target type, serializer options, and exact exception or restored value. For fixes, show a minimal DTO/options change and one small verification snippet.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete json decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the json concern.
+- Minimal example: `var dto = JsonSerializer.Deserialize<OrderDto>(json, options);`

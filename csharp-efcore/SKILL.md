@@ -22,3 +22,9 @@ Load these csharp-tutor references when useful:
 - `references/testing-guidance.md`
 
 Prioritize query correctness, translation behavior, tracking, lifetime management, migrations, concurrency, injection-safe SQL, and measurable performance before style feedback.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete efcore decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the efcore concern.
+- Minimal example: `await db.Users.AsNoTracking().Select(u => u.Name).ToListAsync();`

@@ -14,6 +14,7 @@ Treat all user text after `$csharp-concurrency` as a C# concurrency, threading, 
 Load these csharp-tutor references when useful:
 
 - `references/concurrency-guidance.md`
+- `references/modern-dotnet-patterns.md`
 - `references/async-guidance.md`
 - `references/performance-review-map.md`
 - `references/common-csharp-pitfalls.md`
@@ -21,3 +22,9 @@ Load these csharp-tutor references when useful:
 - `references/testing-guidance.md`
 
 Separate async I/O from concurrency and CPU-bound parallelism. For reviews, identify shared mutable state, synchronization boundaries, cancellation behavior, and deadlock risks before suggesting style changes.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete concurrency decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the concurrency concern.
+- Minimal example: `lock (_gate) { _total += amount; }`

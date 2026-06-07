@@ -23,3 +23,9 @@ Load these csharp-tutor references when useful:
 - `references/qol-command-ux.md`
 
 Honor `difficulty=easy|medium|hard`, `hint=1|2|3`, `reveal=true|false`, and `next_difficulty=true`. Give the learner the broken code and symptoms first. Do not reveal the fix immediately unless the user asks for it; offer progressive hints, then explain the root cause and corrected code after their attempt.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete debug-lab decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the debug-lab concern.
+- Minimal example: `// Hint: inspect when the sequence is enumerated.`

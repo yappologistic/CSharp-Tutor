@@ -21,3 +21,9 @@ Load these csharp-tutor references when useful:
 - `references/testing-guidance.md`
 
 Start from the concrete smell or variation point. Recommend a pattern only when it reduces real duplication, coupling, branching, construction complexity, or workflow complexity.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete design-patterns decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the design-patterns concern.
+- Minimal example: `IDiscountPolicy policy = new HolidayDiscountPolicy();`

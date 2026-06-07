@@ -22,3 +22,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Prioritize reproducible builds, small runtime images, non-root execution, configuration boundaries, health checks, and deployment validation.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete containers decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the containers concern.
+- Minimal example: `FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime`

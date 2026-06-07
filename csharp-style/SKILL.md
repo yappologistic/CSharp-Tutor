@@ -38,3 +38,9 @@ For reviews, separate:
 3. Optional readability preferences.
 
 Avoid presenting personal taste as correctness. Give concrete before/after examples for naming or formatting feedback.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete style decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the style concern.
+- Minimal example: `private readonly IClock _clock;`

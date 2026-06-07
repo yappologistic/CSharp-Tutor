@@ -19,3 +19,9 @@ Load these csharp-tutor references when useful:
 - Topic-specific references such as `linq-guidance.md`, `async-guidance.md`, `generics-guidance.md`, or `efcore-guidance.md`
 
 Honor `format=compact|table|examples|mistakes|interview` and `depth=quick|normal|deep`. Keep cheat sheets dense but readable: core idea, syntax, examples, common mistakes, and one practice prompt. Cite official docs when the sheet contains version-sensitive claims.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete cheatsheets decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the cheatsheets concern.
+- Minimal example: `Use Any() for existence; use Count when you need the number.`

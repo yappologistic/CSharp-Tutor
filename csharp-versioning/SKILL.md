@@ -20,9 +20,16 @@ Load these csharp-tutor references when useful:
 - `references/aot-guidance.md`
 - `references/project-inspection.md`
 - `references/modernization-map.md`
+- `references/modern-dotnet-patterns.md`
 - `references/containers-guidance.md`
 - `references/source-citation-rules.md`
 - `references/official-sources.md`
 - `references/tooling-and-analyzers.md`
 
 Inspect project files when available before answering compatibility questions. Verify language and framework availability with official Microsoft docs before recommending newer syntax or APIs.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete versioning decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the versioning concern.
+- Minimal example: `<LangVersion>latest</LangVersion>`

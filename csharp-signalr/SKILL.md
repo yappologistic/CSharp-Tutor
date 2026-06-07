@@ -22,3 +22,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Prioritize connection lifetime, message boundaries, auth, backpressure, scale-out assumptions, and observability before style feedback.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete signalr decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the signalr concern.
+- Minimal example: `await Clients.Group(orderId.ToString()).SendAsync("OrderUpdated", update, cancellationToken);`

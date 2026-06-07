@@ -23,3 +23,9 @@ Load these csharp-tutor references when useful:
 - `references/example-quality-rules.md`
 
 Honor `drill=string-parsing|collections|linq|oop-modeling|unit-tests|async|refactoring`, `difficulty=easy|medium|hard`, and `reveal=true|false`. Create runnable, level-appropriate exercises with expected behavior and hints. Do not solve the whole exercise unless asked.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete practice decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the practice concern.
+- Minimal example: `static bool IsEven(int value) => value % 2 == 0;`

@@ -22,3 +22,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Prioritize contract compatibility, deadlines, cancellation, streaming behavior, auth, error mapping, and observability before style feedback.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete grpc decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the grpc concern.
+- Minimal example: `rpc GetOrder (GetOrderRequest) returns (GetOrderReply);`

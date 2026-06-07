@@ -21,3 +21,9 @@ Load these csharp-tutor references when useful:
 - `references/source-citation-rules.md`
 
 Prioritize clear responsibilities, dependency direction, testable boundaries, and incremental refactors. Avoid recommending architecture patterns unless they solve a concrete complexity, coupling, deployment, or scaling problem.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete architecture decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the architecture concern.
+- Minimal example: `public sealed class CreateOrderHandler(IOrderRepository orders)`

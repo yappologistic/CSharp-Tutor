@@ -22,3 +22,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Treat package publishing as compatibility-sensitive. Verify metadata, target frameworks, API surface, generated package contents, and publishing destination before recommending a public push.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete nuget decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the nuget concern.
+- Minimal example: `dotnet pack -c Release`

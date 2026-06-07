@@ -40,3 +40,9 @@ Common help responses:
 - "Is this current?" -> use update guidance and avoid claiming remote state without checking.
 
 If the user is trying to use slash commands, explain that this Codex UI exposes personal entries through Skills in the picker; selecting a focused C# skill such as `C# Review` mirrors the GSD-style workflow.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete help decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the help concern.
+- Minimal example: `@C# Review Review this class for correctness.`

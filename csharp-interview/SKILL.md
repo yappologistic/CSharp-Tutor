@@ -21,3 +21,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Honor `next-question`, `grade-answer`, `show-ideal-answer`, `make-it-harder`, and `make-it-easier`. Ask one question at a time in mock interviews unless the user asks for a full list. After the user answers, evaluate correctness, clarity, depth, and tradeoff awareness, then show a stronger answer.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete interview decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the interview concern.
+- Minimal example: `Explain when IEnumerable<T> execution happens.`

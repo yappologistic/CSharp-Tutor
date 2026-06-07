@@ -22,3 +22,9 @@ Load these csharp-tutor references when useful:
 - `references/source-citation-rules.md`
 
 Honor `contract=naming|nullability|errors|async|compatibility|docs`. Prioritize clear contracts, predictable errors, nullability, cancellation, async shape, compatibility, and caller ergonomics before internal implementation details.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete api-design decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the api-design concern.
+- Minimal example: `Task<Order?> GetOrderAsync(int id, CancellationToken cancellationToken);`

@@ -21,3 +21,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Default to beginner-friendly examples with small collections. Explain deferred execution and repeated enumeration when relevant.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete linq decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the linq concern.
+- Minimal example: `var names = users.Where(u => u.IsActive).Select(u => u.Name).ToList();`

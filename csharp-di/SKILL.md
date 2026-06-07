@@ -14,6 +14,7 @@ Treat all user text after `$csharp-di` as a C# dependency injection, service des
 Load these csharp-tutor references when useful:
 
 - `references/di-guidance.md`
+- `references/modern-dotnet-patterns.md`
 - `references/code-smell-to-refactor.md`
 - `references/oop-guidance.md`
 - `references/framework-guidance.md`
@@ -21,3 +22,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Prioritize lifetime correctness, explicit dependencies, replaceable boundaries, testability, and simple composition. Avoid adding interfaces or factories unless they solve a real coupling, lifetime, or testing problem.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete di decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the di concern.
+- Minimal example: `services.AddScoped<IOrderService, OrderService>();`

@@ -24,3 +24,9 @@ Load these csharp-tutor references when useful:
 - `references/review-output-contracts.md`
 
 Honor `scope=correctness|security|performance|architecture|tests|all` and `format=findings|before-after|checklist|mentor|table` when provided. Report findings first, ordered by correctness, security/future bugs, maintainability/design, performance, modernization, then optional tips.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete review decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the review concern.
+- Minimal example: `if (order is null) return Results.NotFound();`

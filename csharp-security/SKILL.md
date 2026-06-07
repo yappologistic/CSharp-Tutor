@@ -22,3 +22,9 @@ Load these csharp-tutor references when useful:
 - `references/tooling-and-analyzers.md`
 
 Distinguish confirmed vulnerabilities from possible risks. Prefer official Microsoft, OWASP, MITRE CWE, and NuGet guidance for source-backed claims.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete security decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the security concern.
+- Minimal example: `var fullPath = Path.GetFullPath(Path.Combine(root, fileName));`

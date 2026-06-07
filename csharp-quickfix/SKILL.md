@@ -21,3 +21,9 @@ Load these csharp-tutor references when useful:
 - `references/build-guidance.md`
 
 Default to a short answer: likely fix, minimal code or command change, and one-sentence why. If the issue needs logs, runtime state, multiple files, or deeper diagnosis, recommend `$csharp-debug` with a one-line handoff summary.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete quickfix decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the quickfix concern.
+- Minimal example: `using System.Text.Json;`

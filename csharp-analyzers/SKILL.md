@@ -23,3 +23,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Classify each diagnostic before advising: compiler, nullable, correctness, security, performance, maintainability, style, or formatting. Do not recommend making all warnings errors until the project has a clean and sustainable baseline.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete analyzers decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the analyzers concern.
+- Minimal example: `dotnet format --verify-no-changes`

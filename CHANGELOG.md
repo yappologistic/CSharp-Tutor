@@ -12,6 +12,9 @@ This project uses semantic versioning while it remains pre-1.0:
 
 ### Added
 
+- Richer core tutor references with concrete C# examples, triage heuristics, practice exercises, before/after patterns, and good/bad answer comparisons.
+- Modern .NET guidance covering C# 12/13 feature choices, `System.Threading.Channels`, `Microsoft.Extensions.*`, configuration/options, and `HttpClientFactory` patterns.
+- Standalone guidance blocks for focused C# skills with a core rule, an anti-pattern, and a minimal example.
 - Bash `scripts/install-latest.sh` installer for Linux/macOS with dry-run, backup, validation, list, uninstall, ref, and repository options.
 - Cross-platform CI matrix for Windows, Ubuntu, and macOS health checks.
 - `csharp-maui` skill and shared MAUI/XAML guidance.

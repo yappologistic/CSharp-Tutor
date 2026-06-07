@@ -21,3 +21,9 @@ Load these csharp-tutor references when useful:
 - `references/testing-guidance.md`
 
 Explain the type-safety benefit first, then show a small generic method or type. For reviews, check whether generics reduce duplication and improve contracts, or whether a simpler concrete type would be clearer.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete generics decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the generics concern.
+- Minimal example: `where T : notnull`

@@ -25,3 +25,9 @@ Load these csharp-tutor references when useful:
 - `references/versioning-guidance.md`
 
 Honor `summary=quick|full|risks|modernization|tooling`. When a repository or project path is available, run `../csharp-tutor/scripts/inspect_csharp_project.py <path>` first to collect solution, project, target framework, package, analyzer, and configuration clues. Inspect project configuration before giving version-sensitive, package-sensitive, or framework-specific advice.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete project decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the project concern.
+- Minimal example: `<TargetFramework>net8.0</TargetFramework>`

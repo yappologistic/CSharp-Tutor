@@ -20,3 +20,9 @@ Load these csharp-tutor references when useful:
 - `references/exercise-guidance.md`
 
 Explain design decisions in terms of responsibilities, invariants, boundaries, and future change. Avoid pattern-driven overengineering.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete oop decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the oop concern.
+- Minimal example: `public interface IDiscountPolicy { decimal Apply(decimal total); }`

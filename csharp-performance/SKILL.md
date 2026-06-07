@@ -14,6 +14,7 @@ Treat all user text after `$csharp-performance` as the code, query, project, or 
 Load these csharp-tutor references when useful:
 
 - `references/performance-review-map.md`
+- `references/modern-dotnet-patterns.md`
 - `references/aot-guidance.md`
 - `references/tooling-and-analyzers.md`
 - `references/project-inspection.md`
@@ -21,3 +22,9 @@ Load these csharp-tutor references when useful:
 - `references/verification-checklist.md`
 
 Avoid unsupported performance claims. Recommend measurement, profiling, or BenchmarkDotNet when the performance tradeoff is not obvious.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete performance decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the performance concern.
+- Minimal example: `var ids = users.Select(u => u.Id).ToHashSet();`

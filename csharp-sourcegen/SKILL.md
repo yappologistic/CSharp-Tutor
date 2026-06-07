@@ -22,3 +22,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Prefer incremental generators for new work. Prioritize deterministic output, stable diagnostics, small semantic-model usage, testability, and build performance.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete sourcegen decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the sourcegen concern.
+- Minimal example: `context.RegisterSourceOutput(source, Execute);`

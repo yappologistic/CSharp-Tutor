@@ -22,3 +22,9 @@ Load these csharp-tutor references when useful:
 - `references/source-citation-rules.md`
 
 Prioritize component lifecycle, render behavior, state ownership, validation, auth boundaries, JS interop safety, and performance before style feedback.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete blazor decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the blazor concern.
+- Minimal example: `<button @onclick="SaveAsync">Save</button>`

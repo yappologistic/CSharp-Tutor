@@ -2,6 +2,19 @@
 
 Use exercises when the user is learning a concept, asks for practice, or would benefit from applying feedback to their own code.
 
+## Exercise Design Heuristic
+
+Good exercises are small, runnable, and checkable. Include:
+
+1. Task.
+2. Starter code when useful.
+3. Expected behavior.
+4. One hint.
+5. Optional stretch.
+6. Solution only when the user asks or `reveal=true`.
+
+Avoid exercises that require a full project unless the user asks for a project.
+
 ## Drill Hints
 
 Honor `drill=...`:
@@ -13,77 +26,133 @@ Honor `drill=...`:
 - `drill=unit-tests`: arrange/act/assert, edge cases, regression tests.
 - `drill=async`: async I/O, cancellation, exception flow.
 - `drill=refactoring`: preserve behavior while improving structure.
+- `drill=security`: validation, paths, secrets, auth, serialization, logging.
+- `drill=performance`: measurement, allocations, data structures, I/O.
 
-For drills, keep the scope small, provide expected behavior, and avoid giving the full solution unless `reveal=true`.
+## Ready-To-Use Exercises
 
-## Exercise Shape
+### Beginner: String Parsing
 
-Keep exercises small and runnable:
+Task: Write `TryParseAge(string input, out int age)` that accepts whole numbers from 0 to 120.
 
-1. State the task.
-2. Provide starter code only when useful.
-3. Specify expected behavior or output.
-4. Add one hint.
-5. Offer a solution only when the user asks or after they attempt it.
+Starter:
 
-## Exercise Types
-
-### Concept Practice
-
-Use for syntax and language rules.
-
-```text
-Task: Rewrite this `if`/`else` chain as a switch expression.
-Expected behavior: Same output for all listed inputs.
-Hint: Start by matching the exact values, then add the fallback arm.
+```csharp
+static bool TryParseAge(string input, out int age)
+{
+    // Your code here
+}
 ```
 
-### Code Quality Practice
+Expected behavior:
 
-Use for maintainability and clean code.
+- `"42"` returns `true` and `42`.
+- `"-1"`, `"121"`, `"abc"`, and `""` return `false`.
 
-```text
-Task: Split this method into smaller methods with clear names.
-Expected behavior: Existing tests still pass.
-Hint: Extract one responsibility at a time.
+Hint: Use `int.TryParse` first, then range-check the result.
+
+### Intermediate: Collections
+
+Task: Given a list of orders, return the unique customer IDs that have at least one unpaid order.
+
+Starter:
+
+```csharp
+public sealed record Order(int CustomerId, bool IsPaid);
+
+static IReadOnlySet<int> GetCustomersWithUnpaidOrders(IEnumerable<Order> orders)
+{
+    // Your code here
+}
 ```
 
-### OOP Practice
+Expected behavior: duplicate customer IDs appear only once.
 
-Use for encapsulation, interfaces, inheritance, and composition.
+Hint: A `HashSet<int>` communicates uniqueness and gives fast lookups.
 
-```text
-Task: Replace this inheritance-based design with composition.
-Expected behavior: Each behavior can vary independently.
-Hint: Look for the part that changes between subclasses.
+### Intermediate: LINQ Deferred Execution
+
+Task: Fix this method so the expensive query runs only once.
+
+```csharp
+static void PrintLargeOrders(IEnumerable<Order> orders)
+{
+    var large = orders.Where(o => o.Total > 1_000);
+
+    Console.WriteLine($"Found {large.Count()} orders");
+    foreach (var order in large)
+    {
+        Console.WriteLine(order.Id);
+    }
+}
 ```
 
-### Async Practice
+Expected behavior: same output, one enumeration.
 
-Use for `async`/`await`, cancellation, and I/O.
+Hint: Materialize when you need to count and iterate.
 
-```text
-Task: Convert this synchronous file read to an async method with cancellation.
-Expected behavior: The caller can cancel before or during the operation.
-Hint: Pass the `CancellationToken` through every async API that accepts it.
+### Intermediate: Async Cancellation
+
+Task: Add cancellation support to this method.
+
+```csharp
+static async Task<string> DownloadAsync(HttpClient client, string url)
+{
+    return await client.GetStringAsync(url);
+}
 ```
 
-### Security Practice
+Expected behavior: callers can cancel the request.
 
-Use for input validation, paths, SQL, auth, secrets, logging, and serialization.
+Hint: Add a `CancellationToken` parameter and pass it to async APIs that accept it.
 
-```text
+### Review Practice: Security
+
 Task: Make this file-loading method reject path traversal.
-Expected behavior: Inputs outside the allowed directory fail safely.
-Hint: Normalize the path before checking whether it stays under the allowed root.
+
+```csharp
+static string LoadUserFile(string root, string relativePath)
+{
+    var path = Path.Combine(root, relativePath);
+    return File.ReadAllText(path);
+}
 ```
 
-### Modernization Practice
+Expected behavior:
 
-Use for newer C#/.NET features.
+- `"notes.txt"` under the root is allowed.
+- `"../secrets.txt"` is rejected.
+
+Hint: Normalize the full path before checking whether it stays under the allowed root.
+
+### Refactoring Practice
+
+Task: Split this method into smaller methods without changing behavior.
+
+```csharp
+static decimal CalculateInvoiceTotal(IEnumerable<LineItem> items, decimal taxRate)
+{
+    decimal subtotal = 0;
+    foreach (var item in items)
+    {
+        subtotal += item.Quantity * item.UnitPrice;
+    }
+
+    var tax = subtotal * taxRate;
+    return subtotal + tax;
+}
+```
+
+Expected behavior: same total for the same inputs.
+
+Hint: Extract subtotal calculation first.
+
+## Solution Policy
+
+When giving a solution, keep it compact and explain one transferable idea. For example:
 
 ```text
-Task: Convert this immutable DTO class to a record if the target version supports it.
-Expected behavior: The public data shape stays the same, and equality becomes value-based.
-Hint: Check whether any serializer or ORM depends on a parameterless constructor.
+The key move is using TryParse before range checks. That separates "is this a number?" from "is this an allowed age?"
 ```
+
+For learners, ask them to predict one edge case before showing the final answer.

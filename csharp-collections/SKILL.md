@@ -21,3 +21,9 @@ Load these csharp-tutor references when useful:
 - `references/source-citation-rules.md`
 
 Start by identifying the access pattern: ordered iteration, lookup by key, uniqueness, queue behavior, stack behavior, immutability, or read-only exposure. Then recommend the simplest collection that matches the behavior.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete collections decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the collections concern.
+- Minimal example: `var byId = users.ToDictionary(u => u.Id);`

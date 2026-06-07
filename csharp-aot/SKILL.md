@@ -24,3 +24,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Confirm target framework, app type, publish settings, and exact warnings before giving final advice. Treat trim and AOT warnings as design and compatibility feedback until proven otherwise.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete aot decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the aot concern.
+- Minimal example: `<PublishAot>true</PublishAot>`

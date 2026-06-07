@@ -28,3 +28,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Start by classifying the failure: SDK resolution, restore, project configuration, compiler/analyzer, test runner, or CI environment. Ask for or inspect the exact command and error output before recommending broad cleanup.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete build decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the build concern.
+- Minimal example: `dotnet build --no-restore`

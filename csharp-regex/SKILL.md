@@ -21,3 +21,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Ask for sample inputs and expected matches when missing. Prefer readable, bounded patterns with tests and timeouts over clever expressions.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete regex decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the regex concern.
+- Minimal example: `Regex.Match(input, @"^\d{3}-\d{4}$", options, timeout);`

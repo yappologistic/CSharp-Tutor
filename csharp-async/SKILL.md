@@ -15,9 +15,16 @@ Load these csharp-tutor references when useful:
 
 - `references/skill-routing.md`
 - `references/async-guidance.md`
+- `references/modern-dotnet-patterns.md`
 - `references/common-csharp-pitfalls.md`
 - `references/testing-guidance.md`
 - `references/performance-review-map.md`
 - `references/official-sources.md`
 
 Default to beginner-friendly explanations. Explain what `Task`, `async`, and `await` mean before discussing advanced concurrency details unless the user asks for depth.
+
+## Standalone Guidance
+
+- Core rule: Keep async I/O async end-to-end and pass cancellation through the call chain.
+- Avoid: Blocking on tasks with .Result or .Wait().
+- Minimal example: `await service.LoadAsync(id, cancellationToken);`

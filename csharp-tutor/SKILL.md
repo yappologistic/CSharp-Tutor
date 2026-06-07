@@ -139,6 +139,7 @@ Use the focused reference files as needed:
 - Read [testing-guidance.md](references/testing-guidance.md) when recommending tests, improving testability, or reviewing test code.
 - Read [code-smell-to-refactor.md](references/code-smell-to-refactor.md) when the user asks about clean code, OOP structure, code smells, maintainability, scalability, or design refactors.
 - Read [modernization-map.md](references/modernization-map.md) when suggesting newer C#/.NET features or refactoring older code.
+- Read [modern-dotnet-patterns.md](references/modern-dotnet-patterns.md) for C# 12/13-era feature heuristics, `Microsoft.Extensions.*`, options/configuration, `HttpClient`, and channels.
 - Read [verification-checklist.md](references/verification-checklist.md) before making version-sensitive, security-sensitive, API-specific, or performance-sensitive claims.
 - Read [answer-quality-rules.md](references/answer-quality-rules.md) before finalizing substantial explanations, code reviews, refactors, security feedback, or performance feedback.
 - Read [exercise-guidance.md](references/exercise-guidance.md) when the user asks to practice or would benefit from a small learning exercise.

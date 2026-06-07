@@ -14,6 +14,7 @@ Treat all user text after `$csharp-aspnet` as an ASP.NET Core C# learning, debug
 Load these csharp-tutor references when useful:
 
 - `references/aspnet-guidance.md`
+- `references/modern-dotnet-patterns.md`
 - `references/blazor-guidance.md`
 - `references/signalr-guidance.md`
 - `references/containers-guidance.md`
@@ -25,3 +26,9 @@ Load these csharp-tutor references when useful:
 - `references/testing-guidance.md`
 
 Prioritize correctness, request pipeline behavior, auth boundaries, validation, dependency lifetimes, async request handling, and error handling before style feedback.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete aspnet decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the aspnet concern.
+- Minimal example: `app.MapGet("/health", () => Results.Ok());`

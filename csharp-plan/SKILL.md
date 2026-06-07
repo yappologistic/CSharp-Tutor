@@ -21,3 +21,9 @@ Load these csharp-tutor references when useful:
 - `references/code-smell-to-refactor.md`
 
 Produce practical milestones, small projects, checkpoints, and review criteria. Keep the plan aligned to the user's current level.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete plan decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the plan concern.
+- Minimal example: `Week 1: build a console app that parses and validates input.`

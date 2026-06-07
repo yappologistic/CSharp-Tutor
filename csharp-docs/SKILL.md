@@ -21,3 +21,9 @@ Load these csharp-tutor references when useful:
 - Topic-specific references such as `modernization-map.md`, `aspnet-guidance.md`, `efcore-guidance.md`, or `concurrency-guidance.md`
 
 Honor confidence labels: `confidence=docs-verified`, `confidence=inferred`, and `confidence=needs-project-context`. Prefer official Microsoft sources. If official sources cannot be checked in the current environment, explicitly say which parts are general knowledge or inference and what should be verified.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete docs decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the docs concern.
+- Minimal example: `Check Microsoft Learn for the target .NET version.`

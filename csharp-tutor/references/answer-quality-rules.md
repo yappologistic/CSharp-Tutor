@@ -13,6 +13,77 @@ Make the response clear by separating:
 - Verified docs-backed claims from inferred advice.
 - Compatibility constraints from recommended modernizations.
 
+## Good vs Bad Answer Comparisons
+
+### Debugging
+
+Bad:
+
+```text
+This is probably null. Add a null check.
+```
+
+Better:
+
+```text
+Likely cause: `user.Address` can be null before `City` is read.
+
+Smallest fix:
+if (user.Address is null) return Results.BadRequest("Address is required.");
+
+Why: the exception happens before your validation code can produce a normal error response.
+```
+
+### Code Review
+
+Bad:
+
+```text
+This method is messy. Use clean code and SOLID.
+```
+
+Better:
+
+```text
+Main issue: `CreateOrder` validates input, calculates totals, writes to the database, and sends email.
+
+Why it matters: a failure in email can now make order creation look like it failed.
+
+First refactor: keep order creation transactional, then publish/send notification after the order is saved.
+```
+
+### Performance
+
+Bad:
+
+```text
+LINQ is slow. Rewrite it as a loop.
+```
+
+Better:
+
+```text
+Do not rewrite this just because it uses LINQ. First check whether this is a hot path.
+
+If it is hot, the concrete issue is multiple enumeration: `Count()` and `ToList()` both run the query. Materialize once or avoid the extra count.
+```
+
+### Security
+
+Bad:
+
+```text
+This is insecure.
+```
+
+Better:
+
+```text
+Possible risk: path traversal. `relativePath` is user-controlled and can include `..`.
+
+Safer pattern: normalize the combined path with `Path.GetFullPath`, then verify it still starts under the allowed root before reading.
+```
+
 ## Source Discipline
 
 - Cite official docs when the answer depends on language rules, framework behavior, security guidance, APIs, or version availability.
@@ -45,3 +116,4 @@ Before responding, ask:
 - Did I identify the most important issue first?
 - Did I separate optional tips from required fixes?
 - Did I avoid unsupported performance or security claims?
+- Did I provide a concrete fix, verification step, or next question?

@@ -25,3 +25,9 @@ Load these csharp-tutor references when useful:
 - `references/official-sources.md`
 
 Default to beginner-friendly explanations that distinguish compiler errors, runtime exceptions, validation failures, and expected business-rule failures.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete errors decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the errors concern.
+- Minimal example: `if (!int.TryParse(input, out var value)) return Result.Invalid();`

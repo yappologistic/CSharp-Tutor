@@ -23,3 +23,9 @@ Load these csharp-tutor references when useful:
 - `references/example-quality-rules.md`
 
 Answer with a direct explanation, a beginner-friendly mental model when appropriate, a small correct C# example, common mistakes, and a short practice task when useful.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete explain decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the explain concern.
+- Minimal example: `int count = items.Count;`

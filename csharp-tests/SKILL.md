@@ -19,3 +19,9 @@ Load these csharp-tutor references when useful:
 - `references/response-templates.md`
 
 Recommend the smallest useful test level, representative test names or skeletons, and why the test catches the issue.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete tests decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the tests concern.
+- Minimal example: `Assert.Equal("paid", invoice.Status);`

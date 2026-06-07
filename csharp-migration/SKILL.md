@@ -23,3 +23,9 @@ Load these csharp-tutor references when useful:
 - `references/source-citation-rules.md`
 
 Start by identifying source framework, target framework, project type, dependencies, deployment constraints, and test coverage. Prefer staged, reversible migration plans over broad rewrites.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete migration decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the migration concern.
+- Minimal example: `<TargetFramework>net8.0</TargetFramework>`

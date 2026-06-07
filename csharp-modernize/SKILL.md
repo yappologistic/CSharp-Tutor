@@ -14,6 +14,7 @@ Treat all user text after `$csharp-modernize` as the code, project, or feature-m
 Load these csharp-tutor references when useful:
 
 - `references/modernization-map.md`
+- `references/modern-dotnet-patterns.md`
 - `references/migration-guidance.md`
 - `references/nullability-guidance.md`
 - `references/sourcegen-guidance.md`
@@ -25,3 +26,9 @@ Load these csharp-tutor references when useful:
 - `references/testing-guidance.md`
 
 Confirm or infer target C#/.NET version before suggesting newer features. Show before/after code and compatibility tradeoffs.
+
+## Standalone Guidance
+
+- Core rule: Keep the answer centered on the concrete modernize decision, failure mode, or contract.
+- Avoid: Giving generic C# advice without tying it to the modernize concern.
+- Minimal example: `public sealed record CustomerDto(int Id, string Name);`
