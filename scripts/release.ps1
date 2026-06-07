@@ -115,6 +115,20 @@ function Get-ChangelogReleaseNotes {
     return $body
 }
 
+function Get-PowerShellHost {
+    $pwsh = Get-Command pwsh -ErrorAction SilentlyContinue
+    if ($null -ne $pwsh) {
+        return $pwsh.Source
+    }
+
+    $powershell = Get-Command powershell -ErrorAction SilentlyContinue
+    if ($null -ne $powershell) {
+        return $powershell.Source
+    }
+
+    throw "Neither pwsh nor powershell was found."
+}
+
 if ($updateMetadata) {
     Set-Content -LiteralPath $versionFile -Value $Version -Encoding utf8
 
@@ -153,7 +167,8 @@ $tagName = "v$Version"
 
 if (-not $SkipHealthCheck) {
     $health = Join-Path $SourceRoot "scripts\test-csharp-tutor.ps1"
-    & powershell -NoProfile -ExecutionPolicy Bypass -File $health -SourceRoot $SourceRoot
+    $powerShellHost = Get-PowerShellHost
+    & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $health -SourceRoot $SourceRoot
     if ($LASTEXITCODE -ne 0) {
         throw "Health check failed. Release metadata was updated, but tag creation was stopped."
     }

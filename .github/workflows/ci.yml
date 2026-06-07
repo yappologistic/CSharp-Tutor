@@ -10,8 +10,15 @@ on:
 
 jobs:
   validate:
-    name: Validate skill pack
-    runs-on: windows-latest
+    name: Validate skill pack (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - windows-latest
+          - ubuntu-latest
+          - macos-latest
 
     steps:
       - name: Checkout
@@ -33,6 +40,11 @@ jobs:
             $errors | ForEach-Object { Write-Error $_ }
             exit 1
           }
+
+      - name: Check Bash syntax
+        if: runner.os != 'Windows'
+        shell: bash
+        run: bash -n scripts/install-latest.sh
 
       - name: Run repository health check
         shell: pwsh

@@ -51,7 +51,9 @@ Use this map when deciding which skill owns a user request. Prefer the most focu
 | --- | --- | --- |
 | ASP.NET Core APIs | `csharp-aspnet` | `csharp-security`, `csharp-di`, `csharp-tests` |
 | Blazor components and apps | `csharp-blazor` | `csharp-aspnet`, `csharp-security`, `csharp-performance` |
+| .NET MAUI apps | `csharp-maui` | `csharp-architecture`, `csharp-di`, `csharp-performance` |
 | SignalR real-time apps | `csharp-signalr` | `csharp-aspnet`, `csharp-security`, `csharp-logging` |
+| gRPC services and clients | `csharp-grpc` | `csharp-aspnet`, `csharp-api-design`, `csharp-security` |
 | Entity Framework Core | `csharp-efcore` | `csharp-linq`, `csharp-performance`, `csharp-tests` |
 | Dependency injection | `csharp-di` | `csharp-architecture`, `csharp-tests`, `csharp-aspnet` |
 | Project files and target frameworks | `csharp-project` | `csharp-versioning`, `csharp-modernize` |
@@ -76,4 +78,5 @@ Use this map when deciding which skill owns a user request. Prefer the most focu
 | Exercises and practice | `csharp-practice` | `csharp-debug-lab`, `csharp-plan` |
 | Learning plans | `csharp-plan` | `csharp-practice`, `csharp-interview` |
 | Quick references | `csharp-cheatsheets` | `csharp-help`, `csharp-docs` |
+| Mixed-skill requests | `csharp-tutor` | `csharp-help`, `csharp-review`, `csharp-project` |
 | Skill usage help | `csharp-help` | `csharp-tutor`, `SKILLS.md` |

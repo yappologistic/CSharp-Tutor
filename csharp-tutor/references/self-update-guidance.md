@@ -10,6 +10,12 @@ Recommend rerunning the one-command installer:
 irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1 | iex
 ```
 
+On Linux or macOS, recommend the Bash installer:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.sh | bash
+```
+
 This downloads the latest repository archive, backs up existing installed `csharp-*` skill folders by default, validates when the local Codex validator is available, and copies the skills into the Codex skills directory.
 
 ## Safer Checks
@@ -20,16 +26,28 @@ Preview without changing files:
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -DryRun
 ```
 
+```bash
+curl -fsSL https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.sh | bash -s -- --dry-run
+```
+
 List installed C# Tutor skills:
 
 ```powershell
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -ListInstalled
 ```
 
+```bash
+curl -fsSL https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.sh | bash -s -- --list-installed
+```
+
 Install a pinned release:
 
 ```powershell
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -Ref v0.6.0
+```
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.sh | bash -s -- --ref v0.6.0
 ```
 
 ## Response Pattern

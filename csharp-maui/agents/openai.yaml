@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# MAUI"
+  short_description: ".NET MAUI and XAML app help"
+  default_prompt: "Use $csharp-maui for .NET MAUI, XAML, MVVM, binding, Shell navigation, platform code, lifecycle, performance, or packaging questions."

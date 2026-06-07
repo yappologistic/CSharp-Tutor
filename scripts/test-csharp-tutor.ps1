@@ -55,6 +55,9 @@ function Get-QuickValidatorPath {
     if (-not [string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
         $candidates += (Join-Path $env:USERPROFILE ".codex\skills\.system\skill-creator\scripts\quick_validate.py")
     }
+    if (-not [string]::IsNullOrWhiteSpace($env:HOME)) {
+        $candidates += (Join-Path $env:HOME ".codex/skills/.system/skill-creator/scripts/quick_validate.py")
+    }
 
     foreach ($candidate in $candidates) {
         if (Test-Path -LiteralPath $candidate) {
@@ -63,6 +66,31 @@ function Get-QuickValidatorPath {
     }
 
     return $null
+}
+
+function Get-DefaultSkillsRoot {
+    if (-not [string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
+        return Join-Path $env:USERPROFILE ".codex\skills"
+    }
+    if (-not [string]::IsNullOrWhiteSpace($env:HOME)) {
+        return Join-Path $env:HOME ".codex/skills"
+    }
+
+    return ""
+}
+
+function Get-PowerShellHost {
+    $pwsh = Get-Command pwsh -ErrorAction SilentlyContinue
+    if ($null -ne $pwsh) {
+        return $pwsh.Source
+    }
+
+    $powershell = Get-Command powershell -ErrorAction SilentlyContinue
+    if ($null -ne $powershell) {
+        return $powershell.Source
+    }
+
+    throw "Neither pwsh nor powershell was found."
 }
 
 function Get-MarkdownLinks {
@@ -101,11 +129,10 @@ if ([string]::IsNullOrWhiteSpace($SourceRoot)) {
     $SourceRoot = Join-Path $PSScriptRoot ".."
 }
 $SourceRoot = (Resolve-Path -LiteralPath $SourceRoot).Path
+$powerShellHost = Get-PowerShellHost
 
 if ([string]::IsNullOrWhiteSpace($DestinationRoot)) {
-    if (-not [string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
-        $DestinationRoot = Join-Path $env:USERPROFILE ".codex\skills"
-    }
+    $DestinationRoot = Get-DefaultSkillsRoot
 }
 
 Write-Host "C# Tutor health check"
@@ -230,7 +257,7 @@ if ((Test-Path -LiteralPath $versionFile) -and (Test-Path -LiteralPath $manifest
         Add-Failure "Skill catalog generator is missing."
     }
     elseif (Test-Path -LiteralPath $catalogFile) {
-        & powershell -NoProfile -ExecutionPolicy Bypass -File $catalogGenerator -SourceRoot $SourceRoot -Check | Out-Host
+        & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $catalogGenerator -SourceRoot $SourceRoot -Check | Out-Host
         if ($LASTEXITCODE -ne 0) {
             Add-Failure "SKILLS.md is stale."
         }
@@ -267,7 +294,7 @@ if ((Test-Path -LiteralPath $versionFile) -and (Test-Path -LiteralPath $manifest
         Add-Failure "Maintenance dashboard script is missing."
     }
     else {
-        & powershell -NoProfile -ExecutionPolicy Bypass -File $dashboard -SourceRoot $SourceRoot -Check | Out-Host
+        & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $dashboard -SourceRoot $SourceRoot -Check | Out-Host
         if ($LASTEXITCODE -ne 0) {
             Add-Failure "Maintenance dashboard check failed."
         }
@@ -323,7 +350,7 @@ if (-not $SkipInstallerDryRun) {
         Add-Failure "Local installer script is missing."
     }
     else {
-        & powershell -NoProfile -ExecutionPolicy Bypass -File $installer -SourceRoot $SourceRoot -DestinationRoot $DestinationRoot -DryRun | Out-Host
+        & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $installer -SourceRoot $SourceRoot -DestinationRoot $DestinationRoot -DryRun | Out-Host
         if ($LASTEXITCODE -ne 0) {
             Add-Failure "Installer dry run failed."
         }

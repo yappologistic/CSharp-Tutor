@@ -10,7 +10,18 @@ This project uses semantic versioning while it remains pre-1.0:
 
 ## Unreleased
 
-- No unreleased changes yet.
+### Added
+
+- Bash `scripts/install-latest.sh` installer for Linux/macOS with dry-run, backup, validation, list, uninstall, ref, and repository options.
+- Cross-platform CI matrix for Windows, Ubuntu, and macOS health checks.
+- `csharp-maui` skill and shared MAUI/XAML guidance.
+- `csharp-grpc` skill and shared .NET gRPC guidance.
+- Cross-skill composition guidance for mixed requests spanning multiple focused skills.
+
+### Changed
+
+- Thickened `csharp-help`, `csharp-style`, and `csharp-json` with skill-specific decision rules and response guidance.
+- PowerShell maintenance scripts now resolve `pwsh` on non-Windows systems and use `$HOME` as a default skills root when `$USERPROFILE` is unavailable.
 
 ## 0.6.0 - 2026-06-06
 

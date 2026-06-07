@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# gRPC"
+  short_description: "gRPC services and clients in .NET"
+  default_prompt: "Use $csharp-grpc for .NET gRPC services, clients, proto contracts, streaming, deadlines, auth, errors, testing, or diagnostics."

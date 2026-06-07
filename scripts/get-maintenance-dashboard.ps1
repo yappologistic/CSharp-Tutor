@@ -57,9 +57,24 @@ function Get-FrontmatterValue {
     return ""
 }
 
+function Get-PowerShellHost {
+    $pwsh = Get-Command pwsh -ErrorAction SilentlyContinue
+    if ($null -ne $pwsh) {
+        return $pwsh.Source
+    }
+
+    $powershell = Get-Command powershell -ErrorAction SilentlyContinue
+    if ($null -ne $powershell) {
+        return $powershell.Source
+    }
+
+    throw "Neither pwsh nor powershell was found."
+}
+
 $versionFile = Join-Path $SourceRoot "VERSION"
 $manifestFile = Join-Path $SourceRoot "csharp-tutor-manifest.json"
 $referenceRoot = Join-Path $SourceRoot "csharp-tutor\references"
+$powerShellHost = Get-PowerShellHost
 
 if (-not (Test-Path -LiteralPath $versionFile)) {
     Add-CheckFailure "VERSION is missing."
@@ -103,6 +118,7 @@ $requiredArtifacts = @(
     ".github\pull_request_template.md",
     ".github\workflows\ci.yml",
     "scripts\generate-skills-catalog.ps1",
+    "scripts\install-latest.sh",
     "scripts\test-csharp-tutor.ps1"
 )
 
@@ -123,7 +139,7 @@ if (Test-File -RelativePath "CHANGELOG.md") {
 $catalogCurrent = $false
 $catalogGenerator = Join-Path $SourceRoot "scripts\generate-skills-catalog.ps1"
 if (Test-Path -LiteralPath $catalogGenerator) {
-    & powershell -NoProfile -ExecutionPolicy Bypass -File $catalogGenerator -SourceRoot $SourceRoot -Check *> $null
+    & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $catalogGenerator -SourceRoot $SourceRoot -Check *> $null
     $catalogCurrent = ($LASTEXITCODE -eq 0)
     if (-not $catalogCurrent) {
         Add-CheckFailure "SKILLS.md is stale."

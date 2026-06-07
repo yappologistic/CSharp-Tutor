@@ -85,6 +85,9 @@ function Get-QuickValidatorPath {
     if (-not [string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
         $candidates += (Join-Path $env:USERPROFILE ".codex\skills\.system\skill-creator\scripts\quick_validate.py")
     }
+    if (-not [string]::IsNullOrWhiteSpace($env:HOME)) {
+        $candidates += (Join-Path $env:HOME ".codex/skills/.system/skill-creator/scripts/quick_validate.py")
+    }
 
     foreach ($candidate in $candidates) {
         if (Test-Path -LiteralPath $candidate) {
@@ -93,6 +96,17 @@ function Get-QuickValidatorPath {
     }
 
     return $null
+}
+
+function Get-DefaultSkillsRoot {
+    if (-not [string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
+        return Join-Path $env:USERPROFILE ".codex\skills"
+    }
+    if (-not [string]::IsNullOrWhiteSpace($env:HOME)) {
+        return Join-Path $env:HOME ".codex/skills"
+    }
+
+    throw "Neither USERPROFILE nor HOME is set. Pass -DestinationRoot explicitly."
 }
 
 function Get-PackageVersion {
@@ -176,10 +190,7 @@ function Invoke-SkillValidation {
 }
 
 if ([string]::IsNullOrWhiteSpace($DestinationRoot)) {
-    if ([string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
-        throw "USERPROFILE is not set. Pass -DestinationRoot explicitly."
-    }
-    $DestinationRoot = Join-Path $env:USERPROFILE ".codex\skills"
+    $DestinationRoot = Get-DefaultSkillsRoot
 }
 $DestinationRoot = Resolve-RootPath -Path $DestinationRoot -Fallback $DestinationRoot
 

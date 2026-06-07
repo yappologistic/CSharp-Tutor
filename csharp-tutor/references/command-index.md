@@ -39,7 +39,9 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 - `csharp-errors` / `C# Errors`: Exceptions, guard clauses, validation, result patterns, compiler errors, runtime exceptions, and safer failure handling.
 - `csharp-aspnet` / `C# ASP.NET`: ASP.NET Core controllers, minimal APIs, middleware, routing, validation, auth, dependency injection, web APIs, and web app review.
 - `csharp-blazor` / `C# Blazor`: Blazor components, lifecycle, state management, rendering modes, forms, validation, JS interop, auth, and performance.
+- `csharp-maui` / `C# MAUI`: .NET MAUI, XAML, MVVM, binding, Shell navigation, platform-specific code, lifecycle, resources, packaging, and deployment.
 - `csharp-signalr` / `C# SignalR`: SignalR hubs, clients, groups, users, reconnects, auth, streaming, scale-out, and diagnostics.
+- `csharp-grpc` / `C# gRPC`: gRPC services, clients, proto contracts, streaming, deadlines, cancellation, auth, error mapping, compatibility, and diagnostics.
 - `csharp-efcore` / `C# EF Core`: Entity Framework Core DbContext, entities, migrations, LINQ queries, tracking, relationships, raw SQL, and data-access performance.
 - `csharp-di` / `C# DI`: .NET dependency injection, service lifetimes, constructor injection, scopes, factories, options, testability, and dependency boundaries.
 - `csharp-generics` / `C# Generics`: Generic classes, methods, interfaces, constraints, variance, type-safe reusable APIs, and generic compiler errors.
@@ -93,5 +95,7 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 @C# Cheatsheets Make me a compact async/await cheat sheet.
 @C# Project Inspect D:\MyApp\MyApp.csproj and tell me what target framework it uses.
 @C# Blazor Review this component lifecycle and state management.
+@C# MAUI Review this XAML binding and Shell navigation flow.
 @C# SignalR Review this hub for auth, groups, reconnects, and scale-out.
+@C# gRPC Review this proto contract and service for compatibility and deadlines.
 ```

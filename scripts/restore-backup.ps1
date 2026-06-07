@@ -36,10 +36,15 @@ if (-not (Test-Path -LiteralPath $BackupPath)) {
 $BackupPath = (Resolve-Path -LiteralPath $BackupPath).Path
 
 if ([string]::IsNullOrWhiteSpace($DestinationRoot)) {
-    if ([string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
-        throw "USERPROFILE is not set. Pass -DestinationRoot explicitly."
+    if (-not [string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
+        $DestinationRoot = Join-Path $env:USERPROFILE ".codex\skills"
     }
-    $DestinationRoot = Join-Path $env:USERPROFILE ".codex\skills"
+    elseif (-not [string]::IsNullOrWhiteSpace($env:HOME)) {
+        $DestinationRoot = Join-Path $env:HOME ".codex/skills"
+    }
+    else {
+        throw "Neither USERPROFILE nor HOME is set. Pass -DestinationRoot explicitly."
+    }
 }
 
 $skills = @(Get-ChildItem -LiteralPath $BackupPath -Directory -Filter "csharp-*" | Sort-Object Name)

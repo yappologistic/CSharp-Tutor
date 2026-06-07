@@ -13,6 +13,7 @@ Treat all user text after `$csharp-json` as the C# JSON, serialization, deserial
 
 Load these csharp-tutor references when useful:
 
+- `references/cross-skill-composition.md`
 - `references/json-guidance.md`
 - `references/sourcegen-guidance.md`
 - `references/official-sources.md`
@@ -21,3 +22,12 @@ Load these csharp-tutor references when useful:
 - `references/testing-guidance.md`
 
 Explain serialization with small examples and show how to inspect restored values. Warn about null results, untrusted input, and mixing persistence with domain logic.
+
+Decision rules:
+
+- DTO shape, naming, enum, date, decimal, and options issues stay in `csharp-json`.
+- ASP.NET Core request/response behavior should use `csharp-aspnet` as a supporting lens.
+- AOT, trimming, or `JsonSerializerContext` questions should use `csharp-sourcegen` or `csharp-aot` as supporting lenses.
+- Untrusted JSON, polymorphism, or type metadata risks should include `csharp-security`.
+
+For debugging, ask for the JSON payload, target type, serializer options, and exact exception or restored value. For fixes, show a minimal DTO/options change and one small verification snippet.

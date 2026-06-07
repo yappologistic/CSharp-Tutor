@@ -20,7 +20,8 @@ The project is built around one main skill, `csharp-tutor`, plus focused compani
 
 - Codex with local skill support.
 - Python 3 if you want to run validation or the C# project inspection helper.
-- PowerShell if you want to use the install/update helper script.
+- PowerShell if you want to use the Windows install/update helper script.
+- Bash, curl, and unzip if you want to use the Linux/macOS install/update helper script.
 - Git if you want to clone, version, or contribute to this repository.
 
 ## Installation
@@ -32,6 +33,18 @@ irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/
 ```
 
 That command downloads the latest repository archive, backs up existing installed `csharp-*` skill folders, validates the source skills when Codex's validator is available, and copies the skills into your Codex skills directory.
+
+On Linux or macOS, use the Bash installer:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.sh | bash
+```
+
+Preview the Bash install without copying files:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.sh | bash -s -- --dry-run
+```
 
 To preview the install without copying files:
 
@@ -187,11 +200,13 @@ Focused companion skills:
 - `csharp-errors`: Exceptions, validation, and failure handling.
 - `csharp-explain`: Concept explanations.
 - `csharp-generics`: Generic types, methods, constraints, and variance.
+- `csharp-grpc`: gRPC services, clients, proto contracts, streaming, deadlines, auth, and diagnostics.
 - `csharp-help`: Concise usage help.
 - `csharp-interview`: Mock interviews and answer review.
 - `csharp-json`: JSON serialization and persistence.
 - `csharp-linq`: LINQ and deferred execution.
 - `csharp-logging`: `ILogger`, structured logging, scopes, and safe logs.
+- `csharp-maui`: .NET MAUI, XAML, MVVM, binding, navigation, platform code, and packaging.
 - `csharp-migration`: .NET Framework, .NET Core, and modern .NET migration planning.
 - `csharp-modernize`: Version-aware modernization.
 - `csharp-nullability`: Nullable reference types and null-safety.
@@ -224,6 +239,7 @@ D:\CSharp-Tutor
 ├── scripts
 │   ├── install-csharp-tutor.ps1
 │   ├── install-latest.ps1
+│   ├── install-latest.sh
 │   ├── release.ps1
 │   ├── restore-backup.ps1
 │   └── test-csharp-tutor.ps1

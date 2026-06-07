@@ -15,6 +15,7 @@ Read these csharp-tutor references when useful:
 - `references/dollar-command-recipes.md`
 - `references/command-index.md`
 - `references/self-update-guidance.md`
+- `references/cross-skill-composition.md`
 
 For normal help requests, present a concise guide:
 
@@ -27,5 +28,15 @@ For normal help requests, present a concise guide:
 Show the full command index only when the user asks for the full list.
 
 When the user asks whether C# Tutor is up to date, how to update, how to reinstall, or how to check installed skills, read `references/self-update-guidance.md` and give the update, dry-run, and list-installed commands.
+
+When a request spans several areas, recommend one primary skill plus supporting checks instead of listing every possible skill. Use `references/cross-skill-composition.md` for examples such as EF Core + async + performance or ASP.NET Core + security + logging.
+
+Common help responses:
+
+- "Which skill should I use?" -> name one best skill, one-line reason, and one example prompt.
+- "Show everything" -> summarize categories first, then show the full command index.
+- "I have code but do not know what is wrong" -> suggest `csharp-review` for broad review or `csharp-debug` for failing behavior.
+- "I just want the smallest fix" -> suggest `csharp-quickfix`.
+- "Is this current?" -> use update guidance and avoid claiming remote state without checking.
 
 If the user is trying to use slash commands, explain that this Codex UI exposes personal entries through Skills in the picker; selecting a focused C# skill such as `C# Review` mirrors the GSD-style workflow.

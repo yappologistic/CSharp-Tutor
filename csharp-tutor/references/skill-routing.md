@@ -44,7 +44,9 @@ Default to beginner-friendly explanations unless the user asks for advanced dept
 - Use `csharp-errors` for exceptions, guard clauses, validation, result patterns, and error-handling design.
 - Use `csharp-aspnet` for ASP.NET Core controllers, minimal APIs, middleware, routing, validation, auth, DI, and web APIs.
 - Use `csharp-blazor` for Blazor components, lifecycle, state, rendering modes, forms, validation, JS interop, auth, and performance.
+- Use `csharp-maui` for .NET MAUI, XAML, MVVM, binding, Shell navigation, platform-specific code, lifecycle, resources, packaging, and deployment.
 - Use `csharp-signalr` for SignalR hubs, clients, groups, users, connection lifetime, reconnection, auth, scale-out, streaming, and diagnostics.
+- Use `csharp-grpc` for .NET gRPC services, clients, proto contracts, streaming, deadlines, cancellation, auth, error mapping, compatibility, and diagnostics.
 - Use `csharp-efcore` for Entity Framework Core, DbContext, migrations, LINQ translation, tracking, relationships, and data access.
 - Use `csharp-di` for dependency injection, service lifetimes, scopes, factories, options, testability, and dependency boundaries.
 - Use `csharp-generics` for generic classes, methods, interfaces, constraints, variance, type parameters, and type-safe reusable APIs.
@@ -61,4 +63,4 @@ Default to beginner-friendly explanations unless the user asks for advanced dept
 
 ## Source and Verification
 
-Use the main `csharp-tutor` references for detailed behavior. Use `compiler-error-library.md` for compiler/runtime diagnostic triage and `code-smell-to-refactor.md` for maintainability/refactor guidance. Verify official C#/.NET behavior with Microsoft documentation when the answer depends on language rules, APIs, versions, security, performance, or production architecture. Use `docs-grounding.md` and `source-citation-rules.md` when citations or explicit uncertainty would improve trust. Use `qol-command-ux.md` to interpret aliases, depth, format, and reveal hints.
+Use the main `csharp-tutor` references for detailed behavior. Use `cross-skill-composition.md` when the request spans multiple focused skills but one answer should cover the combined problem. Use `compiler-error-library.md` for compiler/runtime diagnostic triage and `code-smell-to-refactor.md` for maintainability/refactor guidance. Verify official C#/.NET behavior with Microsoft documentation when the answer depends on language rules, APIs, versions, security, performance, or production architecture. Use `docs-grounding.md` and `source-citation-rules.md` when citations or explicit uncertainty would improve trust. Use `qol-command-ux.md` to interpret aliases, depth, format, and reveal hints.

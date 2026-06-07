@@ -71,6 +71,9 @@ function Get-QuickValidatorPath {
     if (-not [string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
         $candidates += (Join-Path $env:USERPROFILE ".codex\skills\.system\skill-creator\scripts\quick_validate.py")
     }
+    if (-not [string]::IsNullOrWhiteSpace($env:HOME)) {
+        $candidates += (Join-Path $env:HOME ".codex/skills/.system/skill-creator/scripts/quick_validate.py")
+    }
 
     foreach ($candidate in $candidates) {
         if (Test-Path -LiteralPath $candidate) {
@@ -79,6 +82,31 @@ function Get-QuickValidatorPath {
     }
 
     return $null
+}
+
+function Get-DefaultSkillsRoot {
+    if (-not [string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
+        return Join-Path $env:USERPROFILE ".codex\skills"
+    }
+    if (-not [string]::IsNullOrWhiteSpace($env:HOME)) {
+        return Join-Path $env:HOME ".codex/skills"
+    }
+
+    throw "Neither USERPROFILE nor HOME is set. Pass -DestinationRoot explicitly."
+}
+
+function Get-PowerShellHost {
+    $pwsh = Get-Command pwsh -ErrorAction SilentlyContinue
+    if ($null -ne $pwsh) {
+        return $pwsh.Source
+    }
+
+    $powershell = Get-Command powershell -ErrorAction SilentlyContinue
+    if ($null -ne $powershell) {
+        return $powershell.Source
+    }
+
+    throw "Neither pwsh nor powershell was found."
 }
 
 function New-TempInstallRoot {
@@ -99,10 +127,7 @@ function Get-ArchiveUrl {
 }
 
 if ([string]::IsNullOrWhiteSpace($DestinationRoot)) {
-    if ([string]::IsNullOrWhiteSpace($env:USERPROFILE)) {
-        throw "USERPROFILE is not set. Pass -DestinationRoot explicitly."
-    }
-    $DestinationRoot = Join-Path $env:USERPROFILE ".codex\skills"
+    $DestinationRoot = Get-DefaultSkillsRoot
 }
 
 if ([string]::IsNullOrWhiteSpace($Ref)) {
@@ -110,6 +135,7 @@ if ([string]::IsNullOrWhiteSpace($Ref)) {
 }
 
 $archiveUrl = Get-ArchiveUrl -Repository $Repository -Ref $Ref
+$powerShellHost = Get-PowerShellHost
 $tempRoot = New-TempInstallRoot
 $zipPath = Join-Path $tempRoot "source.zip"
 $extractRoot = Join-Path $tempRoot "source"
@@ -174,7 +200,7 @@ try {
 
     Write-Host "Running installer from downloaded package"
     Write-Host "C# Tutor version: $packageVersion"
-    & powershell -NoProfile -ExecutionPolicy Bypass -File $installer @installerArgs
+    & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $installer @installerArgs
     if ($LASTEXITCODE -ne 0) {
         throw "Installer failed with exit code $LASTEXITCODE."
     }

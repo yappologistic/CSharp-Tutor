@@ -8,10 +8,20 @@ Use this guide when the one-command installer or local install helper does not b
 irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1 | iex
 ```
 
+Linux/macOS:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.sh | bash
+```
+
 Preview without copying:
 
 ```powershell
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -DryRun
+```
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.sh | bash -s -- --dry-run
 ```
 
 ## PowerShell Blocks Script Execution
@@ -66,6 +76,8 @@ Use:
 .\scripts\install-csharp-tutor.ps1 -Backup
 ```
 
+On Linux/macOS, the Bash installer skips validation when the Codex validator is not present unless validation is explicitly available.
+
 ## Skills Do Not Appear In Codex
 
 After install:
@@ -81,6 +93,12 @@ After install:
 
 ```text
 %USERPROFILE%\.codex\skills
+```
+
+On Linux/macOS, the default is:
+
+```text
+~/.codex/skills
 ```
 
 ## Custom Skills Directory

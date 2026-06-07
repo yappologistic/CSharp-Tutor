@@ -48,8 +48,10 @@ Use these prompts as lightweight behavior examples when maintaining the skill pa
 - `csharp-design-patterns`: `$csharp-design-patterns help me decide whether Strategy or a simple switch is better for this pricing logic.`
 - `csharp-efcore`: `$csharp-efcore review this query for N+1 problems, tracking behavior, and projection opportunities.`
 - `csharp-di`: `$csharp-di explain the correct lifetime for these services and how to test them.`
+- `csharp-grpc`: `$csharp-grpc review this proto and service implementation for compatibility, deadlines, cancellation, and error mapping.`
 - `csharp-json`: `$csharp-json help me configure System.Text.Json for this DTO without breaking compatibility.`
 - `csharp-logging`: `$csharp-logging review this ILogger usage for structured logging, exception handling, scopes, and secret leakage.`
+- `csharp-maui`: `$csharp-maui review this XAML binding and Shell navigation flow for lifecycle and platform issues.`
 - `csharp-nuget`: `$csharp-nuget review this .csproj package metadata and suggest a safe local package testing flow before publishing.`
 - `csharp-signalr`: `$csharp-signalr review this hub for auth, groups, reconnect behavior, and scale-out assumptions.`
 - `csharp-sourcegen`: `$csharp-sourcegen review this incremental generator pipeline for diagnostics, caching, and testability.`

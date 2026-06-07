@@ -24,6 +24,7 @@ Look for high-leverage tips and neat improvements in the user's code, but separa
 Act as the orchestrator for the C# skill family. Before answering, decide whether the request is better handled by a focused skill. Read [skill-routing.md](references/skill-routing.md) when the best route is not obvious.
 
 Use `csharp-tutor` directly when the prompt is broad, mixed, exploratory, beginner-level, or asks for general C# help. Recommend a focused skill when one topic clearly dominates and the focused skill would give a better response.
+Read [cross-skill-composition.md](references/cross-skill-composition.md) when a request spans two or three focused skills and one answer should combine them.
 
 Decision tree:
 
@@ -63,7 +64,9 @@ Decision tree:
 5. Frameworks, deployment, and production concerns:
    - ASP.NET Core -> `$csharp-aspnet`
    - Blazor -> `$csharp-blazor`
+   - MAUI/XAML -> `$csharp-maui`
    - SignalR -> `$csharp-signalr`
+   - gRPC -> `$csharp-grpc`
    - EF Core -> `$csharp-efcore`
    - Dependency injection -> `$csharp-di`
    - JSON serialization -> `$csharp-json`
@@ -92,6 +95,7 @@ Use the focused reference files as needed:
 - Read [qol-command-ux.md](references/qol-command-ux.md) when the user provides aliases such as `q`, `quiz`, `fix`, `docs`, `lab`, `cs`, depth hints, format hints, scope hints, difficulty hints, confidence labels, `pasteable=true`, `reveal=false`, or asks for help.
 - Read [learner-levels.md](references/learner-levels.md) when the user's skill level is unclear or the explanation needs to be tuned.
 - Read [skill-routing.md](references/skill-routing.md) when selecting among focused C# skills or applying beginner-first defaults.
+- Read [cross-skill-composition.md](references/cross-skill-composition.md) when combining a primary skill with one or two supporting skill lenses.
 - Read [source-citation-rules.md](references/source-citation-rules.md) when official citations or explicit uncertainty would improve answer trust.
 - Read [docs-grounding.md](references/docs-grounding.md) when the user asks for official-doc-backed answers, citations, or version-sensitive/API-specific accuracy.
 - Read [official-docs-map.md](references/official-docs-map.md) when selecting official source links for common topics.
@@ -109,7 +113,9 @@ Use the focused reference files as needed:
 - Read [framework-guidance.md](references/framework-guidance.md) after identifying ASP.NET Core, EF Core, desktop, library/API, console, or tooling code.
 - Read [aspnet-guidance.md](references/aspnet-guidance.md) for ASP.NET Core controllers, minimal APIs, middleware, routing, model binding, validation, auth, web API design, and web security or performance.
 - Read [blazor-guidance.md](references/blazor-guidance.md) for Blazor components, lifecycle, state, rendering modes, forms, validation, JS interop, auth, and performance.
+- Read [maui-guidance.md](references/maui-guidance.md) for .NET MAUI, XAML, MVVM, data binding, commands, Shell navigation, platform-specific code, lifecycle, resources, packaging, and deployment.
 - Read [signalr-guidance.md](references/signalr-guidance.md) for SignalR hubs, clients, groups, users, connection lifetime, reconnection, auth, scale-out, streaming, and diagnostics.
+- Read [grpc-guidance.md](references/grpc-guidance.md) for .NET gRPC services, clients, proto contracts, streaming, deadlines, cancellation, auth, error mapping, compatibility, and diagnostics.
 - Read [efcore-guidance.md](references/efcore-guidance.md) for Entity Framework Core queries, DbContext lifetime, migrations, tracking, projections, concurrency, raw SQL, and data-access performance.
 - Read [di-guidance.md](references/di-guidance.md) for dependency injection lifetimes, service registration, constructor injection, factories, options, testability, and dependency boundaries.
 - Read [generics-guidance.md](references/generics-guidance.md) for generic classes, methods, interfaces, type parameters, constraints, variance, type-safe APIs, and generic design or compiler errors.
@@ -166,7 +172,9 @@ Use the focused reference files as needed:
    - NativeAOT, trimming, linker warning, or publish compatibility question
    - Docker, container image, compose, Kubernetes, or deployment packaging question
    - Blazor component, state, lifecycle, rendering, forms, auth, interop, or performance question
+   - MAUI, XAML, MVVM, binding, Shell navigation, platform code, lifecycle, or packaging question
    - SignalR hub, client, groups, reconnection, auth, streaming, or scale-out question
+   - gRPC service, client, proto contract, streaming, deadline, cancellation, auth, or status-code question
    - Regex pattern, replacement, timeout, escaping, or performance question
    - Source generator, incremental generator, generated code, diagnostic, or generator test question
    - .NET Framework, .NET Core, or modern .NET migration plan
