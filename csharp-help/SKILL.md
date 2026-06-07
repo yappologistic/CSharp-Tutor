@@ -14,6 +14,7 @@ Read these csharp-tutor references when useful:
 - `references/qol-command-ux.md`
 - `references/dollar-command-recipes.md`
 - `references/command-index.md`
+- `references/skill-router.md`
 - `references/self-update-guidance.md`
 - `references/cross-skill-composition.md`
 
@@ -33,7 +34,7 @@ When a request spans several areas, recommend one primary skill plus supporting 
 
 Common help responses:
 
-- "Which skill should I use?" -> name one best skill, one-line reason, and one example prompt.
+- "Which skill should I use?" -> read `references/skill-router.md`, name one best skill, give a one-line reason, and include one example prompt.
 - "Show everything" -> summarize categories first, then show the full command index.
 - "I have code but do not know what is wrong" -> suggest `csharp-review` for broad review or `csharp-debug` for failing behavior.
 - "I just want the smallest fix" -> suggest `csharp-quickfix`.

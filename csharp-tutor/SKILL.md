@@ -21,7 +21,7 @@ Look for high-leverage tips and neat improvements in the user's code, but separa
 
 ## Orchestrator Routing
 
-Act as the orchestrator for the C# skill family. Before answering, decide whether the request is better handled by a focused skill. Read [skill-routing.md](references/skill-routing.md) when the best route is not obvious.
+Act as the orchestrator for the C# skill family. Before answering, decide whether the request is better handled by a focused skill. Read [skill-router.md](references/skill-router.md) when the user intent, pasted diagnostic, or keyword route is not obvious. Read [skill-routing.md](references/skill-routing.md) for the concise skill-family rule list.
 
 Use `csharp-tutor` directly when the prompt is broad, mixed, exploratory, beginner-level, or asks for general C# help. Recommend a focused skill when one topic clearly dominates and the focused skill would give a better response.
 Read [cross-skill-composition.md](references/cross-skill-composition.md) when a request spans two or three focused skills and one answer should combine them.
@@ -94,7 +94,8 @@ Use the focused reference files as needed:
 - Read [dollar-command-recipes.md](references/dollar-command-recipes.md) when the user explicitly invokes `$csharp-tutor`, asks what the `$` command can do, or provides mode/focus/level/target hints.
 - Read [qol-command-ux.md](references/qol-command-ux.md) when the user provides aliases such as `q`, `quiz`, `fix`, `docs`, `lab`, `cs`, depth hints, format hints, scope hints, difficulty hints, confidence labels, `pasteable=true`, `reveal=false`, or asks for help.
 - Read [learner-levels.md](references/learner-levels.md) when the user's skill level is unclear or the explanation needs to be tuned.
-- Read [skill-routing.md](references/skill-routing.md) when selecting among focused C# skills or applying beginner-first defaults.
+- Read [skill-router.md](references/skill-router.md) when selecting among focused C# skills from natural-language intent, keywords, pasted diagnostics, ambiguous "fix/improve" prompts, or beginner-first defaults.
+- Read [skill-routing.md](references/skill-routing.md) when you need the concise skill-family rule list after the intent route is known.
 - Read [cross-skill-composition.md](references/cross-skill-composition.md) when combining a primary skill with one or two supporting skill lenses.
 - Read [source-citation-rules.md](references/source-citation-rules.md) when official citations or explicit uncertainty would improve answer trust.
 - Read [docs-grounding.md](references/docs-grounding.md) when the user asks for official-doc-backed answers, citations, or version-sensitive/API-specific accuracy.

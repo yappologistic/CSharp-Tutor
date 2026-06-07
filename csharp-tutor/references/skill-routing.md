@@ -2,6 +2,8 @@
 
 Use this shared routing guide from every C# Tutor companion skill.
 
+For user-facing discovery from natural phrases, pasted diagnostics, and intent keywords, read [skill-router.md](skill-router.md). This file remains the concise skill-family routing rule list; `skill-router.md` is the broader decision table for users who do not know which skill to invoke.
+
 ## Beginner-First Default
 
 Default to beginner-friendly explanations unless the user asks for advanced depth or the code clearly requires production-level analysis.
