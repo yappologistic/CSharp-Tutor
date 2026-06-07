@@ -98,6 +98,7 @@ Do not require strict syntax. Treat hints as optional routing context, not a for
 | `practice` | User wants exercises, mini projects, or a learning assignment | `exercise-guidance.md`, `mini-projects.md`, `learner-levels.md` |
 | `mini-project` | User wants scenario-based projects, milestones, portfolio practice, or practical assignments | `mini-projects.md`, `exercise-guidance.md`, `learner-levels.md` |
 | `plan` | User wants a study path or project roadmap | `learner-levels.md`, `exercise-guidance.md`, `mini-projects.md`, `framework-guidance.md` when relevant |
+| `style` | User asks about naming, formatting, idiomatic C#, `.editorconfig`, or style/readability conventions | `style-guidance.md`, `analyzers-guidance.md`, `tooling-and-analyzers.md`, `official-sources.md` when facts matter |
 
 ## Focus Hints
 

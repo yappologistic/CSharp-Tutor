@@ -4,7 +4,7 @@ Current version: `0.6.0`
 
 C# Tutor is a Codex skill collection for developers learning C# and improving C#/.NET code. It gives Codex focused instructions for docs-grounded explanations, code review, debugging help, refactoring guidance, architecture feedback, practice exercises, and project inspection.
 
-The project is built around one main skill, `csharp-tutor`, plus focused companion skills such as `csharp-review`, `csharp-debug`, `csharp-async`, `csharp-oop`, `csharp-performance`, and `csharp-security`.
+The project is built around one main skill, `csharp-tutor`, plus focused companion skills such as `csharp-debug`, `csharp-async`, `csharp-oop`, `csharp-performance`, and `csharp-security`. Broad review, docs-grounded, and style-only requests are handled as `csharp-tutor` modes rather than separate wrapper skills.
 
 ## What This Project Does
 
@@ -33,6 +33,7 @@ irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/
 ```
 
 That command downloads the latest repository archive, backs up existing installed `csharp-*` skill folders, validates the source skills when Codex's validator is available, and copies the skills into your Codex skills directory.
+When a release retires wrapper skills, the installer removes the retired package-owned folders listed in `csharp-tutor-manifest.json` after backing them up unless backup is disabled.
 
 On Linux or macOS, use the Bash installer:
 
@@ -104,7 +105,6 @@ After installing or copying the folders, restart Codex or start a new thread if 
 After installation, the Codex skill picker should show entries such as:
 
 - `C# Tutor`
-- `Csharp Review`
 - `Csharp Debug`
 - `Csharp Project`
 - `Csharp Async`
@@ -116,7 +116,7 @@ You can also type skill triggers in a prompt, for example:
 
 ```text
 $csharp-tutor explain async and await in C#
-$csharp-review review this class for clean code and maintainability
+$csharp-tutor mode=review review this class for clean code and maintainability
 $csharp-debug help me understand this compiler error
 ```
 
@@ -134,7 +134,7 @@ $csharp-tutor make me a 4-week plan for learning ASP.NET Core
 Use focused skills when you know the type of help you want:
 
 ```text
-$csharp-review review this service class for maintainability
+$csharp-tutor mode=review review this service class for maintainability
 $csharp-refactor improve this code using clean code principles
 $csharp-debug explain why this NullReferenceException is happening
 $csharp-async check this async code for cancellation and deadlock risks
@@ -195,7 +195,6 @@ Focused companion skills:
 - `csharp-debug-lab`: Diagnosis-first debugging exercises.
 - `csharp-design-patterns`: Pattern selection without overengineering.
 - `csharp-di`: Dependency injection.
-- `csharp-docs`: Official-doc-grounded C# and .NET answers.
 - `csharp-efcore`: Entity Framework Core.
 - `csharp-errors`: Exceptions, validation, and failure handling.
 - `csharp-explain`: Concept explanations.
@@ -219,11 +218,9 @@ Focused companion skills:
 - `csharp-quickfix`: Smallest fix for one C# error, warning, or exception.
 - `csharp-regex`: Regex patterns, escaping, captures, replacements, timeouts, and performance.
 - `csharp-refactor`: Clean code and design-focused refactoring.
-- `csharp-review`: Code review and quality feedback.
 - `csharp-security`: Secure coding review.
 - `csharp-signalr`: SignalR hubs, clients, groups, reconnects, auth, streaming, and scale-out.
 - `csharp-sourcegen`: Source generators, incremental generators, diagnostics, testing, and AOT-friendly generation.
-- `csharp-style`: Naming, formatting, analyzers, and style.
 - `csharp-tests`: Test design and testability.
 - `csharp-versioning`: C# and .NET compatibility checks.
 
@@ -280,7 +277,15 @@ Run the full repository health check:
 .\scripts\test-csharp-tutor.ps1
 ```
 
-The health check validates skill structure, manifest consistency, README drift, markdown links, reference targets, skill validation, and installer dry-run behavior.
+The health check validates skill structure, manifest consistency, README drift, markdown links, reference targets, golden output-quality prompts, skill validation, and installer dry-run behavior.
+
+Run only the output-quality golden prompt check:
+
+```powershell
+.\scripts\test-output-quality.ps1
+```
+
+To score captured model answers, save them as `tests\answers\<case-id>.md` and rerun the same script. The check validates required key points and forbidden claims, while `tests\golden-qa.json` keeps the human review rubric beside each representative prompt.
 
 Regenerate the checked-in skill catalog after changing skill frontmatter or the manifest:
 
@@ -372,7 +377,7 @@ External resources can be used when helpful, but official documentation should b
 
 When changing or adding a skill:
 
-1. Keep focused skills small and route shared behavior through `csharp-tutor/references`.
+1. Keep focused skills small and route shared behavior through `csharp-tutor/references`. If a focused skill only repeats a `csharp-tutor` mode with no independent guidance, prefer a `csharp-tutor mode=...` entry instead of a standalone skill.
 2. Prefer official Microsoft documentation for technical claims. Use `csharp-tutor/references/official-docs-map.md` for common canonical links.
 3. Validate every changed skill before committing.
 4. Avoid committing local paths, private project names, secrets, tokens, credentials, or machine-specific configuration.

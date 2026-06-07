@@ -173,6 +173,24 @@ function Get-PackageVersion {
     return "unknown"
 }
 
+function Get-RetiredSkillNames {
+    param([string]$Root)
+
+    $manifestFile = Join-Path $Root "csharp-tutor-manifest.json"
+    if (-not (Test-Path -LiteralPath $manifestFile)) {
+        return @()
+    }
+
+    try {
+        $manifest = Get-Content -LiteralPath $manifestFile -Raw | ConvertFrom-Json
+        return @($manifest.retiredSkills | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | Sort-Object -Unique)
+    }
+    catch {
+        Write-Warning "Could not read retired skills from manifest: $manifestFile"
+        return @()
+    }
+}
+
 function Get-InstalledSkillFolders {
     param([string]$SkillsRoot)
 
@@ -248,6 +266,7 @@ if ($ListInstalled) {
 $repoRoot = Resolve-RootPath -Path $SourceRoot -Fallback (Join-Path $PSScriptRoot "..") -MustExist
 $packageVersion = Get-PackageVersion -Root $repoRoot
 $sourceSkillFolders = @(Get-ChildItem -LiteralPath $repoRoot -Directory -Filter "csharp-*" | Sort-Object Name)
+$retiredSkillNames = @(Get-RetiredSkillNames -Root $repoRoot)
 
 if ($sourceSkillFolders.Count -eq 0) {
     throw "No csharp-* skill folders found under $repoRoot"
@@ -294,6 +313,15 @@ if ($Uninstall) {
 
 if ($DryRun) {
     Write-Host "Dry run only. No files will be copied."
+    foreach ($skillName in $retiredSkillNames) {
+        $target = Join-Path $DestinationRoot $skillName
+        if (Test-Path -LiteralPath $target) {
+            if ($Backup) {
+                Write-Host "Would back up retired $target"
+            }
+            Write-Host "Would remove retired $target"
+        }
+    }
     foreach ($skill in $sourceSkillFolders) {
         $target = Join-Path $DestinationRoot $skill.Name
         if (Test-Path -LiteralPath $target) {
@@ -316,6 +344,22 @@ if (-not (Test-Path -LiteralPath $DestinationRoot)) {
 }
 
 $backupRoot = if ($Backup) { New-BackupRoot -SkillsRoot $DestinationRoot } else { $null }
+
+foreach ($skillName in $retiredSkillNames) {
+    $target = Join-Path $DestinationRoot $skillName
+    if (-not (Test-Path -LiteralPath $target)) {
+        continue
+    }
+
+    $existing = Get-Item -LiteralPath $target
+    if ($Backup) {
+        Backup-SkillFolder -Skill $existing -BackupRoot $backupRoot
+    }
+
+    if ($PSCmdlet.ShouldProcess($target, "Remove retired C# Tutor skill")) {
+        Remove-Item -LiteralPath $target -Recurse -Force
+    }
+}
 
 foreach ($skill in $sourceSkillFolders) {
     $target = Join-Path $DestinationRoot $skill.Name

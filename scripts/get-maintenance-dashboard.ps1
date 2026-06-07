@@ -113,12 +113,15 @@ $requiredArtifacts = @(
     "TOPICS.md",
     "EXAMPLE-PROMPTS.md",
     "KNOWN-LIMITATIONS.md",
+    "tests\golden-qa.json",
+    "tests\README.md",
     ".github\ISSUE_TEMPLATE\bug_report.md",
     ".github\ISSUE_TEMPLATE\feature_request.md",
     ".github\pull_request_template.md",
     ".github\workflows\ci.yml",
     "scripts\generate-skills-catalog.ps1",
     "scripts\install-latest.sh",
+    "scripts\test-output-quality.ps1",
     "scripts\test-csharp-tutor.ps1"
 )
 

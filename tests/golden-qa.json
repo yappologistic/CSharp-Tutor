@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "description": "Golden C# Tutor prompts used for manual or semi-automatic output quality validation. The health check validates this file structurally; scripts/test-output-quality.ps1 can also score captured answers from tests/answers/<id>.md.",
+  "cases": [
+    {
+      "id": "beginner-linq-deferred-execution",
+      "mode": "explain",
+      "prompt": "$csharp-tutor mode=explain level=beginner topic=\"LINQ deferred execution\"",
+      "expectedKeyPoints": [
+        {
+          "label": "Explains that many LINQ queries are not executed until enumeration",
+          "mustIncludeAny": ["deferred execution", "runs when", "executed when", "enumerated"]
+        },
+        {
+          "label": "Names common enumeration triggers",
+          "mustIncludeAny": ["foreach", "ToList", "ToArray", "Count", "First"]
+        },
+        {
+          "label": "Warns about repeated enumeration or changed source data",
+          "mustIncludeAny": ["repeated enumeration", "runs twice", "source changes", "enumerate twice"]
+        },
+        {
+          "label": "Includes a small C# example",
+          "mustIncludeAny": ["IEnumerable", "Where", "Select", "ToList"]
+        }
+      ],
+      "mustAvoidAny": ["LINQ always executes immediately", "query syntax is required"],
+      "rubric": [
+        "Starts with the direct mental model before advanced caveats.",
+        "Keeps the example small enough for a beginner to run.",
+        "Connects the example back to the pitfall."
+      ],
+      "minScore": 4
+    },
+    {
+      "id": "review-bank-account-oop",
+      "mode": "review",
+      "prompt": "$csharp-tutor mode=review focus=\"OOP, clean code\" level=beginner. Review a BankAccount class with public Balance setter, Withdraw allowing negative amounts, and no tests.",
+      "expectedKeyPoints": [
+        {
+          "label": "Leads with correctness or safety findings",
+          "mustIncludeAny": ["correctness", "bug", "invalid", "negative"]
+        },
+        {
+          "label": "Identifies weak encapsulation around balance",
+          "mustIncludeAny": ["encapsulation", "private set", "private setter", "public setter"]
+        },
+        {
+          "label": "Recommends validation for deposits or withdrawals",
+          "mustIncludeAny": ["validate", "guard", "throw", "amount must be positive"]
+        },
+        {
+          "label": "Mentions tests for boundary behavior",
+          "mustIncludeAny": ["test", "unit test", "boundary", "negative amount"]
+        }
+      ],
+      "mustAvoidAny": ["use a repository pattern", "microservice", "event sourcing"],
+      "rubric": [
+        "Separates required fixes from optional style tips.",
+        "Avoids overengineering a beginner exercise.",
+        "Shows a concrete refactor direction without rewriting unrelated code."
+      ],
+      "minScore": 4
+    },
+    {
+      "id": "async-result-deadlock-risk",
+      "mode": "async",
+      "prompt": "$csharp-async review this ASP.NET Core service method that calls httpClient.GetStringAsync(url).Result inside a request handler.",
+      "expectedKeyPoints": [
+        {
+          "label": "Identifies sync-over-async blocking",
+          "mustIncludeAny": ["sync-over-async", "blocking", ".Result", "GetAwaiter().GetResult"]
+        },
+        {
+          "label": "Recommends async all the way",
+          "mustIncludeAny": ["async all the way", "await", "Task", "async"]
+        },
+        {
+          "label": "Mentions scalability or thread-pool impact",
+          "mustIncludeAny": ["thread pool", "scalability", "throughput", "blocked thread"]
+        },
+        {
+          "label": "Mentions cancellation when relevant",
+          "mustIncludeAny": ["CancellationToken", "cancellation"]
+        }
+      ],
+      "mustAvoidAny": ["always use Task.Run", "deadlock is guaranteed"],
+      "rubric": [
+        "Does not overclaim that every ASP.NET Core .Result call deadlocks.",
+        "Shows a minimal awaited version.",
+        "Explains why the change improves correctness or scalability."
+      ],
+      "minScore": 4
+    },
+    {
+      "id": "security-path-traversal",
+      "mode": "security",
+      "prompt": "$csharp-security review an ASP.NET Core endpoint that reads a file using Path.Combine(root, userProvidedFileName).",
+      "expectedKeyPoints": [
+        {
+          "label": "Identifies possible path traversal",
+          "mustIncludeAny": ["path traversal", "directory traversal", "untrusted path", "user-provided"]
+        },
+        {
+          "label": "Recommends canonical path validation or allow-listing",
+          "mustIncludeAny": ["GetFullPath", "allow-list", "allowlist", "canonical"]
+        },
+        {
+          "label": "Checks the resolved path stays under the root",
+          "mustIncludeAny": ["starts with", "under the root", "base directory", "root"]
+        },
+        {
+          "label": "Avoids claiming exploitability without context",
+          "mustIncludeAny": ["possible risk", "depends", "context", "if"]
+        }
+      ],
+      "mustAvoidAny": ["just strip ..", "safe because Path.Combine"],
+      "rubric": [
+        "Explains the failure mode without exaggeration.",
+        "Provides a safer C# pattern.",
+        "Mentions tests for traversal inputs."
+      ],
+      "minScore": 4
+    },
+    {
+      "id": "docs-records-vs-classes",
+      "mode": "docs",
+      "prompt": "$csharp-tutor mode=docs explain records vs classes and cite official Microsoft docs.",
+      "expectedKeyPoints": [
+        {
+          "label": "Distinguishes reference type classes from record behavior",
+          "mustIncludeAny": ["class", "record", "reference type", "value equality"]
+        },
+        {
+          "label": "Mentions generated value equality or nondestructive mutation",
+          "mustIncludeAny": ["value equality", "with expression", "nondestructive mutation"]
+        },
+        {
+          "label": "Separates language facts from design guidance",
+          "mustIncludeAny": ["use records", "use classes", "design", "mutable"]
+        },
+        {
+          "label": "Includes official Microsoft source intent",
+          "mustIncludeAny": ["Microsoft", "official", "Learn", "docs"]
+        }
+      ],
+      "mustAvoidAny": ["records are always immutable", "classes cannot be compared"],
+      "rubric": [
+        "Cites or explicitly calls for official documentation.",
+        "Does not flatten records into DTO-only guidance.",
+        "Includes a concise example only if it clarifies the rule."
+      ],
+      "minScore": 4
+    },
+    {
+      "id": "efcore-include-to-dto",
+      "mode": "efcore",
+      "prompt": "$csharp-efcore review a query that uses Include to load entities and then maps them to DTOs for a read-only API response.",
+      "expectedKeyPoints": [
+        {
+          "label": "Distinguishes entity loading from projection",
+          "mustIncludeAny": ["projection", "Select", "DTO", "Include"]
+        },
+        {
+          "label": "Mentions tracking behavior for read-only queries",
+          "mustIncludeAny": ["AsNoTracking", "tracking", "read-only"]
+        },
+        {
+          "label": "Suggests inspecting generated SQL or measuring",
+          "mustIncludeAny": ["generated SQL", "ToQueryString", "measure", "benchmark"]
+        },
+        {
+          "label": "Avoids unsupported performance certainty",
+          "mustIncludeAny": ["may", "can", "depends", "often"]
+        }
+      ],
+      "mustAvoidAny": ["Include is always bad", "projection is always faster"],
+      "rubric": [
+        "Keeps LINQ-to-Entities translation in mind.",
+        "Explains why projection can reduce loaded data.",
+        "Avoids absolute performance claims without evidence."
+      ],
+      "minScore": 4
+    }
+  ]
+}

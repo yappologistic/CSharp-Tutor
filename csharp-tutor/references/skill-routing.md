@@ -17,7 +17,7 @@ Default to beginner-friendly explanations unless the user asks for advanced dept
 ## Routing Rules
 
 - Use `csharp-explain` for concepts and syntax.
-- Use `csharp-review` for general code feedback.
+- Use `csharp-tutor mode=review` for general code feedback.
 - Use `csharp-refactor` for structure, responsibilities, and clean code.
 - Use `csharp-modernize` for newer C#/.NET features.
 - Use `csharp-migration` for .NET Framework to modern .NET migrations, target framework upgrades, SDK-style conversion, package compatibility, and staged migration plans.
@@ -36,7 +36,7 @@ Default to beginner-friendly explanations unless the user asks for advanced dept
 - Use `csharp-project` for `.csproj`, `.sln`, package, and repo inspection.
 - Use `csharp-practice` for exercises and assignments.
 - Use `csharp-plan` for learning paths and project roadmaps.
-- Use `csharp-style` for naming, formatting, `.editorconfig`, and idiomatic style.
+- Use `csharp-tutor mode=style` for naming, formatting, `.editorconfig`, and idiomatic style.
 - Use `csharp-oop` for classes, interfaces, inheritance, composition, SOLID, and patterns.
 - Use `csharp-json` for serialization, deserialization, DTOs, records, and JSON persistence.
 - Use `csharp-regex` for C# regular expressions, escaping, captures, replacement, validation, timeouts, and backtracking risks.
@@ -58,7 +58,7 @@ Default to beginner-friendly explanations unless the user asks for advanced dept
 - Use `csharp-interview` for mock interviews, coding drills, concept questions, answer review, and C#/.NET interview study plans.
 - Use `csharp-versioning` for C# language versions, .NET target frameworks, SDK defaults, `LangVersion`, package compatibility, trimming, AOT, modernization readiness, and feature availability.
 - Use `csharp-design-patterns` for strategy, factory, decorator, adapter, mediator, repository, unit of work, observer, command, pattern selection, and deciding when not to use patterns.
-- Use `csharp-docs` for official-doc-grounded C#/.NET explanations, citations, language rules, API behavior, framework behavior, security guidance, and compatibility.
+- Use `csharp-tutor mode=docs` or `csharp-tutor explain-with-docs` for official-doc-grounded C#/.NET explanations, citations, language rules, API behavior, framework behavior, security guidance, and compatibility.
 - Use `csharp-debug-lab` for broken snippets, diagnosis-first debugging exercises, progressive hints, compiler errors, runtime exceptions, LINQ bugs, async bugs, nullability issues, and reveal-after-attempt solutions.
 - Use `csharp-api-design` for public API design, method signatures, naming, nullability, exceptions, result types, cancellation, async APIs, DTOs, versioning, XML docs, and package surfaces.
 - Use `csharp-cheatsheets` for compact C# topic summaries, syntax refreshers, quick references, and interview review sheets.

@@ -1,4 +1,0 @@
-interface:
-  display_name: "C# Style"
-  short_description: "C# naming, formatting, and style"
-  default_prompt: "Use $csharp-style to explain or review C# naming, formatting, and idiomatic style."

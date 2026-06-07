@@ -13,9 +13,9 @@ Use these prompts as lightweight behavior examples when maintaining the skill pa
 
 ## Review And Refactoring
 
-- `csharp-review`: `$csharp-review review this service class for correctness, maintainability, tests, and performance risks.`
+- `csharp-tutor`: `$csharp-tutor mode=review review this service class for correctness, maintainability, tests, and performance risks.`
 - `csharp-refactor`: `$csharp-refactor improve this method without changing behavior; explain the tradeoffs before the final version.`
-- `csharp-style`: `$csharp-style review this class for naming, formatting, nullable warnings, and analyzer-friendly cleanup.`
+- `csharp-tutor`: `$csharp-tutor mode=style review this class for naming, formatting, nullable warnings, and analyzer-friendly cleanup.`
 - `csharp-modernize`: `$csharp-modernize suggest safe C# 12/.NET 8 improvements for this older codebase.`
 
 ## Debugging And Errors
@@ -62,7 +62,7 @@ Use these prompts as lightweight behavior examples when maintaining the skill pa
 - `csharp-performance`: `$csharp-performance review this hot path for allocations and measurement strategy.`
 - `csharp-security`: `$csharp-security review this controller for untrusted input, auth, secrets, and logging risks.`
 - `csharp-tests`: `$csharp-tests help me design unit tests and edge cases for this parser.`
-- `csharp-docs`: `$csharp-docs answer this C# language-version question using official Microsoft sources.`
+- `csharp-tutor`: `$csharp-tutor mode=docs answer this C# language-version question using official Microsoft sources.`
 - `csharp-cheatsheets`: `$csharp-cheatsheets make a compact async/await cheat sheet for interview review.`
 - `csharp-practice`: `$csharp-practice create three exercises about interfaces, from beginner to intermediate.`
 - `csharp-plan`: `$csharp-plan make a 4-week plan for learning ASP.NET Core after basic C#.`

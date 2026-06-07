@@ -36,14 +36,14 @@ Common help responses:
 
 - "Which skill should I use?" -> read `references/skill-router.md`, name one best skill, give a one-line reason, and include one example prompt.
 - "Show everything" -> summarize categories first, then show the full command index.
-- "I have code but do not know what is wrong" -> suggest `csharp-review` for broad review or `csharp-debug` for failing behavior.
+- "I have code but do not know what is wrong" -> suggest `csharp-tutor mode=review` for broad review or `csharp-debug` for failing behavior.
 - "I just want the smallest fix" -> suggest `csharp-quickfix`.
 - "Is this current?" -> use update guidance and avoid claiming remote state without checking.
 
-If the user is trying to use slash commands, explain that this Codex UI exposes personal entries through Skills in the picker; selecting a focused C# skill such as `C# Review` mirrors the GSD-style workflow.
+If the user is trying to use slash commands, explain that this Codex UI exposes personal entries through Skills in the picker; selecting `C# Tutor` with a mode hint such as `mode=review` mirrors the GSD-style workflow.
 
 ## Standalone Guidance
 
 - Core rule: Keep the answer centered on the concrete help decision, failure mode, or contract.
 - Avoid: Giving generic C# advice without tying it to the help concern.
-- Minimal example: `@C# Review Review this class for correctness.`
+- Minimal example: `@C# Tutor mode=review Review this class for correctness.`

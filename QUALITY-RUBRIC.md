@@ -43,6 +43,8 @@ Use this checklist when creating or revising C# Tutor skills, shared references,
 ## Skill Maintenance
 
 - Keep focused skills thin and route shared behavior through `csharp-tutor/references`.
+- Do not keep a standalone focused skill when it only restates a `csharp-tutor` mode and has no independent workflow, domain guidance, or resource-loading value.
 - Add example prompts when adding a new skill.
+- Add or update `tests/golden-qa.json` when changing answer behavior for explanations, reviews, debugging, security, performance, docs-grounded answers, or learning exercises.
 - Update `TOPICS.md`, `SKILLS.md`, `README.md`, and `csharp-tutor-manifest.json` when skill coverage changes.
 - Run `.\scripts\test-csharp-tutor.ps1` before committing.

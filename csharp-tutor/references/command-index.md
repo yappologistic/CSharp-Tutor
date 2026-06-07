@@ -10,7 +10,6 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 
 - `csharp-help` / `C# Help`: Show this command index and examples.
 - `csharp-explain` / `C# Explain`: Explain C#/.NET concepts with examples.
-- `csharp-review` / `C# Review`: Review snippets, files, projects, or codebases.
 - `csharp-refactor` / `C# Refactor`: Improve OOP, clean code, responsibilities, and maintainability.
 - `csharp-modernize` / `C# Modernize`: Use newer C#/.NET features when compatible.
 - `csharp-nullability` / `C# Nullability`: Nullable reference types, null-safety, nullable warnings, and null contracts.
@@ -29,7 +28,6 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 - `csharp-quickfix` / `C# Quickfix`: Smallest likely fix for one compiler error, exception, warning, or small failing snippet.
 - `csharp-practice` / `C# Practice`: Create exercises, assignments, drills, and small projects.
 - `csharp-plan` / `C# Plan`: Create learning paths, study plans, and project roadmaps.
-- `csharp-style` / `C# Style`: Naming conventions, formatting, `.editorconfig`, analyzers, and idiomatic C# style.
 - `csharp-oop` / `C# OOP`: Classes, interfaces, inheritance, composition, encapsulation, SOLID, and patterns.
 - `csharp-json` / `C# JSON`: Serialization/deserialization, `System.Text.Json`, DTOs, records, persistence, and common JSON issues.
 - `csharp-regex` / `C# Regex`: Regex patterns, escaping, captures, replacements, validation, performance, timeouts, and source-generated regex.
@@ -51,7 +49,6 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 - `csharp-interview` / `C# Interview`: Mock interviews, coding drills, concept questions, answer review, and C#/.NET interview study plans.
 - `csharp-versioning` / `C# Versioning`: C# language versions, .NET target frameworks, SDK defaults, `LangVersion`, package compatibility, trimming, AOT, and modernization readiness.
 - `csharp-design-patterns` / `C# Design Patterns`: Strategy, factory, decorator, adapter, mediator, repository, unit of work, observer, command, and when not to use patterns.
-- `csharp-docs` / `C# Docs`: Docs-grounded C# and .NET explanations with official-source preference, citations, and explicit uncertainty for version-sensitive claims.
 - `csharp-debug-lab` / `C# Debug Lab`: Broken snippets, compiler errors, runtime exceptions, LINQ bugs, async bugs, nullability issues, hints, and diagnosis-first debugging practice.
 - `csharp-api-design` / `C# API Design`: Public API surfaces, method signatures, naming, nullability, exceptions, result types, cancellation, async APIs, DTOs, versioning, XML docs, and packaging.
 - `csharp-cheatsheets` / `C# Cheatsheets`: Compact C# topic cheat sheets for LINQ, async, OOP, generics, collections, exceptions, testing, ASP.NET Core, EF Core, DI, patterns, and concurrency.
@@ -60,8 +57,8 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 
 ```text
 @C# Explain What is an interface?
-@C# Review Review this bank account class for OOP and clean code.
-@C# Style What naming conventions should I use in C#?
+@C# Tutor mode=review Review this bank account class for OOP and clean code.
+@C# Tutor mode=style What naming conventions should I use in C#?
 @C# OOP Help me design classes for a console bank app.
 @C# JSON Teach me serialization and deserialization with System.Text.Json.
 @C# Async Why is using .Result risky?
@@ -89,7 +86,7 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 @C# Regex Write a C# regex for these sample inputs and include tests.
 @C# SourceGen Review this incremental source generator pipeline.
 @C# Design Patterns Should this conditional logic become a strategy pattern?
-@C# Docs Explain records vs classes using official docs.
+@C# Tutor mode=docs Explain records vs classes using official docs.
 @C# Debug Lab Give me a LINQ debugging exercise and let me diagnose it.
 @C# API Design Review this library method signature for public use.
 @C# Cheatsheets Make me a compact async/await cheat sheet.

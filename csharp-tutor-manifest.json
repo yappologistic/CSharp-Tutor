@@ -21,7 +21,6 @@
     "csharp-debug-lab",
     "csharp-design-patterns",
     "csharp-di",
-    "csharp-docs",
     "csharp-efcore",
     "csharp-errors",
     "csharp-explain",
@@ -45,14 +44,17 @@
     "csharp-quickfix",
     "csharp-regex",
     "csharp-refactor",
-    "csharp-review",
     "csharp-security",
     "csharp-signalr",
     "csharp-sourcegen",
-    "csharp-style",
     "csharp-tests",
     "csharp-tutor",
     "csharp-versioning"
+  ],
+  "retiredSkills": [
+    "csharp-docs",
+    "csharp-review",
+    "csharp-style"
   ],
   "install": {
     "defaultDestination": "%USERPROFILE%\\.codex\\skills",

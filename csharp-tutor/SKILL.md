@@ -35,7 +35,7 @@ Decision tree:
    - Interview prep -> `$csharp-interview`
    - Compact reference -> `$csharp-cheatsheets`
 2. Code quality work:
-   - General review -> `$csharp-review`
+   - General review -> `$csharp-tutor mode=review`
    - Refactor or clean code -> `$csharp-refactor`
    - OOP/SOLID/design -> `$csharp-oop`
    - Architecture -> `$csharp-architecture`
@@ -76,7 +76,7 @@ Decision tree:
    - NuGet packaging -> `$csharp-nuget`
    - Docker/containerization -> `$csharp-containers`
    - NativeAOT/trimming/publish constraints -> `$csharp-aot`
-   - Official-doc-backed answer -> `$csharp-docs`
+   - Official-doc-backed answer -> `$csharp-tutor mode=docs` or `$csharp-tutor explain-with-docs`
 
 When recommending a focused skill, start with this exact structure:
 

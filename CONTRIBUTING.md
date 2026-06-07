@@ -26,11 +26,13 @@ Regenerate the skill catalog after changing a skill description, package version
 
 1. Keep each focused `csharp-*` skill small.
 2. Put reusable teaching, review, debugging, or versioning behavior in `csharp-tutor/references`.
-3. Add the skill folder name to `csharp-tutor-manifest.json`.
-4. Keep `SKILL.md` frontmatter `name` exactly aligned with the folder name.
-5. Add or update example prompts in `EXAMPLE-PROMPTS.md`.
-6. Run `.\scripts\generate-skills-catalog.ps1`.
-7. Run `.\scripts\test-csharp-tutor.ps1`.
+3. If the request is only a routing alias for an existing `csharp-tutor` mode, update the mode docs instead of adding a standalone skill folder.
+4. Add the skill folder name to `csharp-tutor-manifest.json`.
+5. Keep `SKILL.md` frontmatter `name` exactly aligned with the folder name.
+6. Add or update example prompts in `EXAMPLE-PROMPTS.md`.
+7. Add or update golden quality cases in `tests/golden-qa.json` when answer behavior changes.
+8. Run `.\scripts\generate-skills-catalog.ps1`.
+9. Run `.\scripts\test-csharp-tutor.ps1`.
 
 ## Skill Quality Bar
 
@@ -40,6 +42,7 @@ Regenerate the skill catalog after changing a skill description, package version
 - Separate required fixes from optional quality-of-life tips.
 - Use official Microsoft documentation for version-sensitive, API-specific, security-sensitive, or performance-sensitive claims.
 - For code review skills, lead with findings ordered by severity before general suggestions.
+- Use `.\scripts\test-output-quality.ps1` to validate golden prompt definitions and score captured answers when available.
 
 ## Release Process
 

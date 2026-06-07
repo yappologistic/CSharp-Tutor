@@ -253,6 +253,7 @@ $catalogFile = Join-Path $SourceRoot "SKILLS.md"
 $promptExamplesFile = Join-Path $SourceRoot "EXAMPLE-PROMPTS.md"
 $topicsFile = Join-Path $SourceRoot "TOPICS.md"
 $limitationsFile = Join-Path $SourceRoot "KNOWN-LIMITATIONS.md"
+$qualityTestScript = Join-Path $SourceRoot "scripts\test-output-quality.ps1"
 
 if (-not (Test-Path -LiteralPath $versionFile)) {
     Add-Failure "VERSION file is missing."
@@ -274,6 +275,9 @@ if (-not (Test-Path -LiteralPath $topicsFile)) {
 }
 if (-not (Test-Path -LiteralPath $limitationsFile)) {
     Add-Failure "KNOWN-LIMITATIONS.md is missing."
+}
+if (-not (Test-Path -LiteralPath $qualityTestScript)) {
+    Add-Failure "Output quality test script is missing."
 }
 
 if ((Test-Path -LiteralPath $versionFile) -and (Test-Path -LiteralPath $manifestFile)) {
@@ -393,6 +397,16 @@ if ($script:Failures.Count -eq 0) {
     Add-Pass "Relative markdown links resolve."
 }
 
+if (Test-Path -LiteralPath $qualityTestScript) {
+    & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $qualityTestScript -SourceRoot $SourceRoot | Out-Host
+    if ($LASTEXITCODE -ne 0) {
+        Add-Failure "Output quality golden QA check failed."
+    }
+    else {
+        Add-Pass "Output quality golden QA check completed."
+    }
+}
+
 $referenceRoot = Join-Path $SourceRoot "csharp-tutor\references"
 $referencePattern = 'references/([A-Za-z0-9._-]+\.md)'
 foreach ($file in @(Get-ChildItem -LiteralPath $SourceRoot -Directory -Filter "csharp-*" | ForEach-Object { Get-ChildItem -LiteralPath $_.FullName -File -Filter "SKILL.md" })) {
@@ -467,12 +481,18 @@ if (-not $SkipInstallerRealRun) {
 
                 $staleFile = Join-Path $tempDestination "csharp-tutor\stale-file.tmp"
                 Set-Content -LiteralPath $staleFile -Value "stale" -Encoding utf8
+                $retiredSkillFolder = Join-Path $tempDestination "csharp-review"
+                New-Item -ItemType Directory -Path $retiredSkillFolder -Force | Out-Null
+                Set-Content -LiteralPath (Join-Path $retiredSkillFolder "stale-retired.tmp") -Value "stale" -Encoding utf8
                 & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $installer -SourceRoot $SourceRoot -DestinationRoot $tempDestination -Force | Out-Host
                 if ($LASTEXITCODE -ne 0) {
                     Add-Failure "Installer temp reinstall failed."
                 }
                 elseif (Test-Path -LiteralPath $staleFile) {
                     Add-Failure "Installer temp reinstall left a stale file in an existing skill folder."
+                }
+                elseif (Test-Path -LiteralPath $retiredSkillFolder) {
+                    Add-Failure "Installer temp reinstall left retired skill folder: $retiredSkillFolder"
                 }
 
                 if (Test-Path -LiteralPath $restore) {

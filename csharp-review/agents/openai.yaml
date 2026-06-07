@@ -1,4 +1,0 @@
-interface:
-  display_name: "C# Review"
-  short_description: "Review C# code for quality and bugs"
-  default_prompt: "Use $csharp-review to review C# code for correctness, design, security, and maintainability."

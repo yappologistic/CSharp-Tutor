@@ -12,6 +12,7 @@ This project uses semantic versioning while it remains pre-1.0:
 
 ### Added
 
+- Golden prompt/rubric output quality validation in `tests/golden-qa.json` with `scripts/test-output-quality.ps1`.
 - Richer core tutor references with concrete C# examples, triage heuristics, practice exercises, before/after patterns, and good/bad answer comparisons.
 - Intent-based skill router reference for mapping natural user prompts, keywords, and pasted diagnostics to the right focused C# skill.
 - Modern .NET guidance covering C# 12/13 feature choices, `System.Threading.Channels`, `Microsoft.Extensions.*`, configuration/options, and `HttpClientFactory` patterns.
@@ -24,8 +25,10 @@ This project uses semantic versioning while it remains pre-1.0:
 
 ### Changed
 
+- Consolidated wrapper-only `csharp-review`, `csharp-docs`, and `csharp-style` skills into `csharp-tutor` command modes.
+- Installer updates now remove manifest-listed retired skill folders so consolidated wrappers do not remain after update.
 - Catalog drift checks now normalize line endings so `SKILLS.md` validates consistently on Windows, Linux, and macOS.
-- Thickened `csharp-help`, `csharp-style`, and `csharp-json` with skill-specific decision rules and response guidance.
+- Thickened `csharp-help` and `csharp-json` with skill-specific decision rules and response guidance.
 - PowerShell maintenance scripts now resolve `pwsh` on non-Windows systems and use `$HOME` as a default skills root when `$USERPROFILE` is unavailable.
 
 ## 0.6.0 - 2026-06-06

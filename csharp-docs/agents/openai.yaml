@@ -1,4 +1,0 @@
-interface:
-  display_name: "C# Docs"
-  short_description: "Docs-grounded C# and .NET answers"
-  default_prompt: "Answer my C# question using official docs where needed."

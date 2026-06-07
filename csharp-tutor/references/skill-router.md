@@ -24,12 +24,12 @@ Use this reference when the user does not know which focused C# skill to invoke.
 
 | User intent or words | Primary skill | Secondary lens when useful |
 | --- | --- | --- |
-| "what is", "explain", "teach me", "how does this work" | `csharp-explain` | `csharp-docs` for version-sensitive facts |
+| "what is", "explain", "teach me", "how does this work" | `csharp-explain` | `csharp-tutor mode=docs` for version-sensitive facts |
 | "give me exercises", "practice", "homework", "assignment" | `csharp-practice` | `csharp-debug-lab` for broken-code exercises |
 | "learning path", "roadmap", "what should I learn next" | `csharp-plan` | `csharp-interview` for job prep |
 | "interview", "mock interview", "coding drill" | `csharp-interview` | `csharp-cheatsheets` for review sheets |
-| "cheat sheet", "quick reference", "summarize syntax" | `csharp-cheatsheets` | `csharp-docs` for official rules |
-| "review this code", "is this good", "find issues" | `csharp-review` | `csharp-security` or `csharp-performance` for focused risk |
+| "cheat sheet", "quick reference", "summarize syntax" | `csharp-cheatsheets` | `csharp-tutor mode=docs` for official rules |
+| "review this code", "is this good", "find issues" | `csharp-tutor mode=review` | `csharp-security` or `csharp-performance` for focused risk |
 | "refactor", "clean up", "make this cleaner" | `csharp-refactor` | `csharp-oop` or `csharp-architecture` for design structure |
 | "SOLID", "classes", "interfaces", "inheritance", "composition" | `csharp-oop` | `csharp-design-patterns` when naming a pattern |
 | "architecture", "layers", "vertical slice", "modular", "scalable" | `csharp-architecture` | `csharp-di` for dependency boundaries |
@@ -40,7 +40,7 @@ Use this reference when the user does not know which focused C# skill to invoke.
 | "try/catch", "validation", "guard clause", "Result pattern" | `csharp-errors` | `csharp-api-design` for public error contracts |
 | "unit test", "xUnit", "mock", "testability", "coverage" | `csharp-tests` | `csharp-di` for replaceable dependencies |
 | "build failed", "restore failed", "SDK", "MSBuild", `.csproj`, CI failure | `csharp-build` | `csharp-project` for repo inspection |
-| "analyzer", `.editorconfig`, "warning as error", "dotnet format" | `csharp-analyzers` | `csharp-style` for naming and formatting |
+| "analyzer", `.editorconfig`, "warning as error", "dotnet format" | `csharp-analyzers` | `csharp-tutor mode=style` for naming and formatting |
 | "inspect my repo", "solution", `.sln`, "packages", "target framework" | `csharp-project` | `csharp-versioning` for compatibility |
 | "async", "await", `Task`, cancellation token, deadlock, sync-over-async | `csharp-async` | `csharp-concurrency` for shared state or CPU work |
 | "thread", "lock", "race condition", "parallel", `Channel`, shared state | `csharp-concurrency` | `csharp-performance` for throughput |
@@ -67,7 +67,7 @@ Use this reference when the user does not know which focused C# skill to invoke.
 | "NuGet", package metadata, pack, publish, Source Link, symbols | `csharp-nuget` | `csharp-api-design` for package contracts |
 | "Docker", container, compose, Kubernetes, image size, non-root | `csharp-containers` | `csharp-build` for publish failures |
 | "NativeAOT", trimming, linker warning, single-file publish | `csharp-aot` | `csharp-json` or `csharp-sourcegen` |
-| "official docs", "cite sources", "is this true in .NET X" | `csharp-docs` | Topic skill for the domain |
+| "official docs", "cite sources", "is this true in .NET X" | `csharp-tutor mode=docs` | Topic skill for the domain |
 
 ## Diagnostic Shape Routing
 
@@ -86,8 +86,8 @@ Use this reference when the user does not know which focused C# skill to invoke.
 
 ## Ambiguous Requests
 
-- "Improve this" -> start with `csharp-review`; if the code has a clear structural smell, route to `csharp-refactor`.
-- "Make this production-ready" -> start with `csharp-review`; include `csharp-security`, `csharp-logging`, `csharp-tests`, and `csharp-performance` lenses as needed.
+- "Improve this" -> start with `csharp-tutor mode=review`; if the code has a clear structural smell, route to `csharp-refactor`.
+- "Make this production-ready" -> start with `csharp-tutor mode=review`; include `csharp-security`, `csharp-logging`, `csharp-tests`, and `csharp-performance` lenses as needed.
 - "This is slow" -> route to `csharp-performance`, even if the code uses LINQ, EF Core, async, or collections.
 - "This API is broken" -> route to `csharp-aspnet` unless the evidence is clearly build, JSON, auth, EF Core, or deployment.
 - "Can I use this newer syntax?" -> route to `csharp-versioning` first, then `csharp-modernize` if the feature is available.

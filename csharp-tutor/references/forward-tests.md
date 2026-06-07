@@ -4,7 +4,7 @@ Use these scenarios to check whether the C# Tutor skill family still behaves cor
 
 ## Scenario: Beginner OOP Review
 
-Prompt: `Use $csharp-review to review this beginner bank account class for OOP and clean code.`
+Prompt: `Use $csharp-tutor mode=review to review this beginner bank account class for OOP and clean code.`
 
 Quality checks:
 
