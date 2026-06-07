@@ -26,6 +26,7 @@ This project uses semantic versioning while it remains pre-1.0:
 - `csharp-build` skill and shared build guidance for SDK, restore, MSBuild, project-file, and CI failures.
 - `csharp-logging` skill and shared logging guidance for `ILogger`, structured logging, scopes, Serilog, and safe logs.
 - Release helper `-UseCurrentVersion` option for tagging the currently checked-in version after health checks.
+- MIT license, GitHub issue and PR templates, GitHub Release publishing support, self-update guidance, and `csharp-quickfix` skill.
 - `csharp-nuget` skill and shared NuGet guidance for package metadata, packing, versioning, local testing, Source Link, and publishing safety.
 - `csharp-aot` skill and shared AOT/trimming guidance for NativeAOT, linker warnings, reflection risks, serialization compatibility, and publish constraints.
 - `csharp-analyzers` skill and shared analyzer guidance for Roslyn analyzers, `.editorconfig`, warning policy, `dotnet format`, and CI quality gates.

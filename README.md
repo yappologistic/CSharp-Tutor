@@ -64,7 +64,7 @@ Install a pinned release:
 
 For installation problems, see `INSTALL-TROUBLESHOOTING.md`.
 
-For the generated skill catalog, see `SKILLS.md`. For topic routing, see `TOPICS.md`. For the quality checklist, see `QUALITY-RUBRIC.md`. For representative maintenance prompts, see `EXAMPLE-PROMPTS.md`. For project boundaries, see `KNOWN-LIMITATIONS.md`.
+For the generated skill catalog, see `SKILLS.md`. For topic routing, see `TOPICS.md`. For releases, see `RELEASE.md`. For the quality checklist, see `QUALITY-RUBRIC.md`. For representative maintenance prompts, see `EXAMPLE-PROMPTS.md`. For project boundaries, see `KNOWN-LIMITATIONS.md`.
 
 On Windows, the usual Codex skills directory is:
 
@@ -198,6 +198,7 @@ Focused companion skills:
 - `csharp-plan`: Learning plans and roadmaps.
 - `csharp-practice`: Exercises, drills, and assignments.
 - `csharp-project`: Project and repository inspection.
+- `csharp-quickfix`: Smallest fix for one C# error, warning, or exception.
 - `csharp-refactor`: Clean code and design-focused refactoring.
 - `csharp-review`: Code review and quality feedback.
 - `csharp-security`: Secure coding review.
@@ -310,6 +311,12 @@ To tag the currently checked-in `VERSION` after health checks pass:
 
 ```powershell
 .\scripts\release.ps1 -UseCurrentVersion -CreateTag -PushTag
+```
+
+To also create a draft GitHub Release from the matching `CHANGELOG.md` section:
+
+```powershell
+.\scripts\release.ps1 -UseCurrentVersion -CreateTag -PushTag -CreateGitHubRelease -Draft
 ```
 
 ## Project Inspection Helper

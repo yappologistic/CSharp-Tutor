@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Quickfix"
+  short_description: "Smallest fix for one C# error"
+  default_prompt: "Use $csharp-quickfix to get the smallest likely fix for one C# compiler error, exception, warning, or small failing snippet."

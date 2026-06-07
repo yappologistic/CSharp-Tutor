@@ -22,6 +22,7 @@ Use these prompts as lightweight behavior examples when maintaining the skill pa
 - `csharp-debug`: `$csharp-debug help me diagnose this NullReferenceException from the stack trace and code.`
 - `csharp-errors`: `$csharp-errors explain this compiler error and show the smallest correct fix.`
 - `csharp-debug-lab`: `$csharp-debug-lab create a beginner debugging lab about a failing collection lookup, with hints hidden until I ask.`
+- `csharp-quickfix`: `$csharp-quickfix fix this CS1503 error with the smallest code change and only one sentence of explanation.`
 
 ## Language Fundamentals
 

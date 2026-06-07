@@ -10,6 +10,7 @@ Use this map when deciding which skill owns a user request. Prefer the most focu
 | Explain a C# concept | `csharp-explain` | `csharp-docs`, `csharp-cheatsheets` |
 | Review code quality | `csharp-review` | `csharp-refactor`, `csharp-style`, `csharp-tests` |
 | Debug an error or failing test | `csharp-debug` | `csharp-errors`, `csharp-debug-lab` |
+| Get the smallest fix for one error | `csharp-quickfix` | `csharp-debug`, `csharp-errors`, `csharp-analyzers` |
 | Improve object-oriented design | `csharp-oop` | `csharp-refactor`, `csharp-design-patterns`, `csharp-architecture` |
 | Modernize an old codebase | `csharp-modernize` | `csharp-versioning`, `csharp-style`, `csharp-tests` |
 | Diagnose build or CI failures | `csharp-build` | `csharp-project`, `csharp-debug`, `csharp-versioning` |

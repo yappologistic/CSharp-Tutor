@@ -41,6 +41,7 @@ Decision tree:
    - Design pattern selection -> `$csharp-design-patterns`
    - Public API/package surface -> `$csharp-api-design`
 3. Bugs, build, tests, and tooling:
+   - Smallest fix for one error/warning -> `$csharp-quickfix`
    - Runtime/compiler/debugging issue -> `$csharp-debug`
    - Error-handling design -> `$csharp-errors`
    - Tests or testability -> `$csharp-tests`
@@ -132,6 +133,8 @@ Use the focused reference files as needed:
 - Read [nuget-guidance.md](references/nuget-guidance.md) for NuGet package metadata, `dotnet pack`, local package testing, Source Link, symbols, and publishing safety.
 - Read [aot-guidance.md](references/aot-guidance.md) for NativeAOT, trimming, single-file publishing, linker warnings, reflection risks, and deployment constraints.
 - Read [analyzers-guidance.md](references/analyzers-guidance.md) for Roslyn analyzers, `.editorconfig`, warning levels, warning-as-error policy, `dotnet format`, and CI quality gates.
+- Read [self-update-guidance.md](references/self-update-guidance.md) when the user asks whether C# Tutor is up to date, how to update, reinstall, or check installed skills.
+- Read [quickfix-guidance.md](references/quickfix-guidance.md) when the user asks for the smallest fix for one compiler error, exception, warning, or small failing snippet.
 
 ## Workflow
 
@@ -150,6 +153,7 @@ Use the focused reference files as needed:
    - NuGet package creation, packing, publishing, or package compatibility
    - NativeAOT, trimming, linker warning, or publish compatibility question
    - Analyzer, `.editorconfig`, nullable warning, warning-as-error, or `dotnet format` question
+   - Quick fix for one compiler error, exception, warning, or small failing snippet
    - Interview preparation or mock interview
    - Version compatibility, docs-grounded explanation, design-pattern selection, API design, tooling/analyzer review, debug lab, or mini-project assignment
    - Cheat sheet, quiz, quick answer, or "what should I learn next" request

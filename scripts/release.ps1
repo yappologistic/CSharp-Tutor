@@ -21,6 +21,15 @@ Creates git tag v<Version> after metadata is updated and health checks pass.
 .PARAMETER PushTag
 Pushes the created tag to origin. Requires -CreateTag.
 
+.PARAMETER CreateGitHubRelease
+Creates a GitHub Release for v<Version> using the matching CHANGELOG.md section as release notes. Requires GitHub CLI authentication.
+
+.PARAMETER Draft
+Creates the GitHub Release as a draft. Only applies with -CreateGitHubRelease.
+
+.PARAMETER Prerelease
+Marks the GitHub Release as a prerelease. Only applies with -CreateGitHubRelease.
+
 .PARAMETER SkipHealthCheck
 Skips running scripts/test-csharp-tutor.ps1 after metadata updates.
 
@@ -32,6 +41,9 @@ Skips running scripts/test-csharp-tutor.ps1 after metadata updates.
 
 .EXAMPLE
 .\scripts\release.ps1 -UseCurrentVersion -CreateTag -PushTag
+
+.EXAMPLE
+.\scripts\release.ps1 -UseCurrentVersion -CreateTag -PushTag -CreateGitHubRelease -Draft
 #>
 [CmdletBinding()]
 param(
@@ -40,6 +52,9 @@ param(
     [switch]$UseCurrentVersion,
     [switch]$CreateTag,
     [switch]$PushTag,
+    [switch]$CreateGitHubRelease,
+    [switch]$Draft,
+    [switch]$Prerelease,
     [switch]$SkipHealthCheck
 )
 
@@ -47,6 +62,10 @@ $ErrorActionPreference = "Stop"
 
 if ($PushTag -and -not $CreateTag) {
     throw "-PushTag requires -CreateTag."
+}
+
+if (($Draft -or $Prerelease) -and -not $CreateGitHubRelease) {
+    throw "-Draft and -Prerelease require -CreateGitHubRelease."
 }
 
 if ([string]::IsNullOrWhiteSpace($SourceRoot)) {
@@ -73,6 +92,27 @@ if ([string]::IsNullOrWhiteSpace($Version)) {
 
 if ($Version -notmatch '^\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') {
     throw "Version must be semantic version format, such as 0.5.1 or 1.0.0-beta.1."
+}
+
+function Get-ChangelogReleaseNotes {
+    param(
+        [string]$Path,
+        [string]$ReleaseVersion
+    )
+
+    $text = Get-Content -LiteralPath $Path -Raw
+    $escapedVersion = [regex]::Escape($ReleaseVersion)
+    $match = [regex]::Match($text, "(?ms)^##\s+$escapedVersion(?:\s+-[^\r\n]*)?\s*\r?\n(?<body>.*?)(?=^##\s+|\z)")
+    if (-not $match.Success) {
+        throw "CHANGELOG.md does not contain a section for $ReleaseVersion."
+    }
+
+    $body = $match.Groups["body"].Value.Trim()
+    if ([string]::IsNullOrWhiteSpace($body)) {
+        throw "CHANGELOG.md section for $ReleaseVersion is empty."
+    }
+
+    return $body
 }
 
 if ($updateMetadata) {
@@ -109,6 +149,8 @@ if ($updateMetadata) {
     }
 }
 
+$tagName = "v$Version"
+
 if (-not $SkipHealthCheck) {
     $health = Join-Path $SourceRoot "scripts\test-csharp-tutor.ps1"
     & powershell -NoProfile -ExecutionPolicy Bypass -File $health -SourceRoot $SourceRoot
@@ -118,7 +160,6 @@ if (-not $SkipHealthCheck) {
 }
 
 if ($CreateTag) {
-    $tagName = "v$Version"
     git -C $SourceRoot rev-parse -q --verify "refs/tags/$tagName" *> $null
     if ($LASTEXITCODE -eq 0) {
         throw "Git tag $tagName already exists."
@@ -134,6 +175,34 @@ if ($CreateTag) {
         if ($LASTEXITCODE -ne 0) {
             throw "Failed to push git tag $tagName."
         }
+    }
+}
+
+if ($CreateGitHubRelease) {
+    $gh = Get-Command gh -ErrorAction SilentlyContinue
+    if ($null -eq $gh) {
+        throw "GitHub CLI 'gh' was not found. Install it and authenticate with 'gh auth login' before creating a GitHub Release."
+    }
+
+    $notes = Get-ChangelogReleaseNotes -Path $changelogFile -ReleaseVersion $Version
+    $notesFile = New-TemporaryFile
+    try {
+        Set-Content -LiteralPath $notesFile.FullName -Value $notes -Encoding utf8
+        $releaseArgs = @("release", "create", $tagName, "--title", $tagName, "--notes-file", $notesFile.FullName)
+        if ($Draft) {
+            $releaseArgs += "--draft"
+        }
+        if ($Prerelease) {
+            $releaseArgs += "--prerelease"
+        }
+
+        & gh @releaseArgs
+        if ($LASTEXITCODE -ne 0) {
+            throw "Failed to create GitHub Release $tagName."
+        }
+    }
+    finally {
+        Remove-Item -LiteralPath $notesFile.FullName -Force -ErrorAction SilentlyContinue
     }
 }
 

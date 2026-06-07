@@ -24,6 +24,7 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 - `csharp-performance` / `C# Performance`: Review performance, allocations, memory, async scale, LINQ, and data access.
 - `csharp-tests` / `C# Tests`: Suggest or review unit, integration, async, and regression tests.
 - `csharp-project` / `C# Project`: Inspect `.csproj`, `.sln`, `global.json`, package, analyzer, and repo structure.
+- `csharp-quickfix` / `C# Quickfix`: Smallest likely fix for one compiler error, exception, warning, or small failing snippet.
 - `csharp-practice` / `C# Practice`: Create exercises, assignments, drills, and small projects.
 - `csharp-plan` / `C# Plan`: Create learning paths, study plans, and project roadmaps.
 - `csharp-style` / `C# Style`: Naming conventions, formatting, `.editorconfig`, analyzers, and idiomatic C# style.
@@ -73,6 +74,8 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 @C# NuGet Review this package metadata before I run dotnet pack.
 @C# AOT Explain this trimming warning and whether the library is NativeAOT-safe.
 @C# Analyzers Help me configure .editorconfig and TreatWarningsAsErrors for CI.
+@C# Help Am I up to date, and how do I safely update C# Tutor?
+@C# Quickfix Fix this CS1503 error with the smallest code change.
 @C# Design Patterns Should this conditional logic become a strategy pattern?
 @C# Docs Explain records vs classes using official docs.
 @C# Debug Lab Give me a LINQ debugging exercise and let me diagnose it.

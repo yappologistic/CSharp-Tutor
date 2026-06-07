@@ -24,6 +24,7 @@ Default to beginner-friendly explanations unless the user asks for advanced dept
 - Use `csharp-nuget` for NuGet package creation, package metadata, `dotnet pack`, Source Link, symbols, package versioning, local package testing, and publishing safety.
 - Use `csharp-aot` for NativeAOT, trimming, single-file publishing, linker warnings, reflection risks, serialization compatibility, and deployment constraints.
 - Use `csharp-analyzers` for Roslyn analyzers, `.editorconfig`, nullable warnings, warning levels, `TreatWarningsAsErrors`, `NoWarn`, `dotnet format`, and CI quality gates.
+- Use `csharp-quickfix` for the smallest likely fix to one compiler error, exception, warning, syntax issue, or small failing snippet.
 - Use `csharp-debug` for errors, exceptions, failing tests, and unexpected behavior.
 - Use `csharp-security` for vulnerability and secure coding review.
 - Use `csharp-performance` for speed, memory, allocations, and scale.

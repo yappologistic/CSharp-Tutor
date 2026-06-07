@@ -14,6 +14,7 @@ Read these csharp-tutor references when useful:
 - `references/qol-command-ux.md`
 - `references/dollar-command-recipes.md`
 - `references/command-index.md`
+- `references/self-update-guidance.md`
 
 For normal help requests, present a concise guide:
 
@@ -24,5 +25,7 @@ For normal help requests, present a concise guide:
 - Three to six examples.
 
 Show the full command index only when the user asks for the full list.
+
+When the user asks whether C# Tutor is up to date, how to update, how to reinstall, or how to check installed skills, read `references/self-update-guidance.md` and give the update, dry-run, and list-installed commands.
 
 If the user is trying to use slash commands, explain that this Codex UI exposes personal entries through Skills in the picker; selecting a focused C# skill such as `C# Review` mirrors the GSD-style workflow.
