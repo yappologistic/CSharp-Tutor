@@ -5,6 +5,7 @@ Use these prompts as lightweight behavior examples when maintaining the skill pa
 ## Core
 
 - `csharp-tutor`: `$csharp-tutor explain LINQ deferred execution to a beginner, then show a small runnable example.`
+- `csharp-tutor`: `$csharp-tutor I have a dotnet restore failure in CI; recommend the best focused skill and give a one-line handoff summary.`
 - `csharp-help`: `$csharp-help show me the best skill to use for reviewing async EF Core code.`
 - `csharp-analyzers`: `$csharp-analyzers help me configure .editorconfig, nullable warnings, and TreatWarningsAsErrors without making style noise block CI.`
 - `csharp-aot`: `$csharp-aot explain this trimming warning and show what code or project settings I should inspect first.`

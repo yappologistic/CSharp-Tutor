@@ -29,6 +29,7 @@ This project uses semantic versioning while it remains pre-1.0:
 - `csharp-nuget` skill and shared NuGet guidance for package metadata, packing, versioning, local testing, Source Link, and publishing safety.
 - `csharp-aot` skill and shared AOT/trimming guidance for NativeAOT, linker warnings, reflection risks, serialization compatibility, and publish constraints.
 - `csharp-analyzers` skill and shared analyzer guidance for Roslyn analyzers, `.editorconfig`, warning policy, `dotnet format`, and CI quality gates.
+- Main `csharp-tutor` orchestrator routing decision tree with focused-skill handoff recommendations.
 
 ## 0.5.0 - 2026-06-05
 

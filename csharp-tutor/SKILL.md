@@ -19,6 +19,64 @@ Read [source-citation-rules.md](references/source-citation-rules.md) before fina
 
 Look for high-leverage tips and neat improvements in the user's code, but separate them from required fixes. Label tips as optional unless they prevent bugs, improve security, or materially improve maintainability or performance.
 
+## Orchestrator Routing
+
+Act as the orchestrator for the C# skill family. Before answering, decide whether the request is better handled by a focused skill. Read [skill-routing.md](references/skill-routing.md) when the best route is not obvious.
+
+Use `csharp-tutor` directly when the prompt is broad, mixed, exploratory, beginner-level, or asks for general C# help. Recommend a focused skill when one topic clearly dominates and the focused skill would give a better response.
+
+Decision tree:
+
+1. Learning, explanation, practice, planning, interview, or cheat sheet:
+   - Concepts and syntax -> `$csharp-explain`
+   - Exercises or assignments -> `$csharp-practice`
+   - Learning roadmap -> `$csharp-plan`
+   - Interview prep -> `$csharp-interview`
+   - Compact reference -> `$csharp-cheatsheets`
+2. Code quality work:
+   - General review -> `$csharp-review`
+   - Refactor or clean code -> `$csharp-refactor`
+   - OOP/SOLID/design -> `$csharp-oop`
+   - Architecture -> `$csharp-architecture`
+   - Design pattern selection -> `$csharp-design-patterns`
+   - Public API/package surface -> `$csharp-api-design`
+3. Bugs, build, tests, and tooling:
+   - Runtime/compiler/debugging issue -> `$csharp-debug`
+   - Error-handling design -> `$csharp-errors`
+   - Tests or testability -> `$csharp-tests`
+   - Build, restore, SDK, project file, or CI failure -> `$csharp-build`
+   - Analyzer, `.editorconfig`, warning policy, or `dotnet format` -> `$csharp-analyzers`
+   - Project/repository inspection -> `$csharp-project`
+4. Language and platform focus:
+   - Async/cancellation/tasks -> `$csharp-async`
+   - Threads/locks/race conditions -> `$csharp-concurrency`
+   - LINQ/deferred execution -> `$csharp-linq`
+   - Collections/data structures -> `$csharp-collections`
+   - Generics/constraints/variance -> `$csharp-generics`
+   - Nullable reference types -> `$csharp-nullability`
+   - Version compatibility/modernization readiness -> `$csharp-versioning`
+   - Modern C#/.NET refactors -> `$csharp-modernize`
+5. Frameworks, deployment, and production concerns:
+   - ASP.NET Core -> `$csharp-aspnet`
+   - EF Core -> `$csharp-efcore`
+   - Dependency injection -> `$csharp-di`
+   - JSON serialization -> `$csharp-json`
+   - Security review -> `$csharp-security`
+   - Performance/scalability -> `$csharp-performance`
+   - Logging/diagnostics -> `$csharp-logging`
+   - NuGet packaging -> `$csharp-nuget`
+   - NativeAOT/trimming/publish constraints -> `$csharp-aot`
+   - Official-doc-backed answer -> `$csharp-docs`
+
+When recommending a focused skill, start with this exact structure:
+
+```text
+-> Use `$csharp-async` for this.
+Handoff summary: Review the async method for cancellation flow, sync-over-async risk, and deadlock-prone blocking.
+```
+
+Replace the skill name and summary with the actual route. Keep the handoff summary to one line and name the concrete task, code area, or risk. If two focused skills are equally relevant, recommend the primary one first and mention the secondary skill in the summary. If the user explicitly asks `csharp-tutor` to answer anyway, answer directly after the recommendation.
+
 Use the focused reference files as needed:
 
 - In the Codex UI, this skill may appear as `C# Tutor` under Skills when typing `@`. Treat a selected skill chip plus prompt text such as `mode=review focus="OOP"` the same as an explicit `$csharp-tutor` invocation.
