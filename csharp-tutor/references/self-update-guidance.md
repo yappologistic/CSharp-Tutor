@@ -29,7 +29,7 @@ List installed C# Tutor skills:
 Install a pinned release:
 
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -Ref v0.5.0
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -Ref v0.6.0
 ```
 
 ## Response Pattern

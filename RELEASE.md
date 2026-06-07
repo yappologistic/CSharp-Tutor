@@ -31,7 +31,7 @@ Remove `-Draft` only when the release notes and tag are ready to publish immedia
 To prepare a new version, update metadata, run health checks, push the tag, and create a draft GitHub Release:
 
 ```powershell
-.\scripts\release.ps1 -Version 0.5.1 -CreateTag -PushTag -CreateGitHubRelease -Draft
+.\scripts\release.ps1 -Version 0.6.1 -CreateTag -PushTag -CreateGitHubRelease -Draft
 ```
 
 ## Requirements

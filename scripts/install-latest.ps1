@@ -43,7 +43,7 @@ irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -DryRun
 
 .EXAMPLE
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -Ref v0.5.0
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -Ref v0.6.0
 #>
 [CmdletBinding()]
 param(

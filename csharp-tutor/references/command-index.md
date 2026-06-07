@@ -15,9 +15,11 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 - `csharp-modernize` / `C# Modernize`: Use newer C#/.NET features when compatible.
 - `csharp-nullability` / `C# Nullability`: Nullable reference types, null-safety, nullable warnings, and null contracts.
 - `csharp-build` / `C# Build`: .NET build, restore, SDK, MSBuild, project-file, test, format, and CI failures.
+- `csharp-migration` / `C# Migration`: .NET Framework, .NET Core, and modern .NET migration planning, compatibility, and staged upgrade risks.
 - `csharp-logging` / `C# Logging`: `ILogger`, structured logging, scopes, exception logging, Serilog, request logging, and safe logs.
 - `csharp-nuget` / `C# NuGet`: NuGet package metadata, packing, package versioning, Source Link, symbols, local testing, and publishing safety.
 - `csharp-aot` / `C# AOT`: NativeAOT, trimming, linker warnings, reflection risks, serialization compatibility, and publish settings.
+- `csharp-containers` / `C# Containers`: Dockerfiles, multi-stage builds, image size, non-root containers, health checks, compose, and Kubernetes patterns.
 - `csharp-analyzers` / `C# Analyzers`: Roslyn analyzers, `.editorconfig`, nullable warnings, warning-as-error policy, `dotnet format`, and CI quality gates.
 - `csharp-debug` / `C# Debug`: Diagnose compiler errors, exceptions, failing tests, and unexpected behavior.
 - `csharp-security` / `C# Security`: Review security risks and vulnerability patterns.
@@ -30,10 +32,14 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 - `csharp-style` / `C# Style`: Naming conventions, formatting, `.editorconfig`, analyzers, and idiomatic C# style.
 - `csharp-oop` / `C# OOP`: Classes, interfaces, inheritance, composition, encapsulation, SOLID, and patterns.
 - `csharp-json` / `C# JSON`: Serialization/deserialization, `System.Text.Json`, DTOs, records, persistence, and common JSON issues.
+- `csharp-regex` / `C# Regex`: Regex patterns, escaping, captures, replacements, validation, performance, timeouts, and source-generated regex.
+- `csharp-sourcegen` / `C# SourceGen`: Roslyn source generators, incremental generators, diagnostics, generated code, testing, and AOT-friendly generation.
 - `csharp-async` / `C# Async`: `async`/`await`, `Task`, cancellation, fire-and-forget, sync-over-async, and async tests.
 - `csharp-linq` / `C# LINQ`: `IEnumerable<T>`, LINQ operators, deferred execution, joins, grouping, and repeated enumeration.
 - `csharp-errors` / `C# Errors`: Exceptions, guard clauses, validation, result patterns, compiler errors, runtime exceptions, and safer failure handling.
 - `csharp-aspnet` / `C# ASP.NET`: ASP.NET Core controllers, minimal APIs, middleware, routing, validation, auth, dependency injection, web APIs, and web app review.
+- `csharp-blazor` / `C# Blazor`: Blazor components, lifecycle, state management, rendering modes, forms, validation, JS interop, auth, and performance.
+- `csharp-signalr` / `C# SignalR`: SignalR hubs, clients, groups, users, reconnects, auth, streaming, scale-out, and diagnostics.
 - `csharp-efcore` / `C# EF Core`: Entity Framework Core DbContext, entities, migrations, LINQ queries, tracking, relationships, raw SQL, and data-access performance.
 - `csharp-di` / `C# DI`: .NET dependency injection, service lifetimes, constructor injection, scopes, factories, options, testability, and dependency boundaries.
 - `csharp-generics` / `C# Generics`: Generic classes, methods, interfaces, constraints, variance, type-safe reusable APIs, and generic compiler errors.
@@ -70,16 +76,22 @@ Use this index when the user asks what C# Tutor can do or which C# skill to sele
 @C# Versioning Can I use primary constructors in this project?
 @C# Nullability Review these nullable warnings and explain the safest fixes.
 @C# Build Diagnose this dotnet restore failure from my CI log.
+@C# Migration Plan a staged migration from .NET Framework 4.8 to .NET 8.
 @C# Logging Review this controller logging for structured properties and secret leakage.
 @C# NuGet Review this package metadata before I run dotnet pack.
 @C# AOT Explain this trimming warning and whether the library is NativeAOT-safe.
+@C# Containers Review this Dockerfile for a .NET API.
 @C# Analyzers Help me configure .editorconfig and TreatWarningsAsErrors for CI.
 @C# Help Am I up to date, and how do I safely update C# Tutor?
 @C# Quickfix Fix this CS1503 error with the smallest code change.
+@C# Regex Write a C# regex for these sample inputs and include tests.
+@C# SourceGen Review this incremental source generator pipeline.
 @C# Design Patterns Should this conditional logic become a strategy pattern?
 @C# Docs Explain records vs classes using official docs.
 @C# Debug Lab Give me a LINQ debugging exercise and let me diagnose it.
 @C# API Design Review this library method signature for public use.
 @C# Cheatsheets Make me a compact async/await cheat sheet.
 @C# Project Inspect D:\MyApp\MyApp.csproj and tell me what target framework it uses.
+@C# Blazor Review this component lifecycle and state management.
+@C# SignalR Review this hub for auth, groups, reconnects, and scale-out.
 ```

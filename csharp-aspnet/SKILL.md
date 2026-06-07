@@ -14,6 +14,9 @@ Treat all user text after `$csharp-aspnet` as an ASP.NET Core C# learning, debug
 Load these csharp-tutor references when useful:
 
 - `references/aspnet-guidance.md`
+- `references/blazor-guidance.md`
+- `references/signalr-guidance.md`
+- `references/containers-guidance.md`
 - `references/logging-guidance.md`
 - `references/framework-guidance.md`
 - `references/security-review-map.md`

@@ -136,5 +136,5 @@ Run repository checks:
 Prepare release metadata:
 
 ```powershell
-.\scripts\release.ps1 -Version 0.5.1
+.\scripts\release.ps1 -Version 0.6.1
 ```

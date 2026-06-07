@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Regex"
+  short_description: "C# Regex help"
+  default_prompt: "Use $csharp-regex to write, debug, explain, test, or optimize a regular expression used from C#."

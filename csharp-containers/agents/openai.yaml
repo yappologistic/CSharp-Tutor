@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Containers"
+  short_description: "Containerize .NET apps"
+  default_prompt: "Use $csharp-containers for Dockerfiles, multi-stage builds, image size, health checks, Kubernetes patterns, or container security for .NET apps."

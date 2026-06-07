@@ -14,6 +14,7 @@ Treat all user text after `$csharp-json` as the C# JSON, serialization, deserial
 Load these csharp-tutor references when useful:
 
 - `references/json-guidance.md`
+- `references/sourcegen-guidance.md`
 - `references/official-sources.md`
 - `references/security-review-map.md`
 - `references/learner-levels.md`

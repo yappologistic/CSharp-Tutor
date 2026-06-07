@@ -55,10 +55,15 @@ Decision tree:
    - Collections/data structures -> `$csharp-collections`
    - Generics/constraints/variance -> `$csharp-generics`
    - Nullable reference types -> `$csharp-nullability`
+   - Regex patterns in C# -> `$csharp-regex`
+   - Source generators -> `$csharp-sourcegen`
    - Version compatibility/modernization readiness -> `$csharp-versioning`
+   - Framework or target migration plan -> `$csharp-migration`
    - Modern C#/.NET refactors -> `$csharp-modernize`
 5. Frameworks, deployment, and production concerns:
    - ASP.NET Core -> `$csharp-aspnet`
+   - Blazor -> `$csharp-blazor`
+   - SignalR -> `$csharp-signalr`
    - EF Core -> `$csharp-efcore`
    - Dependency injection -> `$csharp-di`
    - JSON serialization -> `$csharp-json`
@@ -66,6 +71,7 @@ Decision tree:
    - Performance/scalability -> `$csharp-performance`
    - Logging/diagnostics -> `$csharp-logging`
    - NuGet packaging -> `$csharp-nuget`
+   - Docker/containerization -> `$csharp-containers`
    - NativeAOT/trimming/publish constraints -> `$csharp-aot`
    - Official-doc-backed answer -> `$csharp-docs`
 
@@ -102,6 +108,8 @@ Use the focused reference files as needed:
 - Read [performance-review-map.md](references/performance-review-map.md) when reviewing hot paths, allocations, throughput, LINQ, async scaling, memory, data access, or benchmarking questions.
 - Read [framework-guidance.md](references/framework-guidance.md) after identifying ASP.NET Core, EF Core, desktop, library/API, console, or tooling code.
 - Read [aspnet-guidance.md](references/aspnet-guidance.md) for ASP.NET Core controllers, minimal APIs, middleware, routing, model binding, validation, auth, web API design, and web security or performance.
+- Read [blazor-guidance.md](references/blazor-guidance.md) for Blazor components, lifecycle, state, rendering modes, forms, validation, JS interop, auth, and performance.
+- Read [signalr-guidance.md](references/signalr-guidance.md) for SignalR hubs, clients, groups, users, connection lifetime, reconnection, auth, scale-out, streaming, and diagnostics.
 - Read [efcore-guidance.md](references/efcore-guidance.md) for Entity Framework Core queries, DbContext lifetime, migrations, tracking, projections, concurrency, raw SQL, and data-access performance.
 - Read [di-guidance.md](references/di-guidance.md) for dependency injection lifetimes, service registration, constructor injection, factories, options, testability, and dependency boundaries.
 - Read [generics-guidance.md](references/generics-guidance.md) for generic classes, methods, interfaces, type parameters, constraints, variance, type-safe APIs, and generic design or compiler errors.
@@ -110,6 +118,7 @@ Use the focused reference files as needed:
 - Read [concurrency-guidance.md](references/concurrency-guidance.md) for C# concurrency, threading, locks, synchronization, concurrent collections, channels, `Parallel`, race conditions, shared state, cancellation, and CPU-bound parallel work.
 - Read [interview-guidance.md](references/interview-guidance.md) for C#/.NET mock interviews, answer review, coding drills, concept questions, and interview study plans.
 - Read [versioning-guidance.md](references/versioning-guidance.md) for C# language versions, .NET target frameworks, SDK defaults, `LangVersion`, nullable settings, implicit usings, package compatibility, trimming, AOT, and modernization readiness.
+- Read [migration-guidance.md](references/migration-guidance.md) for .NET Framework to modern .NET migrations, target framework upgrades, SDK-style conversion, package compatibility, and staged migration plans.
 - Read [design-patterns-guidance.md](references/design-patterns-guidance.md) for C# design pattern selection, refactoring toward patterns, pattern tradeoffs, and deciding when not to use a pattern.
 - Read [api-design-guidance.md](references/api-design-guidance.md) for C# public API design, method signatures, naming, nullability, exceptions, result types, cancellation, async APIs, DTOs, versioning, binary compatibility, XML docs, and NuGet package surfaces.
 - Read [debug-lab-guidance.md](references/debug-lab-guidance.md) for diagnosis-first debugging exercises, broken snippets, progressive hints, and reveal-after-attempt solutions.
@@ -132,6 +141,9 @@ Use the focused reference files as needed:
 - Read [logging-guidance.md](references/logging-guidance.md) for `ILogger`, structured logging, scopes, exception logging, Serilog basics, and safe ASP.NET Core logging.
 - Read [nuget-guidance.md](references/nuget-guidance.md) for NuGet package metadata, `dotnet pack`, local package testing, Source Link, symbols, and publishing safety.
 - Read [aot-guidance.md](references/aot-guidance.md) for NativeAOT, trimming, single-file publishing, linker warnings, reflection risks, and deployment constraints.
+- Read [containers-guidance.md](references/containers-guidance.md) for Dockerfiles, multi-stage builds, image size, non-root containers, health checks, compose, Kubernetes, and .NET deployment risks.
+- Read [regex-guidance.md](references/regex-guidance.md) for C# regular expressions, escaping, captures, replacements, validation, timeouts, source-generated regex, and backtracking risks.
+- Read [sourcegen-guidance.md](references/sourcegen-guidance.md) for Roslyn source generators, incremental generators, diagnostics, testing, build performance, JSON source generation, and AOT-friendly generation.
 - Read [analyzers-guidance.md](references/analyzers-guidance.md) for Roslyn analyzers, `.editorconfig`, warning levels, warning-as-error policy, `dotnet format`, and CI quality gates.
 - Read [self-update-guidance.md](references/self-update-guidance.md) when the user asks whether C# Tutor is up to date, how to update, reinstall, or check installed skills.
 - Read [quickfix-guidance.md](references/quickfix-guidance.md) when the user asks for the smallest fix for one compiler error, exception, warning, or small failing snippet.
@@ -152,6 +164,12 @@ Use the focused reference files as needed:
    - Logging, `ILogger`, structured logging, or production diagnostics help
    - NuGet package creation, packing, publishing, or package compatibility
    - NativeAOT, trimming, linker warning, or publish compatibility question
+   - Docker, container image, compose, Kubernetes, or deployment packaging question
+   - Blazor component, state, lifecycle, rendering, forms, auth, interop, or performance question
+   - SignalR hub, client, groups, reconnection, auth, streaming, or scale-out question
+   - Regex pattern, replacement, timeout, escaping, or performance question
+   - Source generator, incremental generator, generated code, diagnostic, or generator test question
+   - .NET Framework, .NET Core, or modern .NET migration plan
    - Analyzer, `.editorconfig`, nullable warning, warning-as-error, or `dotnet format` question
    - Quick fix for one compiler error, exception, warning, or small failing snippet
    - Interview preparation or mock interview

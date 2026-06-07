@@ -13,10 +13,12 @@ Use this map when deciding which skill owns a user request. Prefer the most focu
 | Get the smallest fix for one error | `csharp-quickfix` | `csharp-debug`, `csharp-errors`, `csharp-analyzers` |
 | Improve object-oriented design | `csharp-oop` | `csharp-refactor`, `csharp-design-patterns`, `csharp-architecture` |
 | Modernize an old codebase | `csharp-modernize` | `csharp-versioning`, `csharp-style`, `csharp-tests` |
+| Migrate between .NET versions | `csharp-migration` | `csharp-versioning`, `csharp-modernize`, `csharp-build` |
 | Diagnose build or CI failures | `csharp-build` | `csharp-project`, `csharp-debug`, `csharp-versioning` |
 | Improve application logging | `csharp-logging` | `csharp-aspnet`, `csharp-security`, `csharp-errors` |
 | Create or publish a NuGet package | `csharp-nuget` | `csharp-api-design`, `csharp-versioning`, `csharp-build` |
 | Check NativeAOT or trimming readiness | `csharp-aot` | `csharp-versioning`, `csharp-build`, `csharp-performance` |
+| Containerize a .NET app | `csharp-containers` | `csharp-aspnet`, `csharp-aot`, `csharp-security` |
 | Configure analyzers and warning policy | `csharp-analyzers` | `csharp-style`, `csharp-build`, `csharp-nullability` |
 | Prepare for interviews | `csharp-interview` | `csharp-cheatsheets`, `csharp-practice`, `csharp-plan` |
 | Inspect a C# repository | `csharp-project` | `csharp-architecture`, `csharp-versioning`, `csharp-review` |
@@ -37,6 +39,8 @@ Use this map when deciding which skill owns a user request. Prefer the most focu
 | Nullable reference type migration | `csharp-nullability` | `csharp-modernize`, `csharp-versioning`, `csharp-style` |
 | Public API null contracts | `csharp-nullability` | `csharp-api-design`, `csharp-versioning`, `csharp-docs` |
 | JSON serialization | `csharp-json` | `csharp-aspnet`, `csharp-errors` |
+| Regex patterns and replacements | `csharp-regex` | `csharp-tests`, `csharp-performance`, `csharp-security` |
+| Source generators | `csharp-sourcegen` | `csharp-analyzers`, `csharp-aot`, `csharp-json` |
 | C# language version features | `csharp-versioning` | `csharp-modernize`, `csharp-docs` |
 | Compiler and analyzer build failures | `csharp-build` | `csharp-debug`, `csharp-style`, `csharp-versioning` |
 | Analyzer warnings and `.editorconfig` | `csharp-analyzers` | `csharp-style`, `csharp-nullability`, `csharp-build` |
@@ -46,12 +50,16 @@ Use this map when deciding which skill owns a user request. Prefer the most focu
 | Topic | Primary skill | Related skills |
 | --- | --- | --- |
 | ASP.NET Core APIs | `csharp-aspnet` | `csharp-security`, `csharp-di`, `csharp-tests` |
+| Blazor components and apps | `csharp-blazor` | `csharp-aspnet`, `csharp-security`, `csharp-performance` |
+| SignalR real-time apps | `csharp-signalr` | `csharp-aspnet`, `csharp-security`, `csharp-logging` |
 | Entity Framework Core | `csharp-efcore` | `csharp-linq`, `csharp-performance`, `csharp-tests` |
 | Dependency injection | `csharp-di` | `csharp-architecture`, `csharp-tests`, `csharp-aspnet` |
 | Project files and target frameworks | `csharp-project` | `csharp-versioning`, `csharp-modernize` |
+| Framework and runtime migrations | `csharp-migration` | `csharp-project`, `csharp-versioning`, `csharp-build` |
 | SDK resolution, restore, and MSBuild | `csharp-build` | `csharp-project`, `csharp-versioning`, `csharp-debug` |
 | NuGet package metadata and `dotnet pack` | `csharp-nuget` | `csharp-build`, `csharp-api-design`, `csharp-versioning` |
 | NativeAOT, trimming, and publish settings | `csharp-aot` | `csharp-build`, `csharp-versioning`, `csharp-performance` |
+| Docker and Kubernetes deployment | `csharp-containers` | `csharp-aot`, `csharp-aspnet`, `csharp-logging` |
 | Public API design | `csharp-api-design` | `csharp-versioning`, `csharp-docs`, `csharp-tests` |
 | Application architecture | `csharp-architecture` | `csharp-oop`, `csharp-di`, `csharp-review` |
 | Design patterns | `csharp-design-patterns` | `csharp-oop`, `csharp-refactor`, `csharp-architecture` |

@@ -14,11 +14,13 @@ Treat all user text after `$csharp-versioning` as a C#/.NET version compatibilit
 Load these csharp-tutor references when useful:
 
 - `references/versioning-guidance.md`
+- `references/migration-guidance.md`
 - `references/build-guidance.md`
 - `references/nuget-guidance.md`
 - `references/aot-guidance.md`
 - `references/project-inspection.md`
 - `references/modernization-map.md`
+- `references/containers-guidance.md`
 - `references/source-citation-rules.md`
 - `references/official-sources.md`
 - `references/tooling-and-analyzers.md`

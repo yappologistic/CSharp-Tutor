@@ -10,8 +10,18 @@ This project uses semantic versioning while it remains pre-1.0:
 
 ## Unreleased
 
+- No unreleased changes yet.
+
+## 0.6.0 - 2026-06-06
+
 ### Added
 
+- `csharp-migration` skill and shared migration guidance for .NET Framework, .NET Core, and modern .NET upgrade plans.
+- `csharp-blazor` skill and shared Blazor guidance for components, lifecycle, state, rendering, forms, auth, interop, and performance.
+- `csharp-signalr` skill and shared SignalR guidance for hubs, clients, groups, reconnects, auth, streaming, scale-out, and diagnostics.
+- `csharp-containers` skill and shared container guidance for Dockerfiles, multi-stage builds, image size, non-root execution, health checks, compose, and Kubernetes patterns.
+- `csharp-regex` skill and shared Regex guidance for C# patterns, escaping, captures, replacements, timeouts, source-generated regex, and backtracking risks.
+- `csharp-sourcegen` skill and shared source generator guidance for Roslyn incremental generators, diagnostics, generated code, testing, build performance, and AOT-friendly generation.
 - GitHub Actions CI for PowerShell syntax checks, repository health checks, and whitespace validation.
 - Generated `SKILLS.md` catalog sourced from the manifest and skill frontmatter.
 - Catalog generator script with drift-check mode for local validation and CI.

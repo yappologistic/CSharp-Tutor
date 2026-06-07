@@ -9,6 +9,7 @@ Use these prompts as lightweight behavior examples when maintaining the skill pa
 - `csharp-help`: `$csharp-help show me the best skill to use for reviewing async EF Core code.`
 - `csharp-analyzers`: `$csharp-analyzers help me configure .editorconfig, nullable warnings, and TreatWarningsAsErrors without making style noise block CI.`
 - `csharp-aot`: `$csharp-aot explain this trimming warning and show what code or project settings I should inspect first.`
+- `csharp-migration`: `$csharp-migration plan a staged migration from .NET Framework 4.8 to .NET 8 and separate required fixes from modernization.`
 
 ## Review And Refactoring
 
@@ -32,6 +33,7 @@ Use these prompts as lightweight behavior examples when maintaining the skill pa
 - `csharp-collections`: `$csharp-collections compare List, Dictionary, and HashSet for lookup-heavy code.`
 - `csharp-linq`: `$csharp-linq explain why this query executes twice and how to avoid accidental repeated enumeration.`
 - `csharp-nullability`: `$csharp-nullability review these nullable warnings and show which fixes are real design fixes versus warning suppressions.`
+- `csharp-regex`: `$csharp-regex write a C# regex for these sample inputs, show the captures, and include table-driven tests.`
 - `csharp-async`: `$csharp-async review this async method for cancellation, sync-over-async, and deadlock risks.`
 - `csharp-concurrency`: `$csharp-concurrency review this shared counter code for race conditions and thread-safety options.`
 
@@ -40,13 +42,17 @@ Use these prompts as lightweight behavior examples when maintaining the skill pa
 - `csharp-architecture`: `$csharp-architecture review this project structure for dependency direction and maintainability.`
 - `csharp-api-design`: `$csharp-api-design review this public library API for binary compatibility, nullability, and async design.`
 - `csharp-aspnet`: `$csharp-aspnet review this minimal API endpoint for validation, auth, errors, and testability.`
+- `csharp-blazor`: `$csharp-blazor review this component lifecycle and state management for unnecessary renders and disposal bugs.`
 - `csharp-build`: `$csharp-build diagnose this dotnet build failure and tell me whether it is SDK, restore, project file, compiler, or CI environment related.`
+- `csharp-containers`: `$csharp-containers review this Dockerfile for a .NET API and suggest safer multi-stage build improvements.`
 - `csharp-design-patterns`: `$csharp-design-patterns help me decide whether Strategy or a simple switch is better for this pricing logic.`
 - `csharp-efcore`: `$csharp-efcore review this query for N+1 problems, tracking behavior, and projection opportunities.`
 - `csharp-di`: `$csharp-di explain the correct lifetime for these services and how to test them.`
 - `csharp-json`: `$csharp-json help me configure System.Text.Json for this DTO without breaking compatibility.`
 - `csharp-logging`: `$csharp-logging review this ILogger usage for structured logging, exception handling, scopes, and secret leakage.`
 - `csharp-nuget`: `$csharp-nuget review this .csproj package metadata and suggest a safe local package testing flow before publishing.`
+- `csharp-signalr`: `$csharp-signalr review this hub for auth, groups, reconnect behavior, and scale-out assumptions.`
+- `csharp-sourcegen`: `$csharp-sourcegen review this incremental generator pipeline for diagnostics, caching, and testability.`
 - `csharp-versioning`: `$csharp-versioning check whether this project can safely move from .NET 6 to .NET 8.`
 
 ## Quality, Safety, And Learning

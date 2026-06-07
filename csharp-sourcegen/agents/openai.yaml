@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# SourceGen"
+  short_description: "C# source generator help"
+  default_prompt: "Use $csharp-sourcegen for Roslyn source generators, incremental generators, diagnostics, testing, AOT-friendly generation, or System.Text.Json source generation."

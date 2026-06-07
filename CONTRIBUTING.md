@@ -46,11 +46,11 @@ Regenerate the skill catalog after changing a skill description, package version
 Prepare version metadata:
 
 ```powershell
-.\scripts\release.ps1 -Version 0.5.1
+.\scripts\release.ps1 -Version 0.6.1
 ```
 
 Create and push a release tag after checks pass:
 
 ```powershell
-.\scripts\release.ps1 -Version 0.5.1 -CreateTag -PushTag
+.\scripts\release.ps1 -Version 0.6.1 -CreateTag -PushTag
 ```

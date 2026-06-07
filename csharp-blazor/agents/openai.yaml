@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Blazor"
+  short_description: "Blazor component and app help"
+  default_prompt: "Use $csharp-blazor for Blazor components, lifecycle, state, rendering, forms, auth, interop, performance, or testing questions."

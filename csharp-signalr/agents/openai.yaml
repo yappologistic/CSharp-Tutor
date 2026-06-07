@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# SignalR"
+  short_description: "SignalR real-time app help"
+  default_prompt: "Use $csharp-signalr for SignalR hubs, clients, groups, auth, reconnects, scale-out, streaming, or diagnostics."

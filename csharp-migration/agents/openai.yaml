@@ -1,0 +1,4 @@
+interface:
+  display_name: "C# Migration"
+  short_description: "Plan C# and .NET migrations"
+  default_prompt: "Use $csharp-migration to plan a .NET Framework, .NET Core, or modern .NET migration with compatibility risks and validation steps."

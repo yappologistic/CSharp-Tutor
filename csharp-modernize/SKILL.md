@@ -14,7 +14,9 @@ Treat all user text after `$csharp-modernize` as the code, project, or feature-m
 Load these csharp-tutor references when useful:
 
 - `references/modernization-map.md`
+- `references/migration-guidance.md`
 - `references/nullability-guidance.md`
+- `references/sourcegen-guidance.md`
 - `references/versioning-guidance.md`
 - `references/project-inspection.md`
 - `references/official-sources.md`

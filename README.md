@@ -1,6 +1,6 @@
 # C# Tutor Skills
 
-Current version: `0.5.0`
+Current version: `0.6.0`
 
 C# Tutor is a Codex skill collection for developers learning C# and improving C#/.NET code. It gives Codex focused instructions for docs-grounded explanations, code review, debugging help, refactoring guidance, architecture feedback, practice exercises, and project inspection.
 
@@ -59,7 +59,7 @@ Useful options:
 Install a pinned release:
 
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -Ref v0.5.0
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1))) -Ref v0.6.0
 ```
 
 For installation problems, see `INSTALL-TROUBLESHOOTING.md`.
@@ -172,10 +172,12 @@ Focused companion skills:
 - `csharp-architecture`: Application architecture guidance.
 - `csharp-aspnet`: ASP.NET Core applications.
 - `csharp-async`: Async, cancellation, and async API design.
+- `csharp-blazor`: Blazor components, lifecycle, state, rendering, forms, auth, interop, and performance.
 - `csharp-build`: .NET build, restore, SDK, project-file, and CI failures.
 - `csharp-cheatsheets`: Compact topic cheat sheets.
 - `csharp-collections`: Collections and data structures.
 - `csharp-concurrency`: Thread safety and CPU-bound parallelism.
+- `csharp-containers`: Dockerfiles, multi-stage builds, image size, health checks, and Kubernetes patterns.
 - `csharp-debug`: Compiler errors, exceptions, failing tests, and unexpected behavior.
 - `csharp-debug-lab`: Diagnosis-first debugging exercises.
 - `csharp-design-patterns`: Pattern selection without overengineering.
@@ -190,6 +192,7 @@ Focused companion skills:
 - `csharp-json`: JSON serialization and persistence.
 - `csharp-linq`: LINQ and deferred execution.
 - `csharp-logging`: `ILogger`, structured logging, scopes, and safe logs.
+- `csharp-migration`: .NET Framework, .NET Core, and modern .NET migration planning.
 - `csharp-modernize`: Version-aware modernization.
 - `csharp-nullability`: Nullable reference types and null-safety.
 - `csharp-nuget`: NuGet packaging, versioning, and publishing safety.
@@ -199,9 +202,12 @@ Focused companion skills:
 - `csharp-practice`: Exercises, drills, and assignments.
 - `csharp-project`: Project and repository inspection.
 - `csharp-quickfix`: Smallest fix for one C# error, warning, or exception.
+- `csharp-regex`: Regex patterns, escaping, captures, replacements, timeouts, and performance.
 - `csharp-refactor`: Clean code and design-focused refactoring.
 - `csharp-review`: Code review and quality feedback.
 - `csharp-security`: Secure coding review.
+- `csharp-signalr`: SignalR hubs, clients, groups, reconnects, auth, streaming, and scale-out.
+- `csharp-sourcegen`: Source generators, incremental generators, diagnostics, testing, and AOT-friendly generation.
 - `csharp-style`: Naming, formatting, analyzers, and style.
 - `csharp-tests`: Test design and testability.
 - `csharp-versioning`: C# and .NET compatibility checks.
@@ -289,8 +295,8 @@ Version metadata lives in:
 When cutting a release:
 
 ```powershell
-git tag v0.5.0
-git push origin v0.5.0
+git tag v0.6.0
+git push origin v0.6.0
 ```
 
 The install scripts print the source ref and package version so users can see what they installed.
@@ -298,13 +304,13 @@ The install scripts print the source ref and package version so users can see wh
 To update version metadata and prepare a changelog section:
 
 ```powershell
-.\scripts\release.ps1 -Version 0.5.1
+.\scripts\release.ps1 -Version 0.6.1
 ```
 
 To create and push a release tag after health checks pass:
 
 ```powershell
-.\scripts\release.ps1 -Version 0.5.1 -CreateTag -PushTag
+.\scripts\release.ps1 -Version 0.6.1 -CreateTag -PushTag
 ```
 
 To tag the currently checked-in `VERSION` after health checks pass:

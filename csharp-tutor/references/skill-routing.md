@@ -18,11 +18,13 @@ Default to beginner-friendly explanations unless the user asks for advanced dept
 - Use `csharp-review` for general code feedback.
 - Use `csharp-refactor` for structure, responsibilities, and clean code.
 - Use `csharp-modernize` for newer C#/.NET features.
+- Use `csharp-migration` for .NET Framework to modern .NET migrations, target framework upgrades, SDK-style conversion, package compatibility, and staged migration plans.
 - Use `csharp-nullability` for nullable reference types, nullable warnings, null contracts, `!`, and null-safety migrations.
 - Use `csharp-build` for `dotnet` build, restore, test, format, SDK, MSBuild, project-file, package restore, and CI build issues.
 - Use `csharp-logging` for `ILogger`, structured logging, scopes, exception logging, Serilog basics, request logging, and safe production diagnostics.
 - Use `csharp-nuget` for NuGet package creation, package metadata, `dotnet pack`, Source Link, symbols, package versioning, local package testing, and publishing safety.
 - Use `csharp-aot` for NativeAOT, trimming, single-file publishing, linker warnings, reflection risks, serialization compatibility, and deployment constraints.
+- Use `csharp-containers` for Dockerfiles, multi-stage builds, image size, non-root containers, health checks, compose, Kubernetes, and .NET container deployment.
 - Use `csharp-analyzers` for Roslyn analyzers, `.editorconfig`, nullable warnings, warning levels, `TreatWarningsAsErrors`, `NoWarn`, `dotnet format`, and CI quality gates.
 - Use `csharp-quickfix` for the smallest likely fix to one compiler error, exception, warning, syntax issue, or small failing snippet.
 - Use `csharp-debug` for errors, exceptions, failing tests, and unexpected behavior.
@@ -35,10 +37,14 @@ Default to beginner-friendly explanations unless the user asks for advanced dept
 - Use `csharp-style` for naming, formatting, `.editorconfig`, and idiomatic style.
 - Use `csharp-oop` for classes, interfaces, inheritance, composition, SOLID, and patterns.
 - Use `csharp-json` for serialization, deserialization, DTOs, records, and JSON persistence.
+- Use `csharp-regex` for C# regular expressions, escaping, captures, replacement, validation, timeouts, and backtracking risks.
+- Use `csharp-sourcegen` for Roslyn source generators, incremental generators, diagnostics, generated code, testing, and AOT-friendly generation.
 - Use `csharp-async` for `async`/`await`, `Task`, cancellation, and async tests.
 - Use `csharp-linq` for `IEnumerable<T>`, LINQ operators, deferred execution, joins, grouping, and query pitfalls.
 - Use `csharp-errors` for exceptions, guard clauses, validation, result patterns, and error-handling design.
 - Use `csharp-aspnet` for ASP.NET Core controllers, minimal APIs, middleware, routing, validation, auth, DI, and web APIs.
+- Use `csharp-blazor` for Blazor components, lifecycle, state, rendering modes, forms, validation, JS interop, auth, and performance.
+- Use `csharp-signalr` for SignalR hubs, clients, groups, users, connection lifetime, reconnection, auth, scale-out, streaming, and diagnostics.
 - Use `csharp-efcore` for Entity Framework Core, DbContext, migrations, LINQ translation, tracking, relationships, and data access.
 - Use `csharp-di` for dependency injection, service lifetimes, scopes, factories, options, testability, and dependency boundaries.
 - Use `csharp-generics` for generic classes, methods, interfaces, constraints, variance, type parameters, and type-safe reusable APIs.

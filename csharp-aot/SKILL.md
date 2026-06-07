@@ -14,6 +14,8 @@ Treat all user text after `$csharp-aot` as the NativeAOT, trimming, publish, lin
 Load these csharp-tutor references when useful:
 
 - `references/aot-guidance.md`
+- `references/sourcegen-guidance.md`
+- `references/containers-guidance.md`
 - `references/versioning-guidance.md`
 - `references/build-guidance.md`
 - `references/performance-review-map.md`
