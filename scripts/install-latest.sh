@@ -4,13 +4,14 @@ set -euo pipefail
 repository="yappologistic/CSharp-Tutor"
 branch="master"
 ref=""
-destination_root="${HOME:-}/.codex/skills"
+destination_root="${HOME:+$HOME/.codex/skills}"
 dry_run=0
 no_backup=0
 no_validate=0
 list_installed=0
 uninstall=0
 keep_download=0
+force=0
 
 usage() {
   cat <<'EOF'
@@ -30,6 +31,7 @@ Options:
   --list-installed           List installed csharp-* skill folders and exit.
   --uninstall                Remove installed csharp-* skill folders.
   --keep-download            Keep the downloaded archive for troubleshooting.
+  --force                    Allow a destination that does not look like ~/.codex/skills.
   -h, --help                 Show this help.
 EOF
 }
@@ -76,6 +78,10 @@ while [[ $# -gt 0 ]]; do
       keep_download=1
       shift
       ;;
+    --force)
+      force=1
+      shift
+      ;;
     -h|--help)
       usage
       exit 0
@@ -96,6 +102,24 @@ if [[ -z "$destination_root" ]]; then
   echo "HOME is not set. Pass --destination-root explicitly." >&2
   exit 1
 fi
+
+is_codex_skills_root() {
+  local path="${1%/}"
+  [[ "$(basename "$path")" == "skills" && "$(basename "$(dirname "$path")")" == ".codex" ]]
+}
+
+assert_safe_destination_root() {
+  if [[ "$force" -eq 1 ]]; then
+    return 0
+  fi
+
+  if ! is_codex_skills_root "$destination_root"; then
+    echo "Destination root must look like a Codex skills directory ending in .codex/skills. Pass --force to use this destination intentionally: $destination_root" >&2
+    exit 1
+  fi
+}
+
+assert_safe_destination_root
 
 require_command() {
   if ! command -v "$1" >/dev/null 2>&1; then

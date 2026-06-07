@@ -143,13 +143,14 @@ function Get-MatchValue {
     return $match.Groups[1].Value.Trim()
 }
 
-function Test-SkillMetadata {
+function Test-SkillFolders {
     param([System.IO.DirectoryInfo[]]$SkillFolders)
 
     foreach ($skill in $SkillFolders) {
         $skillFile = Join-Path $skill.FullName "SKILL.md"
         $agentFile = Join-Path $skill.FullName "agents\openai.yaml"
         if (-not (Test-Path -LiteralPath $skillFile)) {
+            Add-Failure "$($skill.Name) is missing SKILL.md."
             continue
         }
 
@@ -239,32 +240,9 @@ else {
     Add-Pass "Found $($skillFolders.Count) csharp-* skill folders."
 }
 
-foreach ($skill in $skillFolders) {
-    $skillFile = Join-Path $skill.FullName "SKILL.md"
-    $agentFile = Join-Path $skill.FullName "agents\openai.yaml"
-    if (-not (Test-Path -LiteralPath $skillFile)) {
-        Add-Failure "$($skill.Name) is missing SKILL.md"
-        continue
-    }
-    if (-not (Test-Path -LiteralPath $agentFile)) {
-        Add-Failure "$($skill.Name) is missing agents/openai.yaml"
-    }
-
-    $nameLine = Select-String -LiteralPath $skillFile -Pattern '^name:\s*(.+)$' | Select-Object -First 1
-    if ($null -eq $nameLine) {
-        Add-Failure "$($skill.Name) SKILL.md is missing frontmatter name"
-    }
-    elseif ($nameLine.Matches[0].Groups[1].Value.Trim() -ne $skill.Name) {
-        Add-Failure "$($skill.Name) frontmatter name does not match folder"
-    }
-}
+Test-SkillFolders -SkillFolders $skillFolders
 if ($script:Failures.Count -eq 0) {
-    Add-Pass "Skill folder structure is consistent."
-}
-
-Test-SkillMetadata -SkillFolders $skillFolders
-if ($script:Failures.Count -eq 0) {
-    Add-Pass "Skill frontmatter and agent metadata are complete."
+    Add-Pass "Skill folder structure, frontmatter, and agent metadata are complete."
 }
 
 $versionFile = Join-Path $SourceRoot "VERSION"
@@ -461,13 +439,23 @@ if (-not $SkipInstallerDryRun) {
 
 if (-not $SkipInstallerRealRun) {
     $installer = Join-Path $SourceRoot "scripts\install-csharp-tutor.ps1"
+    $restore = Join-Path $SourceRoot "scripts\restore-backup.ps1"
     if (-not (Test-Path -LiteralPath $installer)) {
         Add-Failure "Local installer script is missing."
     }
     else {
         $tempDestination = New-TempDirectory
         try {
-            & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $installer -SourceRoot $SourceRoot -DestinationRoot $tempDestination | Out-Host
+            $previousErrorActionPreference = $ErrorActionPreference
+            $ErrorActionPreference = "Continue"
+            & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $installer -SourceRoot $SourceRoot -DestinationRoot $tempDestination -DryRun *> $null
+            $guardExitCode = $LASTEXITCODE
+            $ErrorActionPreference = $previousErrorActionPreference
+            if ($guardExitCode -eq 0) {
+                Add-Failure "Installer accepted a nonstandard temp destination without -Force."
+            }
+
+            & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $installer -SourceRoot $SourceRoot -DestinationRoot $tempDestination -Force | Out-Host
             if ($LASTEXITCODE -ne 0) {
                 Add-Failure "Installer temp install failed."
             }
@@ -476,9 +464,46 @@ if (-not $SkipInstallerRealRun) {
                 if ($installed.Count -ne $skillFolders.Count) {
                     Add-Failure "Installer temp install copied $($installed.Count) skill folder(s), expected $($skillFolders.Count)."
                 }
+
+                $staleFile = Join-Path $tempDestination "csharp-tutor\stale-file.tmp"
+                Set-Content -LiteralPath $staleFile -Value "stale" -Encoding utf8
+                & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $installer -SourceRoot $SourceRoot -DestinationRoot $tempDestination -Force | Out-Host
+                if ($LASTEXITCODE -ne 0) {
+                    Add-Failure "Installer temp reinstall failed."
+                }
+                elseif (Test-Path -LiteralPath $staleFile) {
+                    Add-Failure "Installer temp reinstall left a stale file in an existing skill folder."
+                }
+
+                if (Test-Path -LiteralPath $restore) {
+                    $backupRoot = Join-Path $tempDestination ".restore-test"
+                    New-Item -ItemType Directory -Path $backupRoot -Force | Out-Null
+                    Copy-Item -LiteralPath (Join-Path $tempDestination "csharp-tutor") -Destination $backupRoot -Recurse -Force
+                    $restoreStaleFile = Join-Path $tempDestination "csharp-tutor\restore-stale-file.tmp"
+                    Set-Content -LiteralPath $restoreStaleFile -Value "stale" -Encoding utf8
+                    $previousErrorActionPreference = $ErrorActionPreference
+                    $ErrorActionPreference = "Continue"
+                    & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $restore -BackupPath $backupRoot -DestinationRoot $tempDestination *> $null
+                    $restoreGuardExitCode = $LASTEXITCODE
+                    $ErrorActionPreference = $previousErrorActionPreference
+                    if ($restoreGuardExitCode -eq 0) {
+                        Add-Failure "Restore accepted a nonstandard temp destination without -Force."
+                    }
+
+                    & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $restore -BackupPath $backupRoot -DestinationRoot $tempDestination -Force | Out-Host
+                    if ($LASTEXITCODE -ne 0) {
+                        Add-Failure "Restore temp run failed."
+                    }
+                    elseif (Test-Path -LiteralPath $restoreStaleFile) {
+                        Add-Failure "Restore temp run left a stale file in an existing skill folder."
+                    }
+                }
+                else {
+                    Add-Failure "Backup restore script is missing."
+                }
             }
 
-            & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $installer -SourceRoot $SourceRoot -DestinationRoot $tempDestination -Uninstall | Out-Host
+            & $powerShellHost -NoProfile -ExecutionPolicy Bypass -File $installer -SourceRoot $SourceRoot -DestinationRoot $tempDestination -Uninstall -Force | Out-Host
             if ($LASTEXITCODE -ne 0) {
                 Add-Failure "Installer temp uninstall failed."
             }

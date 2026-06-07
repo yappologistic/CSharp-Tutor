@@ -36,6 +36,9 @@ Uninstalls installed csharp-* folders. Existing folders are backed up unless -No
 .PARAMETER KeepDownload
 Keeps the downloaded temporary package for troubleshooting.
 
+.PARAMETER Force
+Allows install, update, or uninstall against a destination that does not look like a Codex skills directory.
+
 .EXAMPLE
 irm https://raw.githubusercontent.com/yappologistic/CSharp-Tutor/master/scripts/install-latest.ps1 | iex
 
@@ -56,7 +59,8 @@ param(
     [switch]$NoValidate,
     [switch]$ListInstalled,
     [switch]$Uninstall,
-    [switch]$KeepDownload
+    [switch]$KeepDownload,
+    [switch]$Force
 )
 
 $ErrorActionPreference = "Stop"
@@ -186,6 +190,10 @@ try {
 
     if ($Uninstall) {
         $installerArgs += "-Uninstall"
+    }
+
+    if ($Force -and (Select-String -LiteralPath $installer -Pattern "\[switch\]\`$Force" -Quiet)) {
+        $installerArgs += "-Force"
     }
 
     if (-not $NoValidate -and -not $ListInstalled -and -not $Uninstall) {

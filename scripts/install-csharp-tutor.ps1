@@ -30,6 +30,9 @@ Lists installed csharp-* folders in the destination and exits.
 .PARAMETER Uninstall
 Removes installed csharp-* folders from the destination. Use with -Backup to preserve a restorable copy.
 
+.PARAMETER Force
+Allows install, update, or uninstall against a destination that does not look like a Codex skills directory.
+
 .EXAMPLE
 .\scripts\install-csharp-tutor.ps1 -Validate -Backup
 
@@ -48,7 +51,8 @@ param(
     [switch]$Backup,
     [switch]$Validate,
     [switch]$ListInstalled,
-    [switch]$Uninstall
+    [switch]$Uninstall,
+    [switch]$Force
 )
 
 $ErrorActionPreference = "Stop"
@@ -107,6 +111,39 @@ function Get-DefaultSkillsRoot {
     }
 
     throw "Neither USERPROFILE nor HOME is set. Pass -DestinationRoot explicitly."
+}
+
+function Test-IsCodexSkillsRoot {
+    param([string]$Path)
+
+    if ([string]::IsNullOrWhiteSpace($Path)) {
+        return $false
+    }
+
+    $normalized = $Path.TrimEnd([System.IO.Path]::DirectorySeparatorChar, [System.IO.Path]::AltDirectorySeparatorChar)
+    $leaf = Split-Path -Leaf $normalized
+    $parent = Split-Path -Parent $normalized
+    if ($leaf -ne "skills" -or [string]::IsNullOrWhiteSpace($parent)) {
+        return $false
+    }
+
+    $parentLeaf = Split-Path -Leaf $parent.TrimEnd([System.IO.Path]::DirectorySeparatorChar, [System.IO.Path]::AltDirectorySeparatorChar)
+    return $parentLeaf -eq ".codex"
+}
+
+function Assert-SafeDestinationRoot {
+    param(
+        [string]$Path,
+        [switch]$Force
+    )
+
+    if ($Force) {
+        return
+    }
+
+    if (-not (Test-IsCodexSkillsRoot -Path $Path)) {
+        throw "DestinationRoot must look like a Codex skills directory ending in '.codex\skills'. Pass -Force to use this destination intentionally: $Path"
+    }
 }
 
 function Get-PackageVersion {
@@ -193,6 +230,7 @@ if ([string]::IsNullOrWhiteSpace($DestinationRoot)) {
     $DestinationRoot = Get-DefaultSkillsRoot
 }
 $DestinationRoot = Resolve-RootPath -Path $DestinationRoot -Fallback $DestinationRoot
+Assert-SafeDestinationRoot -Path $DestinationRoot -Force:$Force
 
 if ($ListInstalled) {
     Write-Host "Destination root: $DestinationRoot"
@@ -288,6 +326,9 @@ foreach ($skill in $sourceSkillFolders) {
     }
 
     if ($PSCmdlet.ShouldProcess($target, "Install or update from $($skill.FullName)")) {
+        if (Test-Path -LiteralPath $target) {
+            Remove-Item -LiteralPath $target -Recurse -Force
+        }
         Copy-Item -LiteralPath $skill.FullName -Destination $DestinationRoot -Recurse -Force
     }
 }
