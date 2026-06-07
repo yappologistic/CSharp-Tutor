@@ -63,6 +63,16 @@ function Escape-MarkdownTableCell {
     return ($Value -replace '\|', '\|' -replace '\r?\n', ' ').Trim()
 }
 
+function Normalize-LineEndings {
+    param([string]$Value)
+
+    if ($null -eq $Value) {
+        return ""
+    }
+
+    return ($Value -replace "\r\n", "`n" -replace "\r", "`n")
+}
+
 $manifestFile = Join-Path $SourceRoot "csharp-tutor-manifest.json"
 if (-not (Test-Path -LiteralPath $manifestFile)) {
     throw "Manifest not found: $manifestFile"
@@ -131,7 +141,9 @@ if ($Check) {
     }
 
     $existing = Get-Content -LiteralPath $OutputPath -Raw
-    if ($existing.TrimEnd() -ne $content.TrimEnd()) {
+    $normalizedExisting = (Normalize-LineEndings -Value $existing).TrimEnd()
+    $normalizedGenerated = (Normalize-LineEndings -Value $content).TrimEnd()
+    if ($normalizedExisting -ne $normalizedGenerated) {
         Write-Error "Catalog is stale. Run .\scripts\generate-skills-catalog.ps1."
         exit 1
     }

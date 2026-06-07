@@ -20,6 +20,7 @@ This project uses semantic versioning while it remains pre-1.0:
 
 ### Changed
 
+- Catalog drift checks now normalize line endings so `SKILLS.md` validates consistently on Windows, Linux, and macOS.
 - Thickened `csharp-help`, `csharp-style`, and `csharp-json` with skill-specific decision rules and response guidance.
 - PowerShell maintenance scripts now resolve `pwsh` on non-Windows systems and use `$HOME` as a default skills root when `$USERPROFILE` is unavailable.
 
